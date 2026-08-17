@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Namrata Singh — Principal Product Designer, AI &amp; Enterprise Products</title>
+<meta name="description" content="Namrata Singh, Principal Product Designer with 13+ years of experience designing AI-powered enterprise products.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:            #14161A;
+    --bg-raised:     #191C21;
+    --ink:           #F2F0EA;
+    --ink-dim:       #A9ACB3;
+    --ink-faint:     #6E727B;
+    --amber:         #E8A33D;
+    --sage:          #8FA88A;
+    --line:          #2A2D34;
+    --line-bright:   #3A3E47;
+
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+
+    --max: 1180px;
+    --edge: clamp(24px, 5vw, 64px);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  ::selection{ background: var(--amber); color: #14161A; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ============ BACKGROUND GRAPH LINE ============ */
+  #graph-canvas{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  .page{
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ============ LAYOUT HELPERS ============ */
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: var(--edge);
+    padding-right: var(--edge);
+  }
+
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before{
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 3px rgba(232,163,61,0.18);
+    flex: none;
+  }
+
+  .node-index{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+  }
+
+  section{
+    position: relative;
+    padding: clamp(64px, 10vw, 128px) 0;
+    border-top: 1px solid var(--line);
+  }
+  section:first-of-type{ border-top:none; }
+
+  .section-head{
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 24px;
+    margin-bottom: clamp(36px, 6vw, 64px);
+    align-items: start;
+  }
+  @media (max-width: 720px){
+    .section-head{ grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  h1, h2, h3{
+    font-family: var(--display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .section-title{
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    max-width: 15ch;
+  }
+
+  .section-sub{
+    color: var(--ink-dim);
+    max-width: 56ch;
+    font-size: 16.5px;
+    margin-top: 14px;
+  }
+
+  /* ============ NAV ============ */
+  header.nav{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(20,22,26,0.72);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 18px var(--edge);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-mark{
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-mark .dot{
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--amber);
+  }
+  .nav-links{
+    display: flex;
+    gap: clamp(16px, 2.4vw, 32px);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .nav-links a{
+    color: var(--ink-dim);
+    transition: color .2s ease;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a:hover{ color: var(--ink); }
+  .nav-cta{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid var(--line-bright);
+    padding: 9px 16px;
+    border-radius: 3px;
+    transition: border-color .2s ease, background .2s ease;
+    white-space: nowrap;
+  }
+  .nav-cta:hover{ border-color: var(--amber); background: rgba(232,163,61,0.06); }
+  .nav-toggle{ display:none; }
+
+  @media (max-width: 860px){
+    .nav-links{ display:none; }
+    .nav-cta{ display:none; }
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    padding-top: clamp(140px, 22vw, 200px);
+    padding-bottom: clamp(72px, 10vw, 120px);
+    border-top: none;
+  }
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero h1{
+    font-size: clamp(38px, 6.2vw, 76px);
+    line-height: 1.06;
+    max-width: 16ch;
+    margin-top: 22px;
+    font-weight: 400;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+  }
+  .hero-sub{
+    max-width: 62ch;
+    color: var(--ink-dim);
+    font-size: 18px;
+    margin-top: 26px;
+    line-height: 1.65;
+  }
+  .hero-ctas{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+  }
+  .btn{
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    padding: 14px 24px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .btn-primary{
+    background: var(--amber);
+    color: #14161A;
+    font-weight: 500;
+    border: 1px solid var(--amber);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); background:#f0b455; }
+  .btn-ghost{
+    border: 1px solid var(--line-bright);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ transform: translateY(-2px); border-color: var(--ink-dim); }
+
+  .cred-line{
+    margin-top: 56px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 0;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+  }
+  .cred-line span:not(:last-child)::after{
+    content: '/';
+    margin: 0 14px;
+    color: var(--line-bright);
+  }
+
+  /* ============ FEATURED WORK ============ */
+  .work-list{
+    display: flex;
+    flex-direction: column;
+  }
+  .work-row{
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+    transition: background .25s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .work-list a:last-child .work-row{ border-bottom: 1px solid var(--line); }
+  .work-row:hover{ background: rgba(255,255,255,0.02); }
+  .work-row:hover .work-title{ color: var(--amber); }
+  .work-row:hover .work-arrow{ transform: translateX(6px); opacity:1; }
+
+  .work-main{ min-width:0; }
+  .work-title{
+    font-family: var(--display);
+    font-size: clamp(21px, 2.6vw, 30px);
+    font-weight: 500;
+    transition: color .2s ease;
+  }
+  .work-desc{
+    color: var(--ink-dim);
+    margin-top: 8px;
+    max-width: 56ch;
+    font-size: 15px;
+  }
+  .work-tags{
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+    color: var(--sage);
+  }
+  .work-tags span::before{ content:'· '; color: var(--line-bright); }
+  .work-tags span:first-child::before{ content:''; }
+
+  .work-arrow{
+    font-family: var(--mono);
+    font-size: 22px;
+    color: var(--ink-faint);
+    transition: transform .25s ease, opacity .25s ease;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 720px){
+    .work-row{ grid-template-columns: 1fr auto; }
+    .work-row .node-index{ display:none; }
+  }
+
+  .see-all{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-dim);
+    letter-spacing: 0.03em;
+  }
+  .see-all:hover{ color: var(--amber); }
+
+  /* ============ HOW I THINK ============ */
+  .principles{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .principle{
+    background: var(--bg);
+    padding: 34px clamp(20px, 3vw, 38px);
+  }
+  .principle .node-index{ display:block; margin-bottom: 16px; }
+  .principle h3{
+    font-size: 21px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .principle p{
+    color: var(--ink-dim);
+    font-size: 15px;
+  }
+  @media (max-width: 720px){
+    .principles{ grid-template-columns: 1fr; }
+  }
+
+  /* ============ AI DESIGN ============ */
+  .ai-section{
+    background: var(--bg-raised);
+  }
+  .ai-head{
+    max-width: 44ch;
+  }
+  .ai-head h2{
+    font-size: clamp(30px, 5vw, 50px);
+    line-height: 1.14;
+    margin-top: 20px;
+  }
+  .ai-head .amber-line{ color: var(--amber); font-style: italic; font-family: var(--display); }
+  .ai-sub{
+    color: var(--ink-dim);
+    margin-top: 22px;
+    font-size: 16.5px;
+    max-width: 54ch;
+  }
+
+  .ai-cols{
+    margin-top: clamp(48px, 7vw, 72px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .ai-col{
+    background: var(--bg-raised);
+    padding: 32px 28px 36px;
+    position: relative;
+  }
+  .ai-col .glyph{
+    width: 34px; height: 34px;
+    border: 1px solid var(--line-bright);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 22px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--amber);
+  }
+  .ai-col h3{ font-size: 18.5px; font-weight: 500; margin-bottom: 10px; }
+  .ai-col p{ color: var(--ink-dim); font-size: 14.5px; }
+  @media (max-width: 860px){
+    .ai-cols{ grid-template-columns: 1fr; }
+  }
+
+  .ai-cta{ margin-top: 44px; }
+
+  /* ============ LEADERSHIP ============ */
+  .leadership-grid{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 6vw, 90px);
+    align-items: start;
+  }
+  @media (max-width: 860px){
+    .leadership-grid{ grid-template-columns: 1fr; }
+  }
+  .collab-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .collab-pill{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    padding: 8px 14px;
+    border: 1px solid var(--line-bright);
+    border-radius: 100px;
+    color: var(--ink-dim);
+  }
+  .highlight-card{
+    border-left: 2px solid var(--amber);
+    padding: 4px 0 4px 26px;
+  }
+  .highlight-card p{
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(20px, 2.6vw, 26px);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .highlight-card p.dim{ color: var(--ink-faint); }
+
+  /* ============ APPROACH ============ */
+  .approach-track{
+    position: relative;
+  }
+  .approach-row{
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    position: relative;
+  }
+  .approach-row:not(:last-child)::after{
+    content:'';
+    position: absolute;
+    left: 44px;
+    bottom: 0;
+    width: 1px;
+    height: 28px;
+    background: repeating-linear-gradient(to bottom, var(--line-bright) 0 4px, transparent 4px 9px);
+  }
+  .approach-row .node-index{
+    display: flex;
+    align-items: flex-start;
+    padding-top: 4px;
+  }
+  .approach-row h3{
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .approach-row p{
+    color: var(--ink-dim);
+    font-size: 15px;
+    max-width: 50ch;
+  }
+  .approach-row:not(:last-child){ border-bottom: 1px solid var(--line); }
+
+  @media (max-width:720px){
+    .approach-row{ grid-template-columns: 1fr; }
+    .approach-row .node-index{ display:none; }
+  }
+
+  /* ============ ABOUT ============ */
+  .about-grid{
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: clamp(40px,6vw,80px);
+    align-items: start;
+  }
+  @media (max-width: 860px){
+    .about-grid{ grid-template-columns: 1fr; }
+  }
+  .about-photo{
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--line-bright);
+  }
+  .about-photo img{
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(0.25) contrast(1.04);
+  }
+  .about-photo::after{
+    content:'';
+    position: absolute; inset:0;
+    background: linear-gradient(180deg, rgba(20,22,26,0) 55%, rgba(20,22,26,0.5) 100%);
+  }
+  .about-copy p{
+    color: var(--ink-dim);
+    font-size: 16.5px;
+    margin-bottom: 20px;
+    max-width: 58ch;
+  }
+  .about-copy p:first-child{
+    color: var(--ink);
+    font-size: 19px;
+    font-family: var(--display);
+    line-height: 1.5;
+  }
+
+  /* ============ EXPLORING ============ */
+  .explore-cols{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 860px){
+    .explore-cols{ grid-template-columns: 1fr; }
+  }
+  .explore-card{
+    padding: 30px 26px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .explore-card:hover{ border-color: var(--sage); transform: translateY(-3px); }
+  .explore-card .node-index{ color: var(--sage); }
+  .explore-card h3{
+    font-size: 19px;
+    font-weight: 500;
+    margin: 16px 0 10px;
+  }
+  .explore-card p{ color: var(--ink-dim); font-size: 14.5px; }
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonial-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 720px){
+    .testimonial-grid{ grid-template-columns: 1fr; }
+  }
+  .testimonial{
+    background: var(--bg);
+    padding: 36px 32px;
+  }
+  .testimonial .quote-mark{
+    font-family: var(--display);
+    font-size: 44px;
+    color: var(--amber);
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .testimonial p.body{
+    font-family: var(--display);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .testimonial .attrib{
+    margin-top: 22px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+  }
+  .testimonial .attrib strong{
+    color: var(--ink-dim);
+    font-weight: 500;
+    display:block;
+    margin-bottom: 3px;
+    font-family: var(--body);
+    font-size: 14px;
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta{
+    text-align: center;
+    padding: clamp(90px, 12vw, 140px) 0;
+  }
+  .final-cta h2{
+    font-size: clamp(34px, 6vw, 64px);
+    max-width: 18ch;
+    margin: 0 auto;
+    line-height: 1.12;
+  }
+  .final-cta .section-sub{ margin-left: auto; margin-right: auto; text-align:center; }
+  .final-ctas{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 48px 0 40px;
+  }
+  .footer-grid{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .footer-brand .nav-mark{ margin-bottom: 8px; }
+  .footer-brand p{ color: var(--ink-faint); font-size: 13.5px; font-family: var(--mono); }
+  .footer-links{
+    display: flex;
+    gap: clamp(32px, 5vw, 64px);
+    flex-wrap: wrap;
+  }
+  .footer-col h4{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+  .footer-col a{
+    display: block;
+    color: var(--ink-dim);
+    font-size: 14.5px;
+    margin-bottom: 10px;
+    transition: color .2s ease;
+  }
+  .footer-col a:hover{ color: var(--amber); }
+  .footer-bottom{
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  /* reveal-on-scroll */
+  .reveal{
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1);
+  }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<canvas id="graph-canvas"></canvas>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark"><span class="dot"></span>Namrata Singh</a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#ai">AI Design</a>
+      <a href="#about">About</a>
+      <a href="#exploring">Experiments</a>
+    </nav>
+    <a class="nav-cta" href="mailto:namratas1502@gmail.com?subject=Let's%20talk">Let's talk →</a>
+  </div>
+</header>
+
+<div class="page" id="top">
+
+  <!-- ============ 01 HERO ============ -->
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div class="eyebrow">Principal Product Designer · AI · Enterprise Products</div>
+      <h1 class="reveal">I design complex products that make work <em>simpler, smarter,</em> and more human.</h1>
+      <p class="hero-sub reveal">I'm Namrata Singh, a Principal Product Designer with 13+ years of experience designing digital products across enterprise and startup environments. I work at the intersection of product strategy, UX, systems thinking, and AI — turning complex problems into clear, useful experiences that work for both people and businesses.</p>
+      <div class="hero-ctas reveal">
+        <a href="#work" class="btn btn-primary">View my work →</a>
+        <a href="#about" class="btn btn-ghost">More about me →</a>
+      </div>
+      <div class="cred-line">
+        <span>13+ years</span><span>Product Design</span><span>AI Experiences</span><span>Enterprise UX</span><span>Design Leadership</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 FEATURED WORK ============ -->
+  <section id="work" class="wrap">
+    <div class="section-head">
+      <span class="node-index">01</span>
+      <div>
+        <h2 class="section-title">Selected work</h2>
+        <p class="section-sub">A selection of products and experiences where I tackled complex problems, aligned teams, and turned ambiguity into meaningful product experiences.</p>
+      </div>
+    </div>
+
+    <div class="work-list">
+      <a href="#">
+        <div class="work-row reveal">
+          <span class="node-index">01</span>
+          <div class="work-main">
+            <div class="work-title">Investigation AI</div>
+            <p class="work-desc">Designing AI-powered investigation experiences for complex quality workflows.</p>
+            <div class="work-tags"><span>AI</span><span>Enterprise UX</span><span>Product Strategy</span><span>Complex Workflows</span></div>
+          </div>
+          <span class="work-arrow">→</span>
+        </div>
+      </a>
+      <a href="#">
+        <div class="work-row reveal">
+          <span class="node-index">02</span>
+          <div class="work-main">
+            <div class="work-title">Virtual Inspector</div>
+            <p class="work-desc">Exploring how AI can augment human expertise and improve inspection workflows.</p>
+            <div class="work-tags"><span>AI</span><span>Human + AI Collaboration</span><span>Enterprise Product Design</span></div>
+          </div>
+          <span class="work-arrow">→</span>
+        </div>
+      </a>
+      <a href="#">
+        <div class="work-row reveal">
+          <span class="node-index">03</span>
+          <div class="work-main">
+            <div class="work-title">PFAS / Quality Intelligence</div>
+            <p class="work-desc">Making complex quality and compliance information easier to discover, understand, and act on.</p>
+            <div class="work-tags"><span>Enterprise UX</span><span>Data</span><span>Research</span><span>Product Thinking</span></div>
+          </div>
+          <span class="work-arrow">→</span>
+        </div>
+      </a>
+      <a href="#">
+        <div class="work-row reveal">
+          <span class="node-index">04</span>
+          <div class="work-main">
+            <div class="work-title">Knowledge Graph</div>
+            <p class="work-desc">Helping teams turn connected data into something people can actually understand and use.</p>
+            <div class="work-tags"><span>Systems Thinking</span><span>Data</span><span>AI</span><span>Enterprise UX</span></div>
+          </div>
+          <span class="work-arrow">→</span>
+        </div>
+      </a>
+    </div>
+
+    <a href="#" class="see-all">See all work →</a>
+  </section>
+
+  <!-- ============ 03 HOW I THINK ============ -->
+  <section class="wrap">
+    <div class="section-head">
+      <span class="node-index">02</span>
+      <div>
+        <h2 class="section-title">I don't just design screens. I solve product problems.</h2>
+        <p class="section-sub">The best product experiences happen when design is connected to the problem behind the interface. I bring together user needs, business goals, technology, and data to help teams move from "What should we build?" to "Why does this matter?"</p>
+      </div>
+    </div>
+
+    <div class="principles reveal">
+      <div class="principle">
+        <span class="node-index">01</span>
+        <h3>Start with the problem</h3>
+        <p>I bring clarity to ambiguous problems before jumping into solutions.</p>
+      </div>
+      <div class="principle">
+        <span class="node-index">02</span>
+        <h3>Think in systems</h3>
+        <p>I look beyond individual screens to understand workflows, relationships, dependencies, and the wider product ecosystem.</p>
+      </div>
+      <div class="principle">
+        <span class="node-index">03</span>
+        <h3>Design with AI, not just for AI</h3>
+        <p>I explore where AI can genuinely improve an experience — and where human judgment, control, and trust should remain essential.</p>
+      </div>
+      <div class="principle">
+        <span class="node-index">04</span>
+        <h3>Make decisions together</h3>
+        <p>I work closely with product, engineering, data, and business teams to turn diverse perspectives into a shared product direction.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 AI DESIGN ============ -->
+  <section id="ai" class="ai-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="node-index">03</span>
+        <div class="ai-head">
+          <div class="eyebrow">Designing for the AI era</div>
+          <h2>AI changes the interface. <span class="amber-line">It also changes the product.</span></h2>
+          <p class="ai-sub">I'm particularly interested in designing products where AI becomes part of the experience — not simply another feature. My focus is on creating experiences that balance automation with human judgment, while making AI behavior understandable, trustworthy, and useful.</p>
+        </div>
+      </div>
+
+      <div class="ai-cols reveal">
+        <div class="ai-col">
+          <div class="glyph">01</div>
+          <h3>Human + AI collaboration</h3>
+          <p>Designing the right balance between automation, assistance, and human control.</p>
+        </div>
+        <div class="ai-col">
+          <div class="glyph">02</div>
+          <h3>Trust &amp; transparency</h3>
+          <p>Helping people understand what AI knows, what it doesn't, and why they should trust — or question — its output.</p>
+        </div>
+        <div class="ai-col">
+          <div class="glyph">03</div>
+          <h3>AI-powered workflows</h3>
+          <p>Finding opportunities where AI can reduce repetitive work, surface insights, and help people make better decisions.</p>
+        </div>
+      </div>
+
+      <a href="#work" class="btn btn-ghost ai-cta">Explore my AI work →</a>
+    </div>
+  </section>
+
+  <!-- ============ 05 LEADERSHIP ============ -->
+  <section class="wrap">
+    <div class="section-head">
+      <span class="node-index">04</span>
+      <div>
+        <h2 class="section-title">Design is a team sport.</h2>
+      </div>
+    </div>
+
+    <div class="leadership-grid">
+      <div class="reveal">
+        <p class="section-sub" style="font-size:16.5px;">At a Principal level, my role goes beyond delivering designs. I help teams frame problems, facilitate alignment, challenge assumptions, define product direction, and create clarity in ambiguous spaces.</p>
+        <div class="eyebrow" style="margin-top:32px;">I collaborate with</div>
+        <div class="collab-row">
+          <span class="collab-pill">Product</span>
+          <span class="collab-pill">Engineering</span>
+          <span class="collab-pill">Data Science</span>
+          <span class="collab-pill">Business</span>
+          <span class="collab-pill">Research</span>
+          <span class="collab-pill">Design</span>
+        </div>
+      </div>
+      <div class="highlight-card reveal">
+        <p>My goal isn't to make the most beautiful screen.</p>
+        <p class="dim" style="margin-top:10px;">It's to help the team make the right product decision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 APPROACH ============ -->
+  <section class="wrap">
+    <div class="section-head">
+      <span class="node-index">05</span>
+      <div>
+        <h2 class="section-title">From ambiguity to clarity</h2>
+        <p class="section-sub">My process adapts to the problem rather than following a rigid framework.</p>
+      </div>
+    </div>
+
+    <div class="approach-track reveal">
+      <div class="approach-row">
+        <span class="node-index">01</span>
+        <div><h3>Understand</h3><p>Research, stakeholders, users, data, constraints.</p></div>
+      </div>
+      <div class="approach-row">
+        <span class="node-index">02</span>
+        <div><h3>Frame</h3><p>Identify the real problem, opportunities, and success criteria.</p></div>
+      </div>
+      <div class="approach-row">
+        <span class="node-index">03</span>
+        <div><h3>Explore</h3><p>Generate, test, prototype, and challenge possible directions.</p></div>
+      </div>
+      <div class="approach-row">
+        <span class="node-index">04</span>
+        <div><h3>Align</h3><p>Bring product, business, technology, and user perspectives together.</p></div>
+      </div>
+      <div class="approach-row">
+        <span class="node-index">05</span>
+        <div><h3>Build &amp; learn</h3><p>Work with engineering to bring the experience to life, measure outcomes, and iterate.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 ABOUT ============ -->
+  <section id="about" class="wrap">
+    <div class="section-head">
+      <span class="node-index">06</span>
+      <div>
+        <h2 class="section-title">A little about me</h2>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="https://static.wixstatic.com/media/95bf0a_44d90d32558b48e8b668547b2cb477b1~mv2.jpg/v1/fill/w_711,h_619,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/An%20app%20designer%20woman%20with%20warm%20skin%20tone%2C%20oval%20shape%20face%2C%20black%20long%20hair%20and%20smile%20on%20h.jpg" alt="Namrata Singh">
+      </div>
+      <div class="about-copy reveal">
+        <p>I'm a Principal Product Designer who enjoys working on problems that don't have obvious answers.</p>
+        <p>Over the past 13+ years, I've worked across enterprise and startup environments, designing products that sit at the intersection of people, technology, data, and business.</p>
+        <p>Today, I'm especially interested in AI-powered products, complex enterprise workflows, and the future of human–AI interaction.</p>
+        <p>I believe great design is equal parts curiosity, systems thinking, empathy, and courage to challenge the obvious.</p>
+        <a href="#" class="btn btn-ghost">More about me →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 EXPLORING ============ -->
+  <section id="exploring" class="wrap">
+    <div class="section-head">
+      <span class="node-index">07</span>
+      <div>
+        <h2 class="section-title">What I'm exploring</h2>
+      </div>
+    </div>
+
+    <div class="explore-cols reveal">
+      <div class="explore-card">
+        <span class="node-index">01</span>
+        <h3>AI Product Design</h3>
+        <p>Designing useful, trustworthy experiences around emerging AI capabilities.</p>
+      </div>
+      <div class="explore-card">
+        <span class="node-index">02</span>
+        <h3>Systems Thinking</h3>
+        <p>Understanding products as connected ecosystems rather than isolated interfaces.</p>
+      </div>
+      <div class="explore-card">
+        <span class="node-index">03</span>
+        <h3>The future of work</h3>
+        <p>Exploring how AI changes workflows, roles, decision-making, and human behavior.</p>
+      </div>
+    </div>
+
+    <a href="#" class="see-all">See my experiments →</a>
+  </section>
+
+  <!-- ============ 09 TESTIMONIALS ============ -->
+  <section class="wrap">
+    <div class="section-head">
+      <span class="node-index">08</span>
+      <div>
+        <h2 class="section-title">What people I've worked with say</h2>
+      </div>
+    </div>
+
+    <div class="testimonial-grid reveal">
+      <div class="testimonial">
+        <span class="quote-mark">"</span>
+        <p class="body">Namrata has a rare ability to bring order to ambiguous problems — she asks the questions that reframe the whole conversation before a single screen gets designed.</p>
+        <div class="attrib"><strong>Add name</strong>Role · Company</div>
+      </div>
+      <div class="testimonial">
+        <span class="quote-mark">"</span>
+        <p class="body">She doesn't just deliver polished design — she builds alignment across product, data, and engineering, which is exactly what complex AI products need.</p>
+        <div class="attrib"><strong>Add name</strong>Role · Company</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 FINAL CTA ============ -->
+  <section class="wrap final-cta">
+    <div class="eyebrow" style="justify-content:center;">Let's build something worth solving</div>
+    <h2 class="reveal">Have a complex product problem to solve?</h2>
+    <p class="section-sub reveal">I'm always interested in conversations about product design, AI, complex enterprise experiences, and the future of work.</p>
+    <div class="final-ctas reveal">
+      <a href="mailto:namratas1502@gmail.com?subject=Let's%20talk" class="btn btn-primary">Let's talk →</a>
+      <a href="https://www.namrata-singh.com/_files/ugd/95bf0a_83f123a62b044ffe9f054d2cabf29cd5.pdf" class="btn btn-ghost">Download my resume</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-mark"><span class="dot"></span>Namrata Singh</div>
+        <p>Principal Product Designer · AI · Product · UX</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Site</h4>
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#exploring">Experiments</a>
+          <a href="https://www.namrata-singh.com/_files/ugd/95bf0a_83f123a62b044ffe9f054d2cabf29cd5.pdf">Resume</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://www.linkedin.com/in/namrata-singh-namrata1523/">LinkedIn</a>
+          <a href="https://www.behance.net/namratas1523">Behance</a>
+          <a href="https://medium.com/@SinghNamrata">Medium</a>
+          <a href="mailto:namratas1502@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Namrata Singh</span>
+      <span>Designed with systems in mind.</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // ---------- scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // ---------- background graph / node canvas ----------
+  const canvas = document.getElementById('graph-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = document.body.scrollHeight;
+    canvas.style.height = H + 'px';
+    initNodes();
+  }
+
+  function initNodes(){
+    const count = Math.max(18, Math.min(46, Math.floor((W * H) / 90000)));
+    nodes = [];
+    for(let i=0;i<count;i++){
+      nodes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.12,
+        vy: (Math.random() - 0.5) * 0.12,
+        r: Math.random() * 1.4 + 0.6
+      });
+    }
+  }
+
+  function step(){
+    ctx.clearRect(0,0,W,H);
+    const scrollY = window.scrollY;
+    const viewTop = scrollY - 200;
+    const viewBottom = scrollY + window.innerHeight + 200;
+
+    // update
+    for(const n of nodes){
+      if(!reduceMotion){
+        n.x += n.vx; n.y += n.vy;
+        if(n.x < 0 || n.x > W) n.vx *= -1;
+        if(n.y < 0 || n.y > H) n.vy *= -1;
+      }
+    }
+
+    const maxDist = 170;
+    for(let i=0;i<nodes.length;i++){
+      const a = nodes[i];
+      if(a.y < viewTop || a.y > viewBottom) continue;
+      for(let j=i+1;j<nodes.length;j++){
+        const b = nodes[j];
+        if(b.y < viewTop || b.y > viewBottom) continue;
+        const dx = a.x-b.x, dy = a.y-b.y;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < maxDist){
+          const op = (1 - dist/maxDist) * 0.16;
+          ctx.strokeStyle = `rgba(232,163,61,${op})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for(const n of nodes){
+      if(n.y < viewTop || n.y > viewBottom) continue;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(143,168,138,0.45)';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('load', () => { resize(); requestAnimationFrame(step); });
+  setTimeout(resize, 300);
+</script>
+
+</body>
+</html>

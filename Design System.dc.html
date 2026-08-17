@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FCFAF7; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #16130F; text-decoration: none; }
+  a:hover { color: #C2664A; }
+</style>
+</helmet>
+
+<div style="font-family:'Plus Jakarta Sans',Helvetica,sans-serif;color:#16130F;background:#FCFAF7;padding:0 0 120px">
+
+  <header style="max-width:1240px;margin:0 auto;padding:88px 40px 56px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="width:44px;height:44px;border-radius:50%;background:#16130F;color:#FCFAF7;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;letter-spacing:-0.02em">N.</div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#857C70">namrata-singh.com — design system v1</span>
+    </div>
+    <h1 style="margin:0;font-size:64px;line-height:1.02;letter-spacing:-0.035em;font-weight:800;max-width:16ch;text-wrap:pretty">The portfolio design system.</h1>
+    <p style="margin:0;max-width:62ch;font-size:19px;line-height:1.6;color:#4A443C;text-wrap:pretty">Every token and component lifted from the live site and modernized: one warm neutral surface, one accent, a tightened type scale, and interaction states the Wix build never had. Desktop and mobile variants included.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;padding-top:6px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#4A443C;border:1px solid #E7E0D6;background:#FFFFFF;border-radius:999px;padding:8px 14px">19 component families</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#4A443C;border:1px solid #E7E0D6;background:#FFFFFF;border-radius:999px;padding:8px 14px">6 pages + 3 case studies</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#4A443C;border:1px solid #E7E0D6;background:#FFFFFF;border-radius:999px;padding:8px 14px">all states</span>
+    </div>
+  </header>
+
+  <div style="max-width:1240px;margin:0 auto;padding:0 40px;display:flex;flex-direction:column;gap:96px">
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">01</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Color</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Warm neutrals carry the page; accent is reserved for action.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <div style="border:1px solid #E7E0D6;border-radius:14px;overflow:hidden;background:#FFFFFF">
+          <div style="height:104px;background:#FCFAF7;border-bottom:1px solid #E7E0D6"></div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:14px;font-weight:600">Canvas</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">#FCFAF7</span>
+          </div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:14px;overflow:hidden;background:#FFFFFF">
+          <div style="height:104px;background:#FFFFFF;border-bottom:1px solid #E7E0D6"></div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:14px;font-weight:600">Surface</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">#FFFFFF</span>
+          </div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:14px;overflow:hidden;background:#FFFFFF">
+          <div style="height:104px;background:#F6EAE4;border-bottom:1px solid #E7E0D6"></div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:14px;font-weight:600">Accent wash</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">#F6EAE4</span>
+          </div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:14px;overflow:hidden;background:#FFFFFF">
+          <div style="height:104px;background:#E7E0D6;border-bottom:1px solid #E7E0D6"></div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:14px;font-weight:600">Hairline</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">#E7E0D6</span>
+          </div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:14px;overflow:hidden;background:#FFFFFF">
+          <div style="height:104px;background:#16130F;border-bottom:1px solid #E7E0D6"></div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:14px;font-weight:600">Ink</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">#16130F</span>
+          </div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:14px;overflow:hidden;background:#FFFFFF">
+          <div style="height:104px;background:#4A443C;border-bottom:1px solid #E7E0D6"></div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:14px;font-weight:600">Ink muted</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">#4A443C</span>
+          </div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:14px;overflow:hidden;background:#FFFFFF">
+          <div style="height:104px;background:#C2664A;border-bottom:1px solid #E7E0D6"></div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:14px;font-weight:600">Accent — terracotta</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">oklch(.62 .13 40)</span>
+          </div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:14px;overflow:hidden;background:#FFFFFF">
+          <div style="height:104px;background:#3E9A6C;border-bottom:1px solid #E7E0D6"></div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:14px;font-weight:600">Accent — moss</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">oklch(.62 .13 150)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">02</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Type</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Plus Jakarta Sans for everything; JetBrains Mono for labels and metadata.</span>
+      </div>
+      <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;overflow:hidden">
+        <div style="display:flex;align-items:baseline;gap:24px;padding:26px 28px;border-bottom:1px solid #E7E0D6">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70;width:120px;flex:none">display / 64 / 800</span>
+          <span style="font-size:64px;line-height:1.02;letter-spacing:-0.035em;font-weight:800">Hi, I am Namrata</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;padding:26px 28px;border-bottom:1px solid #E7E0D6">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70;width:120px;flex:none">h1 / 44 / 700</span>
+          <span style="font-size:44px;line-height:1.1;letter-spacing:-0.03em;font-weight:700">Notifications for FLOW</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;padding:26px 28px;border-bottom:1px solid #E7E0D6">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70;width:120px;flex:none">h2 / 30 / 700</span>
+          <span style="font-size:30px;line-height:1.15;letter-spacing:-0.025em;font-weight:700">The Problem</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;padding:26px 28px;border-bottom:1px solid #E7E0D6">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70;width:120px;flex:none">h3 / 20 / 600</span>
+          <span style="font-size:20px;line-height:1.3;letter-spacing:-0.015em;font-weight:600">Approach to solution and process</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;padding:26px 28px;border-bottom:1px solid #E7E0D6">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70;width:120px;flex:none">body / 17 / 400</span>
+          <span style="font-size:17px;line-height:1.65;color:#4A443C;max-width:60ch;text-wrap:pretty">A product should be more than just a tool; it should understand and anticipate people's needs, surprising them in delightful ways.</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;padding:26px 28px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70;width:120px;flex:none">label / 12 / mono</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#4A443C">Senior product designer — 2024</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div style="border:1px solid #E7E0D6;border-radius:14px;background:#FFFFFF;padding:20px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Spacing — 4pt base</span>
+          <div style="display:flex;align-items:flex-end;gap:8px;height:56px">
+            <div style="width:4px;height:4px;background:#C2664A"></div>
+            <div style="width:8px;height:8px;background:#C2664A"></div>
+            <div style="width:12px;height:12px;background:#C2664A"></div>
+            <div style="width:16px;height:16px;background:#C2664A"></div>
+            <div style="width:24px;height:24px;background:#C2664A"></div>
+            <div style="width:32px;height:32px;background:#C2664A"></div>
+            <div style="width:48px;height:48px;background:#C2664A"></div>
+            <div style="width:56px;height:56px;background:#16130F"></div>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#4A443C">4 · 8 · 12 · 16 · 24 · 32 · 48 · 88</span>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:14px;background:#FFFFFF;padding:20px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Radius</span>
+          <div style="display:flex;align-items:flex-end;gap:10px;height:56px">
+            <div style="width:48px;height:48px;border:1px solid #16130F;border-radius:8px"></div>
+            <div style="width:48px;height:48px;border:1px solid #16130F;border-radius:14px"></div>
+            <div style="width:48px;height:48px;border:1px solid #16130F;border-radius:18px"></div>
+            <div style="width:48px;height:48px;border:1px solid #16130F;border-radius:999px"></div>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#4A443C">8 · 14 · 18 · pill</span>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:14px;background:#FFFFFF;padding:20px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Elevation</span>
+          <div style="display:flex;align-items:flex-end;gap:14px;height:56px;background:#FCFAF7;border-radius:10px;padding:0 12px">
+            <div style="width:48px;height:48px;border-radius:12px;background:#FFFFFF;border:1px solid #E7E0D6;box-shadow:0 1px 2px rgba(22,19,15,0.06)"></div>
+            <div style="width:48px;height:48px;border-radius:12px;background:#FFFFFF;box-shadow:0 6px 18px -6px rgba(22,19,15,0.16)"></div>
+            <div style="width:48px;height:48px;border-radius:12px;background:#FFFFFF;box-shadow:0 24px 48px -18px rgba(22,19,15,0.28)"></div>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#4A443C">flat · raised · overlay</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">03</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Buttons</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Hover the live row; the grid below pins every state.</span>
+      </div>
+      <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+        <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:13px 26px;cursor:pointer;transition:all .18s ease" style-hover="background:#C2664A;border-color:#C2664A">Let's talk!</button>
+        <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#16130F;background:transparent;border:1px solid #16130F;border-radius:999px;padding:13px 26px;cursor:pointer;transition:all .18s ease" style-hover="background:#16130F;color:#FCFAF7">Download my resume</button>
+        <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#C2664A;background:#F6EAE4;border:1px solid #F6EAE4;border-radius:999px;padding:13px 26px;cursor:pointer;transition:all .18s ease" style-hover="border-color:#C2664A">View case study</button>
+        <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#16130F;background:transparent;border:none;border-bottom:1px solid #E7E0D6;border-radius:0;padding:6px 2px;cursor:pointer;transition:all .18s ease" style-hover="border-bottom-color:#C2664A;color:#C2664A">Read on Medium</button>
+        <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;width:46px;height:46px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s ease" style-hover="background:#C2664A;border-color:#C2664A">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h11M10 5l4 4-4 4" /></svg>
+        </button>
+      </div>
+      <sc-if value="{{ showStates }}" hint-placeholder-val="{{ true }}">
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;overflow:hidden">
+          <div style="display:grid;grid-template-columns:120px repeat(4,1fr);background:#FCFAF7;border-bottom:1px solid #E7E0D6">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70;padding:14px 20px">variant</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70;padding:14px 20px">default</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70;padding:14px 20px">hover</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70;padding:14px 20px">focus</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70;padding:14px 20px">disabled</span>
+          </div>
+          <div style="display:grid;grid-template-columns:120px repeat(4,1fr);align-items:center;border-bottom:1px solid #E7E0D6">
+            <span style="font-size:13px;font-weight:600;padding:18px 20px">Primary</span>
+            <div style="padding:18px 20px"><span style="display:inline-block;font-size:14px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:11px 22px">Let's talk</span></div>
+            <div style="padding:18px 20px"><span style="display:inline-block;font-size:14px;font-weight:600;color:#FCFAF7;background:#C2664A;border:1px solid #C2664A;border-radius:999px;padding:11px 22px">Let's talk</span></div>
+            <div style="padding:18px 20px"><span style="display:inline-block;font-size:14px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:11px 22px;box-shadow:0 0 0 3px #FCFAF7,0 0 0 5px #C2664A">Let's talk</span></div>
+            <div style="padding:18px 20px"><span style="display:inline-block;font-size:14px;font-weight:600;color:#A9A29A;background:#EFEAE2;border:1px solid #EFEAE2;border-radius:999px;padding:11px 22px">Let's talk</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:120px repeat(4,1fr);align-items:center;border-bottom:1px solid #E7E0D6">
+            <span style="font-size:13px;font-weight:600;padding:18px 20px">Outline</span>
+            <div style="padding:18px 20px"><span style="display:inline-block;font-size:14px;font-weight:600;color:#16130F;border:1px solid #16130F;border-radius:999px;padding:11px 22px">Resume</span></div>
+            <div style="padding:18px 20px"><span style="display:inline-block;font-size:14px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:11px 22px">Resume</span></div>
+            <div style="padding:18px 20px"><span style="display:inline-block;font-size:14px;font-weight:600;color:#16130F;border:1px solid #16130F;border-radius:999px;padding:11px 22px;box-shadow:0 0 0 3px #FCFAF7,0 0 0 5px #C2664A">Resume</span></div>
+            <div style="padding:18px 20px"><span style="display:inline-block;font-size:14px;font-weight:600;color:#A9A29A;border:1px solid #E7E0D6;border-radius:999px;padding:11px 22px">Resume</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:120px repeat(4,1fr);align-items:center">
+            <span style="font-size:13px;font-weight:600;padding:18px 20px">Text link</span>
+            <div style="padding:18px 20px"><span style="font-size:14px;font-weight:600;border-bottom:1px solid #E7E0D6;padding-bottom:4px">Medium</span></div>
+            <div style="padding:18px 20px"><span style="font-size:14px;font-weight:600;color:#C2664A;border-bottom:1px solid #C2664A;padding-bottom:4px">Medium</span></div>
+            <div style="padding:18px 20px"><span style="font-size:14px;font-weight:600;border-bottom:1px solid #16130F;padding-bottom:4px;box-shadow:0 0 0 3px #FCFAF7,0 0 0 5px #C2664A">Medium</span></div>
+            <div style="padding:18px 20px"><span style="font-size:14px;font-weight:600;color:#A9A29A;border-bottom:1px solid #E7E0D6;padding-bottom:4px">Medium</span></div>
+          </div>
+        </div>
+      </sc-if>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">04</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Navigation</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Wordmark left, work links centre, resume CTA right.</span>
+      </div>
+      <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:32px;padding:18px 28px;border-bottom:1px solid #E7E0D6">
+          <a href="#" style="font-size:22px;font-weight:800;letter-spacing:-0.03em">N.</a>
+          <nav style="display:flex;gap:26px;align-items:center">
+            <a href="#" style="font-size:15px;font-weight:600;color:#C2664A;border-bottom:1px solid #C2664A;padding-bottom:3px">Notifications</a>
+            <a href="#" style="font-size:15px;font-weight:500;color:#4A443C;padding-bottom:3px;border-bottom:1px solid transparent" style-hover="color:#16130F;border-bottom-color:#16130F">Seva</a>
+            <a href="#" style="font-size:15px;font-weight:500;color:#4A443C;padding-bottom:3px;border-bottom:1px solid transparent" style-hover="color:#16130F;border-bottom-color:#16130F">About</a>
+            <a href="#" style="font-size:15px;font-weight:500;color:#4A443C;padding-bottom:3px;border-bottom:1px solid transparent" style-hover="color:#16130F;border-bottom-color:#16130F">Resume</a>
+            <a href="#" style="font-size:15px;font-weight:500;color:#4A443C;padding-bottom:3px;border-bottom:1px solid transparent" style-hover="color:#16130F;border-bottom-color:#16130F">Good words</a>
+            <a href="#" style="font-size:15px;font-weight:500;color:#4A443C;padding-bottom:3px;border-bottom:1px solid transparent" style-hover="color:#16130F;border-bottom-color:#16130F">Fun work</a>
+          </nav>
+          <div style="margin-left:auto">
+            <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#16130F;background:transparent;border:1px solid #16130F;border-radius:999px;padding:11px 20px;cursor:pointer;transition:all .18s ease" style-hover="background:#16130F;color:#FCFAF7">Download resume</button>
+          </div>
+        </div>
+        <div style="padding:18px 28px;display:flex;align-items:center;gap:16px;background:#FCFAF7">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70">scrolled / condensed</span>
+          <div style="flex:1;display:flex;align-items:center;gap:24px;background:rgba(252,250,247,0.9);border:1px solid #E7E0D6;border-radius:999px;padding:10px 18px;backdrop-filter:blur(8px)">
+            <span style="font-size:17px;font-weight:800;letter-spacing:-0.03em">N.</span>
+            <span style="font-size:14px;font-weight:500;color:#4A443C">Notifications for FLOW</span>
+            <span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70">42%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">05</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Hero</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Split intro (home) and case-study cover.</span>
+      </div>
+      <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;overflow:hidden;display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:0">
+        <div style="padding:56px 48px;display:flex;flex-direction:column;gap:22px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#857C70">Product designer — Bengaluru</span>
+          <h3 style="margin:0;font-size:42px;line-height:1.08;letter-spacing:-0.03em;font-weight:800;text-wrap:pretty">Hi, I am Namrata Singh</h3>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:#4A443C;max-width:44ch;text-wrap:pretty">13+ years designing digital products for enterprises and startups — fresh ideas, rapid design, and business value aligned with design solutions.</p>
+          <div style="display:flex;gap:12px">
+            <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:13px 26px;cursor:pointer;transition:all .18s ease" style-hover="background:#C2664A;border-color:#C2664A">Let's talk!</button>
+            <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#16130F;background:transparent;border:1px solid #E7E0D6;border-radius:999px;padding:13px 26px;cursor:pointer;transition:all .18s ease" style-hover="border-color:#16130F">See the work</button>
+          </div>
+        </div>
+        <img src="https://static.wixstatic.com/media/95bf0a_44d90d32558b48e8b668547b2cb477b1~mv2.jpg/v1/fill/w_711,h_619,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/An%20app%20designer%20woman%20with%20warm%20skin%20tone%2C%20oval%20shape%20face%2C%20black%20long%20hair%20and%20smile%20on%20h.jpg" alt="Namrata Singh" style="width:100%;height:100%;min-height:380px;object-fit:cover;display:block" />
+      </div>
+      <div style="border:1px solid #E7E0D6;border-radius:18px;background:#F6EAE4;overflow:hidden;padding:48px;display:flex;flex-direction:column;gap:26px">
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#16130F;background:#FFFFFF;border-radius:999px;padding:7px 14px">B2B SaaS</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#16130F;background:#FFFFFF;border-radius:999px;padding:7px 14px">Pluralsight FLOW</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#16130F;background:#FFFFFF;border-radius:999px;padding:7px 14px">2024 — present</span>
+        </div>
+        <h3 style="margin:0;font-size:52px;line-height:1.03;letter-spacing:-0.035em;font-weight:800;max-width:20ch;text-wrap:pretty">Notifications for FLOW</h3>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#4A443C;max-width:58ch;text-wrap:pretty">Data-driven, personalized alerts that keep engineering teams updated on project status, reduce cycle times, and build confidence in delivery.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid rgba(22,19,15,0.14);padding-top:24px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Company</span>
+            <span style="font-size:15px;font-weight:600">Pluralsight, FLOW</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Role</span>
+            <span style="font-size:15px;font-weight:600">Senior Product Designer, IC</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Year</span>
+            <span style="font-size:15px;font-weight:600">2024 — present</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Collab</span>
+            <span style="font-size:15px;font-weight:600">PM, EM, Sales, 5+ teams</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">06</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Cards</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Work card, metadata card, quote card.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start">
+        <a href="#" style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;transition:all .2s ease" style-hover="box-shadow:0 18px 40px -20px rgba(22,19,15,0.25);border-color:#16130F">
+          <img src="https://static.wixstatic.com/media/95bf0a_582229db95974e7a91fcc44177988ded~mv2.jpg/v1/fill/w_710,h_590,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/cover.jpg" alt="Notifications case study cover" style="width:100%;height:200px;object-fit:cover;display:block" />
+          <div style="padding:22px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Case study — B2B</span>
+            <span style="font-size:21px;font-weight:700;letter-spacing:-0.02em">Notifications for FLOW</span>
+            <span style="font-size:15px;line-height:1.55;color:#4A443C;text-wrap:pretty">Timely, personalized alerts that lift retention and engagement.</span>
+            <span style="font-size:14px;font-weight:600;color:#C2664A;padding-top:6px">Read case study →</span>
+          </div>
+        </a>
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Project facts</span>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #E7E0D6;padding-bottom:12px">
+              <span style="font-size:14px;color:#857C70">Company</span>
+              <span style="font-size:14px;font-weight:600">Pluralsight</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #E7E0D6;padding-bottom:12px">
+              <span style="font-size:14px;color:#857C70">Role</span>
+              <span style="font-size:14px;font-weight:600">Sr. Product Designer</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #E7E0D6;padding-bottom:12px">
+              <span style="font-size:14px;color:#857C70">Year</span>
+              <span style="font-size:14px;font-weight:600">2024 — present</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:12px">
+              <span style="font-size:14px;color:#857C70">Teams</span>
+              <span style="font-size:14px;font-weight:600">5+</span>
+            </div>
+          </div>
+        </div>
+        <div style="border:1px solid #16130F;border-radius:18px;background:#16130F;color:#FCFAF7;padding:28px;display:flex;flex-direction:column;gap:18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#A9A29A">Good words</span>
+          <p style="margin:0;font-size:18px;line-height:1.5;font-weight:500;text-wrap:pretty">“She aligns with the user, their needs and process, she's always ready to take feedback and iterate to continuously improve the product.”</p>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:12px;border-top:1px solid rgba(252,250,247,0.18)">
+            <div style="width:36px;height:36px;border-radius:50%;background:#C2664A"></div>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:14px;font-weight:600">Michelle Heffron</span>
+              <span style="font-size:13px;color:#A9A29A">Sr. Director of Product Design, Pluralsight (FLOW)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">07</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Forms</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Contact and “register before download” gate.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:28px;display:flex;flex-direction:column;gap:18px">
+          <span style="font-size:20px;font-weight:700;letter-spacing:-0.02em">Register before download</span>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#4A443C">Name</span>
+            <input type="text" placeholder="Your full name" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:#16130F;background:#FCFAF7;border:1px solid #E7E0D6;border-radius:10px;padding:13px 14px;outline:none;transition:all .16s ease" style-focus="border-color:#16130F;background:#FFFFFF;box-shadow:0 0 0 3px #F6EAE4" />
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#4A443C">Work email</span>
+            <input type="email" placeholder="you@company.com" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:#16130F;background:#FCFAF7;border:1px solid #E7E0D6;border-radius:10px;padding:13px 14px;outline:none;transition:all .16s ease" style-focus="border-color:#16130F;background:#FFFFFF;box-shadow:0 0 0 3px #F6EAE4" />
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#4A443C">Why the interest?</span>
+            <textarea rows="3" placeholder="Hiring, mentorship, collaboration…" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:#16130F;background:#FCFAF7;border:1px solid #E7E0D6;border-radius:10px;padding:13px 14px;outline:none;resize:vertical;transition:all .16s ease" style-focus="border-color:#16130F;background:#FFFFFF;box-shadow:0 0 0 3px #F6EAE4"></textarea>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+            <input type="checkbox" style="width:18px;height:18px;accent-color:#C2664A" />
+            <span style="font-size:14px;color:#4A443C">Email me new case studies</span>
+          </label>
+          <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:14px 26px;cursor:pointer;transition:all .18s ease" style-hover="background:#C2664A;border-color:#C2664A">Get the PDF</button>
+        </div>
+        <sc-if value="{{ showStates }}" hint-placeholder-val="{{ true }}">
+          <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:28px;display:flex;flex-direction:column;gap:20px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Input states</span>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;color:#857C70">Rest</span>
+              <div style="font-size:15px;color:#857C70;background:#FCFAF7;border:1px solid #E7E0D6;border-radius:10px;padding:13px 14px">you@company.com</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;color:#857C70">Focus</span>
+              <div style="font-size:15px;background:#FFFFFF;border:1px solid #16130F;border-radius:10px;padding:13px 14px;box-shadow:0 0 0 3px #F6EAE4">namrata|</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;color:#857C70">Filled</span>
+              <div style="font-size:15px;background:#FFFFFF;border:1px solid #E7E0D6;border-radius:10px;padding:13px 14px">namratas1502@gmail.com</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;color:#C2664A">Error</span>
+              <div style="font-size:15px;background:#FFFFFF;border:1px solid #C2664A;border-radius:10px;padding:13px 14px;color:#C2664A">namrata@</div>
+              <span style="font-size:13px;color:#C2664A">Enter a complete email address.</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;color:#3E9A6C">Success</span>
+              <div style="display:flex;align-items:center;gap:10px;font-size:15px;background:#FFFFFF;border:1px solid #3E9A6C;border-radius:10px;padding:13px 14px">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#3E9A6C" stroke-width="1.8"><path d="M3 8.5l3.5 3.5L13 5" /></svg>
+                <span>Verified — download unlocked</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:13px;color:#857C70">Disabled</span>
+              <div style="font-size:15px;color:#A9A29A;background:#EFEAE2;border:1px solid #EFEAE2;border-radius:10px;padding:13px 14px">Not available</div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">08</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Badges &amp; icons</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Stroke icons at 1.6px, 18px box.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px;align-items:start">
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:28px;display:flex;flex-wrap:wrap;gap:12px;align-content:flex-start">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;background:#16130F;color:#FCFAF7;border-radius:999px;padding:7px 14px">Featured</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;background:#F6EAE4;color:#C2664A;border-radius:999px;padding:7px 14px">In progress</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;background:#E9F4EE;color:#3E9A6C;border-radius:999px;padding:7px 14px">Shipped</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;color:#4A443C;border-radius:999px;padding:7px 14px">B2C</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;color:#4A443C;border-radius:999px;padding:7px 14px">Chatbot</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;color:#4A443C;border-radius:999px;padding:7px 14px">AI</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;color:#4A443C;border-radius:999px;padding:7px 14px">Accessibility</span>
+          <span style="display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;color:#4A443C;border-radius:999px;padding:7px 14px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#3E9A6C"></span>Open to work
+          </span>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;justify-items:center">
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" stroke="#16130F" stroke-width="1.6"><path d="M3 9h11M10 5l4 4-4 4" /></svg>
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" stroke="#16130F" stroke-width="1.6"><path d="M9 3v12M3 9h12" /></svg>
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" stroke="#16130F" stroke-width="1.6"><path d="M4 4l10 10M14 4L4 14" /></svg>
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" stroke="#16130F" stroke-width="1.6"><path d="M3 5h12M3 9h12M3 13h12" /></svg>
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" stroke="#16130F" stroke-width="1.6"><rect x="2.5" y="4" width="13" height="10" rx="1.5" /><path d="M3 5l6 4.5L15 5" /></svg>
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" stroke="#16130F" stroke-width="1.6"><path d="M9 3v9M5.5 8.5L9 12l3.5-3.5M4 14.5h10" /></svg>
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" stroke="#16130F" stroke-width="1.6"><circle cx="9" cy="9" r="6" /><path d="M9 6v3l2 2" /></svg>
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" stroke="#16130F" stroke-width="1.6"><path d="M3 8.5l3.5 3.5L15 4" /></svg>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">09</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Overlay</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Resume gate modal + lightbox for gallery images.</span>
+      </div>
+      <div style="border:1px solid #E7E0D6;border-radius:18px;background:#16130F;padding:56px;display:flex;justify-content:center">
+        <div style="width:460px;background:#FCFAF7;border-radius:18px;box-shadow:0 24px 48px -18px rgba(0,0,0,0.5);padding:28px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <span style="font-size:21px;font-weight:700;letter-spacing:-0.02em;flex:1">Before you download</span>
+            <button style="background:transparent;border:none;cursor:pointer;padding:4px;display:flex;color:#857C70;transition:color .16s ease" style-hover="color:#16130F">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l10 10M14 4L4 14" /></svg>
+            </button>
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#4A443C;text-wrap:pretty">A quick name and email, and the resume PDF opens in a new tab. No newsletter unless you ask.</p>
+          <input type="email" placeholder="you@company.com" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;background:#FFFFFF;border:1px solid #E7E0D6;border-radius:10px;padding:13px 14px;outline:none;transition:all .16s ease" style-focus="border-color:#16130F;box-shadow:0 0 0 3px #F6EAE4" />
+          <div style="display:flex;gap:10px;justify-content:flex-end;padding-top:4px">
+            <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#4A443C;background:transparent;border:1px solid #E7E0D6;border-radius:999px;padding:11px 20px;cursor:pointer;transition:all .18s ease" style-hover="border-color:#16130F;color:#16130F">Not now</button>
+            <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:11px 20px;cursor:pointer;transition:all .18s ease" style-hover="background:#C2664A;border-color:#C2664A">Open resume</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">10</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Gallery</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Masonry grid from “Fun work” — captions overlaid, border lifts on hover.</span>
+      </div>
+      <div style="columns:4;column-gap:16px">
+        <a href="#" style="display:block;position:relative;margin-bottom:16px;border-radius:14px;overflow:hidden;break-inside:avoid;border:1px solid #E7E0D6" style-hover="border-color:#16130F">
+          <img src="https://static.wixstatic.com/media/95bf0a_4d917d1d7fce475ca4f3e55d94b98801~mv2.png/v1/fit/w_430,h_573,q_75,enc_avif,quality_auto/95bf0a_4d917d1d7fce475ca4f3e55d94b98801~mv2.png" alt="Oil pastel painting" style="width:100%;display:block" />
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:14px 14px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FCFAF7;background:linear-gradient(to top,rgba(22,19,15,0.85),rgba(22,19,15,0))">Oil pastel painting</span>
+        </a>
+        <a href="#" style="display:block;position:relative;margin-bottom:16px;border-radius:14px;overflow:hidden;break-inside:avoid;border:1px solid #E7E0D6" style-hover="border-color:#16130F">
+          <img src="https://static.wixstatic.com/media/95bf0a_a3acf1ce218344668fb3cadf56873206~mv2.jpg/v1/fit/w_261,h_196,q_75,enc_avif,quality_auto/95bf0a_a3acf1ce218344668fb3cadf56873206~mv2.jpg" alt="Wall decor DIY" style="width:100%;display:block" />
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:14px 14px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FCFAF7;background:linear-gradient(to top,rgba(22,19,15,0.85),rgba(22,19,15,0))">Wall decor DIY</span>
+        </a>
+        <a href="#" style="display:block;position:relative;margin-bottom:16px;border-radius:14px;overflow:hidden;break-inside:avoid;border:1px solid #E7E0D6" style-hover="border-color:#16130F">
+          <img src="https://static.wixstatic.com/media/95bf0a_47bdee4690fb4b928eed3e2c573d9975~mv2.jpg/v1/fit/w_261,h_347,q_75,enc_avif,quality_auto/95bf0a_47bdee4690fb4b928eed3e2c573d9975~mv2.jpg" alt="Sketchbook" style="width:100%;display:block" />
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:14px 14px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FCFAF7;background:linear-gradient(to top,rgba(22,19,15,0.85),rgba(22,19,15,0))">Sketchbook</span>
+        </a>
+        <a href="#" style="display:block;position:relative;margin-bottom:16px;border-radius:14px;overflow:hidden;break-inside:avoid;border:1px solid #E7E0D6" style-hover="border-color:#16130F">
+          <img src="https://static.wixstatic.com/media/95bf0a_24036c8b944746cc96b72350b13c61b2~mv2.jpg/v1/fit/w_312,h_288,q_75,enc_avif,quality_auto/95bf0a_24036c8b944746cc96b72350b13c61b2~mv2.jpg" alt="Studio detail" style="width:100%;display:block" />
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:14px 14px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FCFAF7;background:linear-gradient(to top,rgba(22,19,15,0.85),rgba(22,19,15,0))">Studio detail</span>
+        </a>
+        <a href="#" style="display:block;position:relative;margin-bottom:16px;border-radius:14px;overflow:hidden;break-inside:avoid;border:1px solid #E7E0D6" style-hover="border-color:#16130F">
+          <img src="https://static.wixstatic.com/media/95bf0a_49b4fb55b5194ea6abf50d99b056816f~mv2.png/v1/fit/w_380,h_506,q_75,enc_avif,quality_auto/95bf0a_49b4fb55b5194ea6abf50d99b056816f~mv2.png" alt="Painting in progress" style="width:100%;display:block" />
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:14px 14px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FCFAF7;background:linear-gradient(to top,rgba(22,19,15,0.85),rgba(22,19,15,0))">Painting in progress</span>
+        </a>
+        <a href="#" style="display:block;position:relative;margin-bottom:16px;border-radius:14px;overflow:hidden;break-inside:avoid;border:1px solid #E7E0D6" style-hover="border-color:#16130F">
+          <img src="https://static.wixstatic.com/media/95bf0a_3b0a3165903943b78dd8435bf9c1e24a~mv2.png/v1/fit/w_254,h_191,q_75,enc_avif,quality_auto/95bf0a_3b0a3165903943b78dd8435bf9c1e24a~mv2.png" alt="Craft detail" style="width:100%;display:block" />
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:14px 14px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FCFAF7;background:linear-gradient(to top,rgba(22,19,15,0.85),rgba(22,19,15,0))">Craft detail</span>
+        </a>
+        <a href="#" style="display:block;position:relative;margin-bottom:16px;border-radius:14px;overflow:hidden;break-inside:avoid;border:1px solid #E7E0D6" style-hover="border-color:#16130F">
+          <img src="https://static.wixstatic.com/media/95bf0a_ffecb71a20e34daea4d7742e1889c2fc~mv2.jpg/v1/fit/w_254,h_360,q_75,enc_avif,quality_auto/95bf0a_ffecb71a20e34daea4d7742e1889c2fc~mv2.jpg" alt="Framed work" style="width:100%;display:block" />
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:14px 14px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FCFAF7;background:linear-gradient(to top,rgba(22,19,15,0.85),rgba(22,19,15,0))">Framed work</span>
+        </a>
+        <a href="#" style="display:block;position:relative;margin-bottom:16px;border-radius:14px;overflow:hidden;break-inside:avoid;border:1px solid #E7E0D6" style-hover="border-color:#16130F">
+          <img src="https://static.wixstatic.com/media/95bf0a_1251f3303b2a469eb207825597bc3b8f~mv2.png/v1/fit/w_437,h_581,q_75,enc_avif,quality_auto/95bf0a_1251f3303b2a469eb207825597bc3b8f~mv2.png" alt="Oil pastel study" style="width:100%;display:block" />
+          <span style="position:absolute;left:0;right:0;bottom:0;padding:14px 14px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FCFAF7;background:linear-gradient(to top,rgba(22,19,15,0.85),rgba(22,19,15,0))">Oil pastel study</span>
+        </a>
+      </div>
+    </section>
+
+    <sc-if value="{{ showMobile }}" hint-placeholder-val="{{ true }}">
+      <section style="display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">11</span>
+          <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Mobile</h2>
+          <span style="font-size:14px;color:#857C70;margin-left:auto">390px — drawer nav, stacked hero, 48px targets.</span>
+        </div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <div style="width:390px;border:1px solid #E7E0D6;border-radius:22px;background:#FFFFFF;overflow:hidden">
+            <div style="display:flex;align-items:center;padding:16px 20px;border-bottom:1px solid #E7E0D6">
+              <span style="font-size:20px;font-weight:800;letter-spacing:-0.03em">N.</span>
+              <button style="margin-left:auto;width:48px;height:48px;border:1px solid #E7E0D6;border-radius:999px;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#16130F" style-hover="border-color:#16130F">
+                <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h12M3 9h12M3 13h12" /></svg>
+              </button>
+            </div>
+            <img src="https://static.wixstatic.com/media/95bf0a_44d90d32558b48e8b668547b2cb477b1~mv2.jpg/v1/fill/w_711,h_619,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/An%20app%20designer%20woman%20with%20warm%20skin%20tone%2C%20oval%20shape%20face%2C%20black%20long%20hair%20and%20smile%20on%20h.jpg" alt="Namrata Singh" style="width:100%;height:260px;object-fit:cover;display:block" />
+            <div style="padding:24px 20px;display:flex;flex-direction:column;gap:16px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#857C70">Product designer</span>
+              <h3 style="margin:0;font-size:30px;line-height:1.1;letter-spacing:-0.03em;font-weight:800">Hi, I am Namrata Singh</h3>
+              <p style="margin:0;font-size:16px;line-height:1.6;color:#4A443C;text-wrap:pretty">13+ years designing digital products for enterprises and startups.</p>
+              <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:15px 26px;cursor:pointer;min-height:48px" style-hover="background:#C2664A;border-color:#C2664A">Let's talk!</button>
+              <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:600;color:#16130F;background:transparent;border:1px solid #E7E0D6;border-radius:999px;padding:15px 26px;cursor:pointer;min-height:48px" style-hover="border-color:#16130F">Download resume</button>
+            </div>
+          </div>
+          <div style="width:390px;border:1px solid #E7E0D6;border-radius:22px;background:#16130F;overflow:hidden;color:#FCFAF7;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(252,250,247,0.16)">
+              <span style="font-size:20px;font-weight:800;letter-spacing:-0.03em">N.</span>
+              <button style="margin-left:auto;width:48px;height:48px;border:1px solid rgba(252,250,247,0.3);border-radius:999px;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#FCFAF7" style-hover="border-color:#FCFAF7">
+                <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l10 10M14 4L4 14" /></svg>
+              </button>
+            </div>
+            <nav style="padding:12px 20px 24px;display:flex;flex-direction:column">
+              <a href="#" style="font-size:26px;font-weight:700;letter-spacing:-0.02em;color:#FCFAF7;padding:16px 0;border-bottom:1px solid rgba(252,250,247,0.14)" style-hover="color:#C2664A">Notifications</a>
+              <a href="#" style="font-size:26px;font-weight:700;letter-spacing:-0.02em;color:#FCFAF7;padding:16px 0;border-bottom:1px solid rgba(252,250,247,0.14)" style-hover="color:#C2664A">Seva</a>
+              <a href="#" style="font-size:26px;font-weight:700;letter-spacing:-0.02em;color:#FCFAF7;padding:16px 0;border-bottom:1px solid rgba(252,250,247,0.14)" style-hover="color:#C2664A">About</a>
+              <a href="#" style="font-size:26px;font-weight:700;letter-spacing:-0.02em;color:#FCFAF7;padding:16px 0;border-bottom:1px solid rgba(252,250,247,0.14)" style-hover="color:#C2664A">Resume</a>
+              <a href="#" style="font-size:26px;font-weight:700;letter-spacing:-0.02em;color:#FCFAF7;padding:16px 0;border-bottom:1px solid rgba(252,250,247,0.14)" style-hover="color:#C2664A">Good words</a>
+              <a href="#" style="font-size:26px;font-weight:700;letter-spacing:-0.02em;color:#FCFAF7;padding:16px 0" style-hover="color:#C2664A">Fun work</a>
+            </nav>
+            <div style="margin-top:auto;padding:20px;display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(252,250,247,0.16)">
+              <a href="#" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#A9A29A" style-hover="color:#FCFAF7">Email</a>
+              <a href="#" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#A9A29A" style-hover="color:#FCFAF7">LinkedIn</a>
+              <a href="#" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#A9A29A" style-hover="color:#FCFAF7">Behance</a>
+              <a href="#" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#A9A29A" style-hover="color:#FCFAF7">Medium</a>
+            </div>
+          </div>
+          <div style="width:390px;border:1px solid #E7E0D6;border-radius:22px;background:#FFFFFF;overflow:hidden">
+            <img src="https://static.wixstatic.com/media/95bf0a_582229db95974e7a91fcc44177988ded~mv2.jpg/v1/fill/w_710,h_590,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/cover.jpg" alt="Notifications cover" style="width:100%;height:200px;object-fit:cover;display:block" />
+            <div style="padding:22px 20px;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:#F6EAE4;color:#C2664A;border-radius:999px;padding:6px 12px">B2B SaaS</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;color:#4A443C;border-radius:999px;padding:6px 12px">2024</span>
+              </div>
+              <span style="font-size:24px;font-weight:700;letter-spacing:-0.025em;line-height:1.15">Notifications for FLOW</span>
+              <p style="margin:0;font-size:15px;line-height:1.6;color:#4A443C;text-wrap:pretty">Personalized alerts that keep engineering teams updated and cut cycle times.</p>
+              <span style="font-size:15px;font-weight:600;color:#C2664A">Read case study →</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">12</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Footer</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">One CTA, four channels.</span>
+      </div>
+      <div style="border-radius:18px;background:#16130F;color:#FCFAF7;padding:56px 48px;display:flex;flex-direction:column;gap:36px">
+        <div style="display:flex;align-items:flex-end;gap:32px;flex-wrap:wrap">
+          <h3 style="margin:0;font-size:44px;line-height:1.05;letter-spacing:-0.035em;font-weight:800;max-width:20ch;text-wrap:pretty">Let's talk about your product.</h3>
+          <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#16130F;background:#FCFAF7;border:1px solid #FCFAF7;border-radius:999px;padding:14px 28px;cursor:pointer;margin-left:auto;transition:all .18s ease" style-hover="background:#C2664A;border-color:#C2664A;color:#FCFAF7">Let's talk!</button>
+        </div>
+        <div style="display:flex;gap:28px;flex-wrap:wrap;border-top:1px solid rgba(252,250,247,0.18);padding-top:24px">
+          <a href="#" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#A9A29A" style-hover="color:#FCFAF7">Email</a>
+          <a href="#" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#A9A29A" style-hover="color:#FCFAF7">LinkedIn</a>
+          <a href="#" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#A9A29A" style-hover="color:#FCFAF7">Behance</a>
+          <a href="#" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#A9A29A" style-hover="color:#FCFAF7">Medium</a>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#A9A29A;margin-left:auto">© 2026 Namrata Singh</span>
+        </div>
+      </div>
+    </section>
+
+    <div style="display:flex;flex-direction:column;gap:14px;padding:64px 0 0;border-top:1px solid #16130F">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#C2664A">Part two — product components</span>
+      <h2 style="margin:0;font-size:44px;line-height:1.05;letter-spacing:-0.035em;font-weight:800;max-width:24ch;text-wrap:pretty">Extracted from the three case studies.</h2>
+      <p style="margin:0;font-size:18px;line-height:1.6;color:#4A443C;max-width:64ch;text-wrap:pretty">Yard Management (mobile ops app), Rumy chatbot (support), and Register-before-Download (growth funnel) — recomposed on the portfolio's tokens so product screens and site read as one system.</p>
+    </div>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">13</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">App shell</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Yard Management — greeting header, tabs, search, bottom actions.</span>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+        <div style="width:360px;border:1px solid #E7E0D6;border-radius:22px;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column">
+          <div style="padding:14px 20px 0;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">
+            <span>9:41</span><span>Yard management</span>
+          </div>
+          <div style="padding:16px 20px 18px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:40px;height:40px;border-radius:50%;background:#F6EAE4;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#C2664A">J</div>
+              <div style="display:flex;flex-direction:column">
+                <span style="font-size:19px;font-weight:700;letter-spacing:-0.02em">Hi John</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70">Zone B — unloading</span>
+              </div>
+              <button style="margin-left:auto;width:44px;height:44px;border:1px solid #E7E0D6;border-radius:999px;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#16130F" style-hover="border-color:#16130F">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5" /><path d="M12 12l3 3" /></svg>
+              </button>
+            </div>
+            <div style="display:flex;background:#FCFAF7;border:1px solid #E7E0D6;border-radius:999px;padding:4px;gap:4px">
+              <span style="flex:1;text-align:center;font-size:14px;font-weight:600;color:#FCFAF7;background:#16130F;border-radius:999px;padding:10px 0">Trailer</span>
+              <span style="flex:1;text-align:center;font-size:14px;font-weight:500;color:#4A443C;padding:10px 0">Door</span>
+              <span style="flex:1;text-align:center;font-size:14px;font-weight:500;color:#4A443C;padding:10px 0">Resources</span>
+            </div>
+            <div style="display:flex;gap:12px">
+              <div style="flex:1;border:1px solid #E7E0D6;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Available parking</span>
+                <span style="font-size:26px;font-weight:700;letter-spacing:-0.03em">80<span style="font-size:15px;font-weight:500;color:#857C70"> / 250</span></span>
+              </div>
+              <div style="flex:1;border:1px solid #E7E0D6;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Needs attention</span>
+                <span style="font-size:26px;font-weight:700;letter-spacing:-0.03em;color:#C2664A">05</span>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:auto;display:flex;border-top:1px solid #E7E0D6">
+            <div style="flex:1;padding:14px 0;display:flex;flex-direction:column;align-items:center;gap:6px;border-right:1px solid #E7E0D6">
+              <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="#16130F" stroke-width="1.6"><rect x="2.5" y="5" width="13" height="8" rx="1.5" /></svg>
+              <span style="font-size:11px;font-weight:600">Yard</span>
+            </div>
+            <div style="flex:1;padding:14px 0;display:flex;flex-direction:column;align-items:center;gap:6px;border-right:1px solid #E7E0D6">
+              <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="#857C70" stroke-width="1.6"><path d="M3 15V6l6-3 6 3v9" /></svg>
+              <span style="font-size:11px;font-weight:500;color:#857C70">Doors</span>
+            </div>
+            <div style="flex:1;padding:14px 0;display:flex;flex-direction:column;align-items:center;gap:6px">
+              <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="#857C70" stroke-width="1.6"><circle cx="9" cy="6.5" r="2.6" /><path d="M4 15c0-2.6 2.2-4.2 5-4.2s5 1.6 5 4.2" /></svg>
+              <span style="font-size:11px;font-weight:500;color:#857C70">Profile</span>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:560px;border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;overflow:hidden;display:flex">
+          <div style="width:220px;flex:none;background:#16130F;color:#FCFAF7;padding:22px 18px;display:flex;flex-direction:column;gap:22px">
+            <span style="font-size:19px;font-weight:800;letter-spacing:-0.03em">N.</span>
+            <nav style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:14px;font-weight:600;background:rgba(252,250,247,0.12);border-radius:10px;padding:11px 12px">Yard status</span>
+              <span style="font-size:14px;font-weight:500;color:#A9A29A;padding:11px 12px">Trailers</span>
+              <span style="font-size:14px;font-weight:500;color:#A9A29A;padding:11px 12px">Doors</span>
+              <span style="font-size:14px;font-weight:500;color:#A9A29A;padding:11px 12px">Resources</span>
+              <span style="font-size:14px;font-weight:500;color:#A9A29A;padding:11px 12px">Reports</span>
+            </nav>
+            <div style="margin-top:auto;display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(252,250,247,0.18);padding-top:16px">
+              <span style="font-size:13px;font-weight:600">John Mathew</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#A9A29A">Operations manager</span>
+            </div>
+          </div>
+          <div style="flex:1;padding:22px;display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="font-size:22px;font-weight:700;letter-spacing:-0.025em">Yard status</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;background:#E9F4EE;color:#3E9A6C;border-radius:999px;padding:6px 12px">Live</span>
+              <div style="margin-left:auto;display:flex;align-items:center;gap:8px;border:1px solid #E7E0D6;border-radius:999px;padding:9px 14px;color:#857C70">
+                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5" /><path d="M12 12l3 3" /></svg>
+                <span style="font-size:13px">Search trailer ID</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+              <div style="border:1px solid #E7E0D6;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Total trailers</span>
+                <span style="font-size:30px;font-weight:700;letter-spacing:-0.03em">60</span>
+              </div>
+              <div style="border:1px solid #E7E0D6;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Parked</span>
+                <span style="font-size:30px;font-weight:700;letter-spacing:-0.03em">30</span>
+              </div>
+              <div style="border:1px solid #E7E0D6;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Unloading</span>
+                <span style="font-size:30px;font-weight:700;letter-spacing:-0.03em">20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">14</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Metrics &amp; charts</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Funnel drop-off, capacity ring, status bars.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:stretch">
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Registration funnel — now vs goal</span>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:#4A443C">Visit → registration</span><span style="font-weight:600">1.48% → 21.1%</span></div>
+              <div style="height:8px;border-radius:999px;background:#EFEAE2;overflow:hidden;display:flex">
+                <div style="width:7%;background:#16130F"></div>
+                <div style="width:93%;background:#F6EAE4"></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:#4A443C">Visit → download</span><span style="font-weight:600">4.14% → 9.07%</span></div>
+              <div style="height:8px;border-radius:999px;background:#EFEAE2;overflow:hidden;display:flex">
+                <div style="width:46%;background:#16130F"></div>
+                <div style="width:54%;background:#F6EAE4"></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:#4A443C">Visit → paid</span><span style="font-weight:600">0.07% → 0.12%</span></div>
+              <div style="height:8px;border-radius:999px;background:#EFEAE2;overflow:hidden;display:flex">
+                <div style="width:58%;background:#16130F"></div>
+                <div style="width:42%;background:#F6EAE4"></div>
+              </div>
+            </div>
+          </div>
+          <span style="font-size:13px;color:#857C70;margin-top:auto">Solid = current, wash = target headroom.</span>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70;align-self:flex-start">Yard capacity</span>
+          <div style="width:168px;height:168px;border-radius:50%;background:conic-gradient(#16130F 0turn 0.32turn,#C2664A 0.32turn 0.44turn,#EFEAE2 0.44turn 1turn);display:flex;align-items:center;justify-content:center">
+            <div style="width:118px;height:118px;border-radius:50%;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+              <span style="font-size:28px;font-weight:700;letter-spacing:-0.03em">80</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70">of 250 free</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+            <span style="display:flex;align-items:center;gap:7px;font-size:13px;color:#4A443C"><span style="width:9px;height:9px;border-radius:50%;background:#16130F"></span>Parked 30</span>
+            <span style="display:flex;align-items:center;gap:7px;font-size:13px;color:#4A443C"><span style="width:9px;height:9px;border-radius:50%;background:#C2664A"></span>Waiting 10</span>
+            <span style="display:flex;align-items:center;gap:7px;font-size:13px;color:#4A443C"><span style="width:9px;height:9px;border-radius:50%;background:#EFEAE2"></span>Free 80</span>
+          </div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Support automation — target mix</span>
+          <div style="display:flex;align-items:flex-end;gap:10px;height:150px">
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;height:100%">
+              <div style="background:#16130F;border-radius:8px 8px 0 0;height:75%"></div>
+              <span style="font-size:12px;text-align:center;color:#4A443C">Bot<br />75%</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;height:100%">
+              <div style="background:#C2664A;border-radius:8px 8px 0 0;height:25%"></div>
+              <span style="font-size:12px;text-align:center;color:#4A443C">Agent<br />25%</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;height:100%">
+              <div style="background:#EFEAE2;border-radius:8px 8px 0 0;height:52%"></div>
+              <span style="font-size:12px;text-align:center;color:#4A443C">Tickets<br />1.9L p.m.</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;margin-top:auto;border-top:1px solid #E7E0D6;padding-top:14px">
+            <span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;color:#3E9A6C">25%</span>
+            <span style="font-size:13px;color:#4A443C">efficiency increase — yard pilot</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">15</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Tables &amp; status</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Breakdown rows, filters, status pills.</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <div style="display:flex;align-items:center;gap:10px;border:1px solid #E7E0D6;background:#FFFFFF;border-radius:999px;padding:11px 16px;color:#857C70;min-width:260px">
+          <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5" /><path d="M12 12l3 3" /></svg>
+          <span style="font-size:14px">Search trailer, door or resource</span>
+        </div>
+        <span style="font-size:13px;font-weight:600;color:#FCFAF7;background:#16130F;border-radius:999px;padding:10px 16px">Today</span>
+        <span style="font-size:13px;font-weight:500;color:#4A443C;border:1px solid #E7E0D6;background:#FFFFFF;border-radius:999px;padding:10px 16px">This week</span>
+        <span style="font-size:13px;font-weight:500;color:#4A443C;border:1px solid #E7E0D6;background:#FFFFFF;border-radius:999px;padding:10px 16px">Zone B</span>
+        <span style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#C2664A;background:#F6EAE4;border-radius:999px;padding:10px 16px">Perishable
+          <svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l10 10M14 4L4 14" /></svg>
+        </span>
+      </div>
+      <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;overflow:hidden">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1.2fr 0.8fr;background:#FCFAF7;border-bottom:1px solid #E7E0D6">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70;padding:14px 20px">Trailer state</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70;padding:14px 20px">Count</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70;padding:14px 20px">Status</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70;padding:14px 20px;text-align:right">Action</span>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1.2fr 0.8fr;align-items:center;border-bottom:1px solid #E7E0D6">
+          <span style="font-size:15px;font-weight:500;padding:16px 20px">Checked in</span>
+          <span style="font-size:15px;padding:16px 20px">12</span>
+          <div style="padding:16px 20px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:#E9F4EE;color:#3E9A6C;border-radius:999px;padding:6px 12px">On time</span></div>
+          <div style="padding:16px 20px;text-align:right"><span style="font-size:14px;font-weight:600;color:#C2664A">Assign</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1.2fr 0.8fr;align-items:center;border-bottom:1px solid #E7E0D6">
+          <span style="font-size:15px;font-weight:500;padding:16px 20px">Parked</span>
+          <span style="font-size:15px;padding:16px 20px">30</span>
+          <div style="padding:16px 20px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;color:#4A443C;border-radius:999px;padding:6px 12px">Idle</span></div>
+          <div style="padding:16px 20px;text-align:right"><span style="font-size:14px;font-weight:600;color:#C2664A">View</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1.2fr 0.8fr;align-items:center;border-bottom:1px solid #E7E0D6;background:#FCFAF7">
+          <span style="font-size:15px;font-weight:500;padding:16px 20px">Perishable &amp; frozen goods</span>
+          <span style="font-size:15px;padding:16px 20px">03</span>
+          <div style="padding:16px 20px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:#F6EAE4;color:#C2664A;border-radius:999px;padding:6px 12px">Priority</span></div>
+          <div style="padding:16px 20px;text-align:right"><span style="font-size:14px;font-weight:600;color:#C2664A">Assign</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1.2fr 0.8fr;align-items:center;border-bottom:1px solid #E7E0D6">
+          <span style="font-size:15px;font-weight:500;padding:16px 20px">Unloading in progress</span>
+          <span style="font-size:15px;padding:16px 20px">20</span>
+          <div style="padding:16px 20px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:#E9F4EE;color:#3E9A6C;border-radius:999px;padding:6px 12px">Active</span></div>
+          <div style="padding:16px 20px;text-align:right"><span style="font-size:14px;font-weight:600;color:#C2664A">Track</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1.2fr 0.8fr;align-items:center">
+          <span style="font-size:15px;font-weight:500;padding:16px 20px">Waiting for unloading</span>
+          <span style="font-size:15px;padding:16px 20px">10</span>
+          <div style="padding:16px 20px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:#F6EAE4;color:#C2664A;border-radius:999px;padding:6px 12px">Needs attention</span></div>
+          <div style="padding:16px 20px;text-align:right"><span style="font-size:14px;font-weight:600;color:#C2664A">Assign</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <span style="display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;background:#FFFFFF;color:#4A443C;border-radius:999px;padding:7px 14px"><span style="width:7px;height:7px;border-radius:50%;background:#3E9A6C"></span>Free — 03 doors</span>
+        <span style="display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;background:#FFFFFF;color:#4A443C;border-radius:999px;padding:7px 14px"><span style="width:7px;height:7px;border-radius:50%;background:#16130F"></span>Occupied — 08</span>
+        <span style="display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;background:#FFFFFF;color:#4A443C;border-radius:999px;padding:7px 14px"><span style="width:7px;height:7px;border-radius:50%;background:#C2664A"></span>Getting free 15–20 min — 02</span>
+        <span style="display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;background:#FFFFFF;color:#857C70;border-radius:999px;padding:7px 14px"><span style="width:7px;height:7px;border-radius:50%;background:#E7E0D6"></span>Under maintenance — 01</span>
+        <span style="display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid #E7E0D6;background:#FFFFFF;color:#857C70;border-radius:999px;padding:7px 14px"><span style="width:7px;height:7px;border-radius:50%;background:#E7E0D6"></span>Absent — 05 resources</span>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">16</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Chat &amp; support</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Rumy chatbot — bubbles, quick links, feedback, agent handoff.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid #E7E0D6">
+            <div style="width:36px;height:36px;border-radius:50%;background:#16130F;color:#FCFAF7;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">R</div>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-size:15px;font-weight:600">Rumy assistant</span>
+              <span style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#3E9A6C"><span style="width:6px;height:6px;border-radius:50%;background:#3E9A6C"></span>Online</span>
+            </div>
+          </div>
+          <div style="padding:20px;display:flex;flex-direction:column;gap:14px;background:#FCFAF7">
+            <div style="max-width:78%;background:#FFFFFF;border:1px solid #E7E0D6;border-radius:14px 14px 14px 4px;padding:13px 15px;font-size:14px;line-height:1.55;color:#16130F">Hi! I can help with deposits, withdrawals and account issues. What's up?</div>
+            <div style="max-width:78%;align-self:flex-end;background:#16130F;color:#FCFAF7;border-radius:14px 14px 4px 14px;padding:13px 15px;font-size:14px;line-height:1.55">My withdrawal is still pending after 24 hours.</div>
+            <div style="max-width:78%;background:#FFFFFF;border:1px solid #E7E0D6;border-radius:14px 14px 14px 4px;padding:13px 15px;font-size:14px;line-height:1.55;color:#16130F">Withdrawals to bank accounts settle in 24–48 hours. Your request from 18 Jun is with the bank — reference #4471902.</div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#857C70">Helpful?</span>
+              <button style="display:flex;align-items:center;gap:6px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;color:#3E9A6C;background:#E9F4EE;border:1px solid #E9F4EE;border-radius:999px;padding:8px 14px;cursor:pointer" style-hover="border-color:#3E9A6C">
+                <svg width="13" height="13" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3.5 3.5L15 4" /></svg>Yes
+              </button>
+              <button style="display:flex;align-items:center;gap:6px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;color:#4A443C;background:transparent;border:1px solid #E7E0D6;border-radius:999px;padding:8px 14px;cursor:pointer" style-hover="border-color:#16130F;color:#16130F">
+                <svg width="13" height="13" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l10 10M14 4L4 14" /></svg>No
+              </button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <span style="font-size:13px;font-weight:600;color:#C2664A;background:#FFFFFF;border:1px solid #C2664A;border-radius:999px;padding:9px 14px">Track my ticket</span>
+              <span style="font-size:13px;font-weight:600;color:#C2664A;background:#FFFFFF;border:1px solid #C2664A;border-radius:999px;padding:9px 14px">Talk to an agent</span>
+              <span style="font-size:13px;font-weight:600;color:#C2664A;background:#FFFFFF;border:1px solid #C2664A;border-radius:999px;padding:9px 14px">Deposit help</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 20px;border-top:1px solid #E7E0D6">
+            <span style="flex:1;font-size:14px;color:#857C70">Type your message…</span>
+            <button style="width:40px;height:40px;border-radius:999px;background:#16130F;border:1px solid #16130F;color:#FCFAF7;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#C2664A;border-color:#C2664A">
+              <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h11M10 5l4 4-4 4" /></svg>
+            </button>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Quick links — help home</span>
+            <div style="display:flex;flex-direction:column">
+              <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #E7E0D6">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#C2664A" stroke-width="1.6"><circle cx="9" cy="9" r="6" /><path d="M9 6v3l2 2" /></svg>
+                <span style="font-size:15px;font-weight:500;flex:1">Where is my withdrawal?</span>
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#857C70" stroke-width="1.6"><path d="M7 4l5 5-5 5" /></svg>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #E7E0D6">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#C2664A" stroke-width="1.6"><rect x="2.5" y="4" width="13" height="10" rx="1.5" /><path d="M3 5l6 4.5L15 5" /></svg>
+                <span style="font-size:15px;font-weight:500;flex:1">Verify my KYC documents</span>
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#857C70" stroke-width="1.6"><path d="M7 4l5 5-5 5" /></svg>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:14px 0">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#C2664A" stroke-width="1.6"><path d="M9 3v9M5.5 8.5L9 12l3.5-3.5M4 14.5h10" /></svg>
+                <span style="font-size:15px;font-weight:500;flex:1">Download the app</span>
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#857C70" stroke-width="1.6"><path d="M7 4l5 5-5 5" /></svg>
+              </div>
+            </div>
+          </div>
+          <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="font-size:17px;font-weight:600">Ticket #4471902</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:#F6EAE4;color:#C2664A;border-radius:999px;padding:6px 12px;margin-left:auto">With agent</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0">
+              <div style="display:flex;gap:12px">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:0">
+                  <span style="width:11px;height:11px;border-radius:50%;background:#16130F"></span>
+                  <span style="width:1px;flex:1;background:#E7E0D6;min-height:28px"></span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:2px;padding-bottom:16px">
+                  <span style="font-size:14px;font-weight:600">Raised by you</span>
+                  <span style="font-size:13px;color:#857C70">18 Jun, 09:12</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px">
+                <div style="display:flex;flex-direction:column;align-items:center">
+                  <span style="width:11px;height:11px;border-radius:50%;background:#16130F"></span>
+                  <span style="width:1px;flex:1;background:#E7E0D6;min-height:28px"></span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:2px;padding-bottom:16px">
+                  <span style="font-size:14px;font-weight:600">Bot attempted resolution</span>
+                  <span style="font-size:13px;color:#857C70">18 Jun, 09:12 — not resolved</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px">
+                <div style="display:flex;flex-direction:column;align-items:center">
+                  <span style="width:11px;height:11px;border-radius:50%;border:2px solid #C2664A;background:#FFFFFF"></span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:2px">
+                  <span style="font-size:14px;font-weight:600;color:#C2664A">Transferred to agent</span>
+                  <span style="font-size:13px;color:#857C70">Expected reply within 4 hours</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">17</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Notifications</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Yard alerts, toasts, and download progress.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:14px;border:1px solid #E7E0D6;border-radius:14px;background:#FFFFFF;padding:16px 18px">
+            <span style="width:9px;height:9px;border-radius:50%;background:#3E9A6C"></span>
+            <div style="display:flex;flex-direction:column;gap:2px;flex:1">
+              <span style="font-size:15px;font-weight:600">Door No. 3 is free now</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70">2s ago</span>
+            </div>
+            <span style="font-size:14px;font-weight:600;color:#C2664A">Assign</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;border:1px solid #E7E0D6;border-radius:14px;background:#FFFFFF;padding:16px 18px">
+            <span style="width:9px;height:9px;border-radius:50%;background:#C2664A"></span>
+            <div style="display:flex;flex-direction:column;gap:2px;flex:1">
+              <span style="font-size:15px;font-weight:600">10 trailers checked in the yard</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#857C70">10s ago</span>
+            </div>
+            <span style="font-size:14px;font-weight:600;color:#C2664A">View</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;border:1px solid #16130F;border-radius:14px;background:#16130F;color:#FCFAF7;padding:16px 18px;box-shadow:0 6px 18px -6px rgba(22,19,15,0.16)">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#FCFAF7" stroke-width="1.8"><path d="M3 8.5l3.5 3.5L15 4" /></svg>
+            <span style="font-size:15px;font-weight:600;flex:1">Resources assigned to Door 3</span>
+            <span style="font-size:14px;font-weight:600;color:#A9A29A">Undo</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;border:1px solid #C2664A;border-radius:14px;background:#F6EAE4;padding:16px 18px">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#C2664A" stroke-width="1.8"><path d="M9 4v6M9 13h.01" /></svg>
+            <div style="display:flex;flex-direction:column;gap:3px">
+              <span style="font-size:15px;font-weight:600;color:#C2664A">5 trailers need attention</span>
+              <span style="font-size:13px;color:#4A443C">Perishable goods waiting over 45 minutes.</span>
+            </div>
+          </div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:20px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Download progress — register-before-download</span>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font-size:15px;font-weight:600">Downloading the app</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#4A443C">62%</span>
+            </div>
+            <div style="height:10px;border-radius:999px;background:#EFEAE2;overflow:hidden">
+              <div style="width:62%;height:100%;background:#16130F"></div>
+            </div>
+            <span style="font-size:13px;color:#857C70">Keep this screen open — your ₹2000 bonus unlocks on install.</span>
+          </div>
+          <div style="border:1px solid #E7E0D6;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px;background:#FCFAF7">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;background:#16130F;color:#FCFAF7;border-radius:999px;padding:6px 12px">Coupon</span>
+              <span style="font-size:14px;font-weight:600">FIRST2000</span>
+            </div>
+            <span style="font-size:14px;line-height:1.55;color:#4A443C">Claim after install — deposit bonus applies to your first game.</span>
+            <div style="display:flex;gap:8px">
+              <span style="width:22px;height:4px;border-radius:999px;background:#16130F"></span>
+              <span style="width:22px;height:4px;border-radius:999px;background:#E7E0D6"></span>
+              <span style="width:22px;height:4px;border-radius:999px;background:#E7E0D6"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">18</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Sheets &amp; auth</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Mobile registration, OTP entry, sign-in — 48px targets.</span>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <div style="width:340px;border:1px solid #E7E0D6;border-radius:22px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#C2664A">Get ₹2000* bonus</span>
+          <span style="font-size:22px;font-weight:700;letter-spacing:-0.025em;line-height:1.2">Enter your mobile number</span>
+          <div style="display:flex;gap:10px">
+            <span style="font-size:15px;font-weight:600;border:1px solid #E7E0D6;border-radius:10px;padding:14px 12px;background:#FCFAF7">+91</span>
+            <span style="flex:1;font-size:15px;border:1px solid #16130F;border-radius:10px;padding:14px;box-shadow:0 0 0 3px #F6EAE4">98198 30009</span>
+          </div>
+          <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:15px;cursor:pointer;min-height:48px" style-hover="background:#C2664A;border-color:#C2664A">Get started</button>
+          <span style="font-size:12px;line-height:1.5;color:#857C70">By registering you confirm you are 18+ and agree to our T&amp;C and Privacy Policy.</span>
+        </div>
+        <div style="width:340px;border:1px solid #E7E0D6;border-radius:22px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-size:22px;font-weight:700;letter-spacing:-0.025em">Verify with OTP</span>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:14px;color:#4A443C;flex:1">Sent to +91 98198 30009</span>
+            <span style="font-size:14px;font-weight:600;color:#C2664A">Change</span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <span style="flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:18px;border:1px solid #E7E0D6;border-radius:10px;padding:14px 0">9</span>
+            <span style="flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:18px;border:1px solid #E7E0D6;border-radius:10px;padding:14px 0">8</span>
+            <span style="flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:18px;border:1px solid #E7E0D6;border-radius:10px;padding:14px 0">9</span>
+            <span style="flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:18px;border:1px solid #16130F;border-radius:10px;padding:14px 0;box-shadow:0 0 0 3px #F6EAE4">8</span>
+            <span style="flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:18px;color:#857C70;border:1px solid #E7E0D6;border-radius:10px;padding:14px 0">·</span>
+            <span style="flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:18px;color:#857C70;border:1px solid #E7E0D6;border-radius:10px;padding:14px 0">·</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px;color:#857C70">Resend in 30s</span>
+            <span style="font-size:13px;font-weight:600;color:#C2664A">Get OTP on call</span>
+          </div>
+          <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:15px;cursor:pointer;min-height:48px" style-hover="background:#C2664A;border-color:#C2664A">Verify</button>
+        </div>
+        <div style="width:340px;border:1px solid #E7E0D6;border-radius:22px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-size:22px;font-weight:700;letter-spacing:-0.025em">Sign in to continue</span>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#4A443C">Username or email</span>
+            <input type="email" placeholder="john@company.com" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;background:#FCFAF7;border:1px solid #E7E0D6;border-radius:10px;padding:14px;outline:none;transition:all .16s ease" style-focus="border-color:#16130F;background:#FFFFFF;box-shadow:0 0 0 3px #F6EAE4" />
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#4A443C">Password</span>
+            <input type="password" placeholder="••••••••" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;background:#FCFAF7;border:1px solid #E7E0D6;border-radius:10px;padding:14px;outline:none;transition:all .16s ease" style-focus="border-color:#16130F;background:#FFFFFF;box-shadow:0 0 0 3px #F6EAE4" />
+          </label>
+          <div style="display:flex;align-items:center;gap:10px;justify-content:space-between">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+              <input type="checkbox" style="width:18px;height:18px;accent-color:#C2664A" />
+              <span style="font-size:13px;color:#4A443C">Keep me logged in</span>
+            </label>
+            <span style="font-size:13px;font-weight:600;color:#C2664A">Forgot password?</span>
+          </div>
+          <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:15px;cursor:pointer;min-height:48px" style-hover="background:#C2664A;border-color:#C2664A">Sign in</button>
+          <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:600;color:#16130F;background:transparent;border:1px solid #E7E0D6;border-radius:999px;padding:15px;cursor:pointer;min-height:48px" style-hover="border-color:#16130F">Create account</button>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">19</span>
+        <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Empty &amp; loading</h2>
+        <span style="font-size:14px;color:#857C70;margin-left:auto">Skeletons match final metrics; empty states name the next action.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch">
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#857C70">Loading</span>
+          <div style="height:12px;border-radius:999px;background:#EFEAE2;width:45%"></div>
+          <div style="height:30px;border-radius:8px;background:#EFEAE2;width:70%"></div>
+          <div style="height:12px;border-radius:999px;background:#EFEAE2"></div>
+          <div style="height:12px;border-radius:999px;background:#EFEAE2;width:80%"></div>
+          <div style="height:12px;border-radius:999px;background:#EFEAE2;width:60%"></div>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;justify-content:center">
+          <span style="width:44px;height:44px;border-radius:12px;background:#F6EAE4;display:flex;align-items:center;justify-content:center">
+            <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="#C2664A" stroke-width="1.6"><rect x="2.5" y="5" width="13" height="8" rx="1.5" /></svg>
+          </span>
+          <span style="font-size:18px;font-weight:700;letter-spacing:-0.02em">No trailers waiting</span>
+          <span style="font-size:14px;line-height:1.55;color:#4A443C">Zone B is clear. New check-ins will appear here automatically.</span>
+          <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#16130F;background:transparent;border:1px solid #16130F;border-radius:999px;padding:11px 20px;cursor:pointer" style-hover="background:#16130F;color:#FCFAF7">View Zone A</button>
+        </div>
+        <div style="border:1px solid #E7E0D6;border-radius:18px;background:#FCFAF7;padding:24px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;justify-content:center">
+          <span style="width:44px;height:44px;border-radius:12px;background:#FFFFFF;border:1px solid #E7E0D6;display:flex;align-items:center;justify-content:center">
+            <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="#4A443C" stroke-width="1.6"><path d="M9 4v6M9 13h.01" /></svg>
+          </span>
+          <span style="font-size:18px;font-weight:700;letter-spacing:-0.02em">Couldn't load yard data</span>
+          <span style="font-size:14px;line-height:1.55;color:#4A443C">The tool refreshed while updating. Retry, or work from the last snapshot at 09:12.</span>
+          <div style="display:flex;gap:10px">
+            <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#FCFAF7;background:#16130F;border:1px solid #16130F;border-radius:999px;padding:11px 20px;cursor:pointer" style-hover="background:#C2664A;border-color:#C2664A">Retry</button>
+            <button style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#4A443C;background:transparent;border:1px solid #E7E0D6;border-radius:999px;padding:11px 20px;cursor:pointer" style-hover="border-color:#16130F;color:#16130F">Snapshot</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <sc-if value="{{ showTokenCode }}" hint-placeholder-val="{{ false }}">
+      <section style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:baseline;gap:16px;border-top:1px solid #16130F;padding-top:18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#857C70">20</span>
+          <h2 style="margin:0;font-size:30px;letter-spacing:-0.025em;font-weight:700">Tokens as code</h2>
+        </div>
+        <pre style="margin:0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.8;color:#FCFAF7;background:#16130F;border-radius:14px;padding:28px;overflow:auto">--canvas:#FCFAF7;   --surface:#FFFFFF;  --wash:#F6EAE4;
+--line:#E7E0D6;     --ink:#16130F;      --ink-muted:#4A443C;
+--ink-soft:#857C70;  --accent:oklch(.62 .13 40);
+--accent-2:oklch(.62 .13 150);
+--font-sans:'Plus Jakarta Sans'; --font-mono:'JetBrains Mono';
+--step-display:64px; --step-h1:44px; --step-h2:30px;
+--step-h3:20px;      --step-body:17px; --step-label:12px;
+--space:4 8 12 16 24 32 48 88;
+--radius-sm:8px; --radius-md:14px; --radius-lg:18px; --radius-pill:999px;
+--shadow-raised:0 6px 18px -6px rgba(22,19,15,.16);
+--shadow-overlay:0 24px 48px -18px rgba(22,19,15,.28);</pre>
+      </section>
+    </sc-if>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showStates&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Gallery&quot;},&quot;showMobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Gallery&quot;},&quot;showTokenCode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Gallery&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showStates: this.props.showStates ?? true,
+      showMobile: this.props.showMobile ?? true,
+      showTokenCode: this.props.showTokenCode ?? false
+    };
+  }
+}
+</script>
+</body>
+</html>

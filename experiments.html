@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<title>Experiments — Namrata Singh</title>
+<meta name="description" content="Side explorations, design experiments, and work beyond the brief — by Namrata Singh, Product Designer."/>
+<meta property="og:title" content="Experiments — Namrata Singh"/>
+<meta property="og:description" content="Side explorations, design experiments, and work beyond the brief — by Namrata Singh, Product Designer."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.namrata-singh.com/experiments"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Experiments — Namrata Singh"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700&family=Roboto+Mono:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFDF7;
+  --charcoal:#1F2933;
+  --lemon:#FFF3B0;
+  --lemon-deep:#F5E840;
+  --warm-mid:#F0EDE4;
+  --green:#2E8B6E;
+  --text-1:#1F2933;
+  --text-2:rgba(31,41,51,.62);
+  --text-3:rgba(31,41,51,.38);
+  --border:rgba(31,41,51,.1);
+  --nav-bg:rgba(255,253,247,.92);
+  --nav-border:rgba(31,41,51,.1);
+  --nav-logo-c:#1F2933;
+  --fd:'Roboto','Helvetica Neue',Arial,sans-serif;
+  --fb:'Roboto','Helvetica Neue',Arial,sans-serif;
+  --fm:'Roboto Mono',monospace;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+[data-theme="dark"]{
+  --bg:#1F2933;
+  --text-1:#FFFDF7;
+  --text-2:rgba(255,253,247,.62);
+  --text-3:rgba(255,253,247,.32);
+  --border:rgba(255,253,247,.1);
+  --warm-mid:#273040;
+  --nav-bg:rgba(31,41,51,.95);
+  --nav-border:rgba(255,255,255,.07);
+  --nav-logo-c:#FFF3B0;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text-1);font-family:var(--fb);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;transition:background 220ms,color 220ms}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--nav-bg);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--nav-border);height:52px}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;gap:0}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--nav-logo-c);letter-spacing:-.04em;transition:color 220ms}
+.nav-back-btn{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-2);cursor:pointer;padding:6px 12px;border-radius:6px;border:1px solid var(--border);transition:color 150ms,border-color 150ms;margin-left:16px;font-family:var(--fb)}
+.nav-back-btn:hover{color:var(--text-1);border-color:var(--text-2)}
+.nav-back-btn svg{flex-shrink:0}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.nav-tag{font-size:12px;color:var(--text-3);letter-spacing:.05em}
+
+/* Theme switch */
+.theme-switch{display:flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;padding:6px 4px;flex-shrink:0}
+.ts-sun,.ts-moon{color:var(--nav-logo-c);transition:opacity 220ms;flex-shrink:0}
+.ts-sun{opacity:.35}.ts-moon{opacity:.88}
+[data-theme="light"] .ts-sun{opacity:.88}[data-theme="light"] .ts-moon{opacity:.3}
+.ts-track{display:block;width:38px;height:20px;border-radius:10px;border:1px solid var(--nav-border);background:rgba(31,41,51,.08);position:relative;flex-shrink:0;transition:background 220ms}
+[data-theme="dark"] .ts-track{background:rgba(255,255,255,.08)}
+.ts-knob{position:absolute;top:3px;left:3px;width:12px;height:12px;border-radius:50%;background:var(--charcoal);transition:left 220ms cubic-bezier(.34,1.4,.64,1)}
+[data-theme="dark"] .ts-knob{left:auto;right:3px;background:#FFF3B0}
+
+/* ── HERO ── */
+.hero{padding:120px 0 80px;background:var(--bg)}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px}
+.hero-title{font-family:var(--fd);font-size:clamp(42px,6vw,72px);font-weight:700;letter-spacing:-.05em;line-height:1;color:var(--text-1);margin-bottom:24px}
+.hero-title em{color:var(--green);font-style:normal}
+.hero-desc{font-size:clamp(16px,2vw,19px);font-weight:300;line-height:1.75;color:var(--text-2);max-width:600px}
+
+/* ── SECTION ── */
+.section{padding:72px 0;border-top:1px solid var(--border)}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.section-label{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.section-heading{font-family:var(--fd);font-size:clamp(24px,3vw,32px);font-weight:600;letter-spacing:-.035em;color:var(--text-1)}
+
+/* ── EXPERIMENT CARDS ── */
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.exp-card{background:var(--warm-mid);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform 200ms var(--ease),box-shadow 200ms var(--ease)}
+.exp-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(31,41,51,.1)}
+[data-theme="dark"] .exp-card{background:rgba(255,255,255,.05)}
+.exp-card-img{aspect-ratio:16/9;background:var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.exp-card-img svg{opacity:.25}
+.exp-card-body{padding:24px;flex:1;display:flex;flex-direction:column;gap:12px}
+.exp-card-tag{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
+.exp-card-title{font-family:var(--fd);font-size:18px;font-weight:600;letter-spacing:-.025em;color:var(--text-1)}
+.exp-card-desc{font-size:14px;line-height:1.65;color:var(--text-2);flex:1}
+.exp-card-link{margin-top:4px;font-size:13px;font-weight:500;color:var(--green);display:flex;align-items:center;gap:6px;transition:gap 150ms}
+.exp-card:hover .exp-card-link{gap:10px}
+
+/* ── FEATURED EXPERIMENT ── */
+.featured-exp{border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 420px;min-height:340px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 55%,#0f3460 100%);position:relative}
+@media(max-width:860px){.featured-exp{grid-template-columns:1fr;min-height:auto}}
+.featured-exp-body{padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;z-index:1}
+.featured-exp-badges{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fe-badge-new{background:#27ae60;color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;padding:5px 12px;border-radius:100px;text-transform:uppercase}
+.fe-badge-tag{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);font-size:10px;font-weight:500;letter-spacing:.1em;padding:5px 12px;border-radius:100px;text-transform:uppercase}
+.featured-exp-title{font-family:var(--fd);font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.04em;color:#fff;line-height:1.1}
+.featured-exp-desc{font-size:15px;line-height:1.75;color:rgba(255,255,255,.6);max-width:480px}
+.featured-exp-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:#FFF3B0;color:#1a1a2e;border-radius:100px;font-size:14px;font-weight:700;transition:transform 150ms,box-shadow 150ms;align-self:flex-start}
+.featured-exp-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,243,176,.3)}
+.featured-exp-visual{display:flex;align-items:center;justify-content:center;padding:32px;position:relative}
+@media(max-width:860px){.featured-exp-visual{display:none}}
+
+/* ── FIGMA IFRAME CARD ── */
+.figma-card{background:var(--warm-mid);border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+[data-theme="dark"] .figma-card{background:rgba(255,255,255,.04)}
+.figma-card-header{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--border)}
+.figma-card-title{font-family:var(--fd);font-size:17px;font-weight:600;letter-spacing:-.025em}
+.figma-card-link{font-size:12px;color:var(--text-3);display:flex;align-items:center;gap:6px;flex-shrink:0;transition:color 150ms}
+.figma-card-link:hover{color:var(--text-1)}
+.figma-embed{aspect-ratio:16/9;width:100%;border:none;display:block;background:#f5f5f5}
+
+/* ── MEDIUM POSTS ── */
+.medium-list{display:flex;flex-direction:column;gap:20px}
+.medium-item{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;padding:24px;background:var(--warm-mid);border-radius:14px;transition:transform 150ms}
+.medium-item:hover{transform:translateX(4px)}
+[data-theme="dark"] .medium-item{background:rgba(255,255,255,.04)}
+.medium-num{font-family:var(--fd);font-size:28px;font-weight:700;color:var(--border);letter-spacing:-.04em;width:32px;flex-shrink:0}
+.medium-tag{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.medium-title{font-family:var(--fd);font-size:18px;font-weight:600;letter-spacing:-.025em;margin-bottom:6px;color:var(--text-1)}
+.medium-desc{font-size:14px;line-height:1.6;color:var(--text-2)}
+.medium-cta{margin-top:10px;font-size:12px;color:var(--green);font-weight:500}
+
+/* ── INTERESTS ── */
+.interests-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.interest-item{padding:24px;background:var(--warm-mid);border-radius:14px;display:flex;flex-direction:column;gap:10px}
+[data-theme="dark"] .interest-item{background:rgba(255,255,255,.04)}
+.interest-icon{font-size:24px;line-height:1}
+.interest-title{font-family:var(--fd);font-size:16px;font-weight:600;letter-spacing:-.02em}
+.interest-desc{font-size:13px;line-height:1.6;color:var(--text-2)}
+
+/* ── FOOTER ── */
+.footer{background:var(--charcoal);padding:60px 0;margin-top:0}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.footer-heading{font-family:var(--fd);font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-.04em;color:#FFFDF7;margin-bottom:8px}
+.footer-sub{font-size:14px;color:rgba(255,253,247,.45)}
+.footer-links{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.footer-link{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,247,.5);transition:color 150ms}
+.footer-link:hover{color:#FFF3B0}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .hero{padding:96px 0 60px}
+  .hero-title{font-size:clamp(36px,10vw,56px)}
+  .section-header{flex-direction:column;gap:8px}
+  .exp-grid{grid-template-columns:1fr}
+  .interests-grid{grid-template-columns:1fr 1fr}
+  .nav-tag{display:none}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:32px}
+  .footer-links{align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:16px}
+}
+@media(max-width:480px){
+  .hero-inner,.section-inner{padding:0 16px}
+  .nav-inner{padding:0 16px}
+  .hero-title{font-size:clamp(30px,10vw,44px)}
+  .interests-grid{grid-template-columns:1fr}
+  .medium-item{grid-template-columns:1fr;gap:4px}
+  .medium-num{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-logo">NS</span>
+    </a>
+    <a href="index.html" class="nav-back-btn">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Portfolio
+    </a>
+    <div class="nav-right">
+      <span class="nav-tag">Beyond the brief</span>
+      <button class="theme-switch" id="themeBtn" aria-label="Toggle theme">
+        <svg class="ts-sun" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="8" r="3"/><line x1="8" y1="1" x2="8" y2="2.5"/><line x1="8" y1="13.5" x2="8" y2="15"/>
+          <line x1="1" y1="8" x2="2.5" y2="8"/><line x1="13.5" y1="8" x2="15" y2="8"/>
+          <line x1="2.7" y1="2.7" x2="3.75" y2="3.75"/><line x1="12.25" y1="12.25" x2="13.3" y2="13.3"/>
+          <line x1="13.3" y1="2.7" x2="12.25" y2="3.75"/><line x1="3.75" y1="12.25" x2="2.7" y2="13.3"/>
+          <circle cx="8" cy="8.5" r="1.2" fill="currentColor" stroke="none" opacity=".5"/>
+        </svg>
+        <span class="ts-track"><span class="ts-knob"></span></span>
+        <svg class="ts-moon" viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
+          <path d="M13.5 10.5A6 6 0 0 1 5.5 2.5a6 6 0 1 0 8 8z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Experiments &amp; Explorations</p>
+    <h1 class="hero-title">Beyond<br><em>the brief.</em></h1>
+    <p class="hero-desc">Side projects, design thinking exercises, Figma explorations, and the things I make when nobody's asked me to — a running tab of curiosity.</p>
+  </div>
+</section>
+
+<!-- FEATURED: LUDO GAME -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header" style="margin-bottom:28px">
+      <p class="section-label">Latest · New</p>
+      <h2 class="section-heading">Just shipped</h2>
+    </div>
+    <a href="https://joy-roll-smile.lovable.app/" target="_blank" rel="noopener" style="display:block;text-decoration:none">
+      <div class="featured-exp">
+        <div class="featured-exp-body">
+          <div class="featured-exp-badges">
+            <span class="fe-badge-new">New</span>
+            <span class="fe-badge-tag">Game Design</span>
+            <span class="fe-badge-tag">3D · Built</span>
+          </div>
+          <div>
+            <h2 class="featured-exp-title">Ludo: Play,<br>Learn, Smile</h2>
+          </div>
+          <p class="featured-exp-desc">A 3D Ludo board game for kids aged 5–7. Big buttons, spoken instructions, counting practice — playable in any browser. Built with React + Three.js. No ads, no sign-up.</p>
+          <span class="featured-exp-cta">
+            Play now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="featured-exp-visual">
+          <svg width="200" height="200" viewBox="0 0 120 120" fill="none">
+            <rect x="4" y="4" width="112" height="112" rx="10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+            <rect x="6" y="6" width="48" height="48" rx="7" fill="#e74c3c" fill-opacity=".85"/>
+            <rect x="66" y="6" width="48" height="48" rx="7" fill="#27ae60" fill-opacity=".85"/>
+            <rect x="6" y="66" width="48" height="48" rx="7" fill="#f39c12" fill-opacity=".85"/>
+            <rect x="66" y="66" width="48" height="48" rx="7" fill="#2980b9" fill-opacity=".85"/>
+            <rect x="54" y="6" width="12" height="108" rx="2" fill="rgba(255,255,255,0.1)"/>
+            <rect x="6" y="54" width="108" height="12" rx="2" fill="rgba(255,255,255,0.1)"/>
+            <rect x="46" y="46" width="28" height="28" rx="5" fill="rgba(255,255,255,0.12)"/>
+            <path d="M60 50l2.5 7h7.5l-6 4.5 2.5 7L60 65l-6.5 3.5 2.5-7-6-4.5h7.5z" fill="#FFF3B0"/>
+            <circle cx="22" cy="22" r="8" fill="#fff" fill-opacity=".9"/><circle cx="38" cy="22" r="8" fill="#fff" fill-opacity=".9"/>
+            <circle cx="22" cy="38" r="8" fill="#fff" fill-opacity=".9"/><circle cx="38" cy="38" r="8" fill="#fff" fill-opacity=".9"/>
+            <circle cx="82" cy="22" r="8" fill="#fff" fill-opacity=".9"/><circle cx="98" cy="22" r="8" fill="#fff" fill-opacity=".9"/>
+            <circle cx="82" cy="38" r="8" fill="#fff" fill-opacity=".9"/><circle cx="98" cy="38" r="8" fill="#fff" fill-opacity=".9"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FIGMA EXPLORATIONS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Figma Prototypes</p>
+      <h2 class="section-heading">Register Before Download &amp; Yard Management</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div class="figma-card">
+        <div class="figma-card-header">
+          <h3 class="figma-card-title">Register Before Download</h3>
+          <a href="https://www.figma.com/proto/O6Pn8CKbTuEuN86QRMezLI/Namrata-Singh?page-id=60%3A3&node-id=70-231&viewport=-1111%2C474%2C0.46&scaling=scale-down-width&starting-point-node-id=60%3A4" target="_blank" rel="noopener" class="figma-card-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            Open in Figma
+          </a>
+        </div>
+        <div style="padding:24px">
+          <p style="font-size:14px;line-height:1.7;color:var(--text-2)">A pre-registration flow exploration for game downloads — reducing friction for new users while building intent before the install. Focused on progressive disclosure and conversion-oriented microcopy.</p>
+          <a href="https://www.figma.com/proto/O6Pn8CKbTuEuN86QRMezLI/Namrata-Singh?page-id=60%3A3&node-id=70-231&viewport=-1111%2C474%2C0.46&scaling=scale-down-width&starting-point-node-id=60%3A4" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 20px;background:var(--charcoal);color:#FFFDF7;border-radius:100px;font-size:13px;font-weight:500">View prototype →</a>
+        </div>
+      </div>
+
+      <div class="figma-card">
+        <div class="figma-card-header">
+          <h3 class="figma-card-title">Yard Management System</h3>
+          <a href="https://www.figma.com/proto/O6Pn8CKbTuEuN86QRMezLI/Old-Projects--Games-and-Walmart-?node-id=3947-434&viewport=192%2C341%2C0.05&t=4FOMkthkpbgwMPJ9-1&scaling=scale-down-width&content-scaling=fixed&page-id=60%3A3" target="_blank" rel="noopener" class="figma-card-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            Open in Figma
+          </a>
+        </div>
+        <div style="padding:24px">
+          <p style="font-size:14px;line-height:1.7;color:var(--text-2)">A logistics and warehouse yard management redesign — tracking trucks, docking schedules, and inventory flow in real time. Exploration in data-dense dashboard design with a focus on operator clarity and reducing cognitive load.</p>
+          <a href="https://www.figma.com/proto/O6Pn8CKbTuEuN86QRMezLI/Old-Projects--Games-and-Walmart-?node-id=3947-434&viewport=192%2C341%2C0.05&t=4FOMkthkpbgwMPJ9-1&scaling=scale-down-width&content-scaling=fixed&page-id=60%3A3" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 20px;background:var(--charcoal);color:#FFFDF7;border-radius:100px;font-size:13px;font-weight:500">View prototype →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN EXPERIMENTS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Design Experiments</p>
+      <h2 class="section-heading">Things I build just to learn</h2>
+    </div>
+
+    <div class="exp-grid">
+
+      <div class="exp-card">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#e8f5f0,#c8ead9)">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="12" y="20" width="40" height="28" rx="4" stroke="#2E8B6E" stroke-width="2"/><path d="M20 32h24M20 38h16" stroke="#2E8B6E" stroke-width="1.5" stroke-linecap="round"/><circle cx="44" cy="20" r="8" fill="#2E8B6E" fill-opacity=".15" stroke="#2E8B6E" stroke-width="1.5"/><path d="M41 20l2 2 4-4" stroke="#2E8B6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="exp-card-body">
+          <p class="exp-card-tag">Interaction Design</p>
+          <h3 class="exp-card-title">Notification State Explorations</h3>
+          <p class="exp-card-desc">Exploring how notification systems could adapt their tone — urgent vs. ambient — depending on context and user state. Includes 20+ micro-interaction states.</p>
+          <span class="exp-card-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            In progress
+          </span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#f5f0e8,#ead9c8)">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="10" y="14" width="44" height="36" rx="6" stroke="#835400" stroke-width="2"/><path d="M10 24h44" stroke="#835400" stroke-width="1.5"/><circle cx="18" cy="19" r="2" fill="#835400" fill-opacity=".5"/><circle cx="24" cy="19" r="2" fill="#835400" fill-opacity=".5"/><path d="M20 34l6 6 18-18" stroke="#835400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="exp-card-body">
+          <p class="exp-card-tag">Dashboard Design</p>
+          <h3 class="exp-card-title">Engineering Metrics Dashboard</h3>
+          <p class="exp-card-desc">A personal exploration of how engineering team health data could be visualised beyond bar charts — experimenting with sparklines, signal indicators, and ambient data.</p>
+          <span class="exp-card-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Concept stage
+          </span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#f0e8f5,#d9c8ea)">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="16" stroke="#7B5EA7" stroke-width="2"/><path d="M32 20v12l8 4" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round"/><circle cx="32" cy="32" r="2" fill="#7B5EA7"/></svg>
+        </div>
+        <div class="exp-card-body">
+          <p class="exp-card-tag">AI / Conversational UI</p>
+          <h3 class="exp-card-title">Chatbot Personality Framework</h3>
+          <p class="exp-card-desc">Exploring how a chatbot's personality — tone, vocabulary, response rhythm — changes based on the product context. From support to coaching to companion.</p>
+          <span class="exp-card-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Research phase
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Writing on Medium</p>
+      <h2 class="section-heading">Design thinking, written down</h2>
+    </div>
+
+    <div class="medium-list">
+      <a href="https://medium.com/design-bootcamp/senior-designer-mindset-973c422e46c9" target="_blank" rel="noopener" class="medium-item">
+        <span class="medium-num">01</span>
+        <div>
+          <p class="medium-tag">Career Growth · Bootcamp · Medium</p>
+          <h3 class="medium-title">Senior Designer Mindset</h3>
+          <p class="medium-desc">Learnings and qualities that help you build your designer mindset — from junior UI/UX to Senior Product Designer as a self-taught designer. What it actually takes beyond certifications.</p>
+          <p class="medium-cta">Read on Medium →</p>
+        </div>
+      </a>
+
+      <a href="https://medium.com/design-bootcamp/how-to-work-cross-functionally-e096161653bd" target="_blank" rel="noopener" class="medium-item">
+        <span class="medium-num">02</span>
+        <div>
+          <p class="medium-tag">Collaboration · Bootcamp · Medium</p>
+          <h3 class="medium-title">How to Work Cross-Functionally</h3>
+          <p class="medium-desc">As a designer, you work with many teams — and sometimes it goes well, sometimes it doesn't. A breakdown of what cross-functional really means and how designers can do it effectively.</p>
+          <p class="medium-cta">Read on Medium →</p>
+        </div>
+      </a>
+
+      <a href="https://medium.com/design-bootcamp/designer-roles-and-their-responsibilities-210c85b8cb65" target="_blank" rel="noopener" class="medium-item">
+        <span class="medium-num">03</span>
+        <div>
+          <p class="medium-tag">Career · Bootcamp · Medium</p>
+          <h3 class="medium-title">Designer Roles and Their Responsibilities</h3>
+          <p class="medium-desc">UX, UI, Product, Visual — the titles blur. A clear differentiation of designer roles by skillset and what recruiters actually mean when they write those job descriptions.</p>
+          <p class="medium-cta">Read on Medium →</p>
+        </div>
+      </a>
+
+      <a href="https://medium.com/design-bootcamp/senior-product-designer-interview-update-2022-3f8db235ccbf" target="_blank" rel="noopener" class="medium-item">
+        <span class="medium-num">04</span>
+        <div>
+          <p class="medium-tag">Interviews · Bootcamp · Medium</p>
+          <h3 class="medium-title">Senior Product Designer Interview Update 2022</h3>
+          <p class="medium-desc">Real experience from a senior designer job search — what the UX interview process looks like, what actually matters, and honest observations from someone outside the big tech bubble.</p>
+          <p class="medium-cta">Read on Medium →</p>
+        </div>
+      </a>
+    </div>
+
+    <div style="margin-top:28px;text-align:center">
+      <a href="https://medium.com/@SinghNamrata" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--border);border-radius:100px;font-size:14px;color:var(--text-2);transition:border-color 150ms,color 150ms">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        All posts on Medium
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">Beyond design</p>
+      <h2 class="section-heading">What else keeps me curious</h2>
+    </div>
+
+    <div class="interests-grid">
+      <div class="interest-item">
+        <span class="interest-icon">🎨</span>
+        <h3 class="interest-title">Sketching &amp; Visual Art</h3>
+        <p class="interest-desc">Pen-and-paper wireframes still feel different from pixels. Sketchbooks as thinking tools — not just output.</p>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">📚</span>
+        <h3 class="interest-title">Design Systems &amp; Patterns</h3>
+        <p class="interest-desc">Collecting pattern libraries, studying how component decisions scale across products and teams.</p>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">🤖</span>
+        <h3 class="interest-title">AI &amp; Human Collaboration</h3>
+        <p class="interest-desc">Fascinated by where AI augments judgment vs. replaces it — especially in complex knowledge work.</p>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">🎵</span>
+        <h3 class="interest-title">Music &amp; Rhythm</h3>
+        <p class="interest-desc">Music as a lens for design — how timing, contrast, and repetition create meaning beyond the visual.</p>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">♟</span>
+        <h3 class="interest-title">Strategy Games</h3>
+        <p class="interest-desc">Chess and strategy games as mental models for systems thinking, anticipating second-order effects.</p>
+      </div>
+      <div class="interest-item">
+        <span class="interest-icon">🌱</span>
+        <h3 class="interest-title">Mentoring &amp; Community</h3>
+        <p class="interest-desc">Actively mentoring on ADPList — helping early-career designers find their footing and their voice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENTORING CALLOUT -->
+<section style="background:var(--charcoal);padding:64px 0;margin-top:0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px;flex-wrap:wrap">
+    <div>
+      <p style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,253,247,.35);margin-bottom:14px">ADPList · Mentoring</p>
+      <h2 style="font-family:var(--fd);font-size:clamp(24px,3.5vw,38px);font-weight:600;letter-spacing:-.04em;color:#FFFDF7;margin-bottom:12px">Got a design question?<br>Let's talk.</h2>
+      <p style="font-size:15px;line-height:1.7;color:rgba(255,253,247,.55)">I mentor product designers at all stages — from portfolio reviews to career pivots to navigating enterprise design.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;flex-shrink:0">
+      <a href="https://adplist.org/mentors/namrata-singh" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#FFF3B0;color:#1F2933;border-radius:100px;font-size:14px;font-weight:600;white-space:nowrap">
+        Book a session →
+      </a>
+      <a href="https://www.linkedin.com/in/namrata-singh-namrata1523/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 28px;border:1px solid rgba(255,253,247,.2);color:rgba(255,253,247,.7);border-radius:100px;font-size:13px">
+        Connect on LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <h2 class="footer-heading">Let's connect.</h2>
+      <p class="footer-sub">Open to conversations, collaborations, and complex problems.</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:namratas1502@gmail.com" class="footer-link">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/namrata-singh-namrata1523/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      <a href="https://www.behance.net/namratas1523" target="_blank" rel="noopener" class="footer-link">Behance</a>
+      <a href="https://medium.com/@SinghNamrata" target="_blank" rel="noopener" class="footer-link">Medium</a>
+      <a href="https://adplist.org/mentors/namrata-singh" target="_blank" rel="noopener" class="footer-link">ADPList</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Theme */
+(function(){
+  const btn=document.getElementById('themeBtn');
+  const html=document.documentElement;
+  let dark=localStorage.getItem('theme')==='dark';
+  function apply(){
+    if(dark){html.setAttribute('data-theme','dark');btn.setAttribute('aria-label','Switch to light mode');}
+    else{html.setAttribute('data-theme','light');btn.setAttribute('aria-label','Switch to dark mode');}
+    localStorage.setItem('theme',dark?'dark':'light');
+  }
+  btn.addEventListener('click',()=>{dark=!dark;apply();});
+  apply();
+})();
+</script>
+</body>
+</html>

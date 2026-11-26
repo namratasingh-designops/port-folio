@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Rummy Chatbot — A conversational AI for Games24x7 handling 40+ conversation flows to resolve routine player queries, designed by Namrata Singh."/>
+<meta property="og:title" content="Rummy Chatbot — Namrata Singh"/>
+<meta property="og:description" content="Designed a conversational AI for Games24x7 that handles 40+ conversation flows, resolving routine queries without a human agent."/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://www.namrata-singh.com/rummy-chatbot"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rummy Chatbot — Namrata Singh"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<title>Rummy Chatbot — Namrata Singh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700&family=Roboto+Mono:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --peach:#faece6;
+  --amber:#835400;
+  --rose:#a37e71;
+  --peach-mid:#f2ddd4;
+  --peach-light:#fdf5f1;
+  --amber-faint:rgba(131,84,0,.08);
+  --amber-border:rgba(131,84,0,.15);
+  --text-1:#835400;
+  --text-2:rgba(131,84,0,.72);
+  --text-3:rgba(131,84,0,.42);
+  --fd:'Roboto','Helvetica Neue',Arial,sans-serif;
+  --fb:'Roboto','Helvetica Neue',Arial,sans-serif;
+  --fm:'Roboto Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--peach);color:var(--text-1);font-family:var(--fd);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+.cs-nav{position:fixed;top:0;left:0;right:0;z-index:900;
+  background:rgba(131,84,0,.92);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;height:52px;padding:0 24px;gap:16px}
+.cs-nav-back{display:flex;align-items:center;gap:8px;color:rgba(250,236,230,.7);font-family:var(--fb);font-size:13px;transition:color 150ms;cursor:pointer}
+.cs-nav-back:hover{color:#faece6}
+.cs-nav-back svg{flex-shrink:0}
+.cs-nav-divider{width:1px;height:16px;background:rgba(255,255,255,.2)}
+.cs-nav-logo{font-family:var(--fb);font-size:15px;font-weight:700;color:#faece6;letter-spacing:-.02em}
+.cs-nav-tag{font-size:12px;color:rgba(250,236,230,.45);letter-spacing:.04em;margin-left:auto}
+
+/* ── HERO ── */
+.hero{padding-top:52px;background:var(--amber);min-height:440px;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;overflow:hidden;position:relative}
+.hero::after{content:'';position:absolute;right:-120px;top:-80px;width:480px;height:480px;border-radius:50%;background:rgba(250,236,230,.06);pointer-events:none}
+.hero::before{content:'';position:absolute;right:60px;bottom:-100px;width:300px;height:300px;border-radius:50%;background:rgba(250,236,230,.04);pointer-events:none}
+.hero-l{padding:64px 40px 64px max(24px,calc((100vw - 1200px)/2 + 24px));position:relative;z-index:1}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,236,230,.5);margin-bottom:18px}
+.hero-title{font-size:clamp(34px,4vw,54px);font-weight:700;letter-spacing:-.04em;line-height:1.05;color:#faece6;margin-bottom:10px}
+.hero-title-sub{font-size:clamp(16px,2vw,22px);font-weight:300;color:rgba(250,236,230,.55);letter-spacing:-.01em;margin-bottom:28px}
+.hero-meta{display:flex;flex-direction:column;gap:9px}
+.hero-meta-row{display:flex;gap:0;align-items:baseline}
+.hero-meta-label{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,236,230,.3);width:90px;flex-shrink:0}
+.hero-meta-val{font-size:14px;color:rgba(250,236,230,.68);font-weight:300}
+.hero-r{height:100%;min-height:440px;position:relative;overflow:hidden}
+.hero-r img{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.75}
+.hero-r::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--amber) 0%,transparent 35%);z-index:1}
+.hero-r-fallback{width:100%;height:100%;min-height:440px;display:flex;align-items:center;justify-content:center;background:rgba(250,236,230,.06);position:relative}
+
+/* ── CONTENT ── */
+.inner{max-width:840px;margin:0 auto;padding:0 24px}
+.section{padding:72px 0}
+.section.alt{background:var(--peach-light)}
+.section.amber{background:var(--amber);color:#faece6}
+.section-label{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px}
+.section.amber .section-label{color:rgba(250,236,230,.38)}
+.section-heading{font-size:clamp(26px,3vw,36px);font-weight:600;letter-spacing:-.035em;line-height:1.1;margin-bottom:24px}
+.section.amber .section-heading{color:#faece6}
+.section-body{font-size:16px;line-height:1.78;color:var(--text-2);font-weight:300}
+.section.amber .section-body{color:rgba(250,236,230,.65)}
+
+/* ── INTRO ── */
+.intro-para{font-size:clamp(16px,1.8vw,19px);font-weight:300;line-height:1.75;color:var(--text-2)}
+
+/* ── KNOW LIST ── */
+.know-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.know-list li{display:flex;gap:14px;font-size:15px;line-height:1.65;color:var(--text-2);font-weight:300}
+.know-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--rose);flex-shrink:0;margin-top:8px}
+
+/* ── HYPOTHESIS BOX ── */
+.hypothesis-box{background:var(--amber-faint);border:1px solid var(--amber-border);border-radius:14px;padding:32px 36px;margin-top:0}
+.hypothesis-num{font-size:clamp(42px,6vw,72px);font-weight:700;color:var(--rose);letter-spacing:-.05em;line-height:1;margin-bottom:8px}
+.hypothesis-label{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px}
+.hypothesis-text{font-size:16px;line-height:1.75;color:var(--text-2);font-weight:300}
+
+/* ── APPROACH ── */
+.approach-text{font-size:16px;line-height:1.78;color:rgba(250,236,230,.65);font-weight:300;margin-bottom:32px}
+.approach-key{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:rgba(250,236,230,.1);border:1px solid rgba(250,236,230,.2);border-radius:100px;font-size:14px;color:#faece6;font-weight:500}
+
+/* ── PROCESS STEPS ── */
+.process-intro{font-size:16px;line-height:1.75;color:var(--text-2);font-weight:300;margin-bottom:40px}
+.process-step{display:grid;grid-template-columns:48px 1fr;gap:20px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--amber-border)}
+.process-step:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.step-num-badge{width:40px;height:40px;border-radius:50%;background:var(--amber-faint);border:1px solid var(--amber-border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--text-3);flex-shrink:0;margin-top:2px}
+.step-content{}
+.step-title{font-size:16px;font-weight:600;color:var(--text-1);margin-bottom:6px;letter-spacing:-.02em}
+.step-desc{font-size:14px;line-height:1.65;color:var(--text-2);font-weight:300}
+
+/* ── IMG CARDS ── */
+.img-card{border-radius:14px;overflow:hidden;border:1px solid var(--amber-border);background:var(--peach-mid);margin-top:24px}
+.img-card img{width:100%;display:block}
+.img-card-caption{padding:10px 16px;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);border-top:1px solid var(--amber-border)}
+
+/* ── DESIGN DRAFTS GRID ── */
+.drafts-intro{font-size:16px;line-height:1.75;color:var(--text-2);font-weight:300;margin-bottom:36px}
+.drafts-group{margin-bottom:48px}
+.drafts-group-title{font-size:13px;font-weight:600;letter-spacing:.04em;text-align:center;color:var(--text-1);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--amber-border)}
+.drafts-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.draft-phone{border-radius:12px;overflow:hidden;border:1px solid var(--amber-border);background:var(--peach-mid)}
+.draft-phone img{width:120px;height:auto;display:block}
+
+/* ── FINAL DESIGNS ── */
+.final-section{margin-bottom:56px}
+.final-section-label{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);text-align:center;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--amber-border)}
+.final-screens{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.final-phone{border-radius:16px;overflow:hidden;border:1px solid var(--amber-border);background:var(--peach-mid)}
+.final-phone img{width:200px;height:auto;display:block}
+.before-after{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center}
+.ba-img{border-radius:12px;overflow:hidden;border:1px solid var(--amber-border);background:var(--peach-mid)}
+.ba-img img{width:100%;display:block}
+.ba-arrow{font-size:24px;color:var(--rose);text-align:center;flex-shrink:0}
+.ba-label{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);text-align:center;margin-top:8px}
+
+/* ── FLOW SCREENS ── */
+.flows-label{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);text-align:center;margin-bottom:28px}
+.flows-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.flow-item{position:relative}
+.flow-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#faece6;border:1px solid var(--amber-border);border-radius:100px;padding:4px 14px;font-size:11px;font-weight:600;color:var(--text-1);white-space:nowrap;z-index:2}
+.flow-device{border-radius:28px;overflow:hidden;border:2px solid var(--amber-border);background:var(--peach-mid);box-shadow:0 12px 40px rgba(131,84,0,.15)}
+.flow-device img{width:100%;display:block}
+
+/* ── METRICS ── */
+.metrics-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.metric-card{background:rgba(250,236,230,.45);border:1px solid rgba(255,255,255,.5);border-radius:12px;padding:22px 24px}
+.metric-num{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,236,230,.4);margin-bottom:8px}
+.metric-text{font-size:14px;line-height:1.6;color:#faece6;font-weight:300}
+
+/* ── FOOTER ── */
+.cs-footer{background:var(--amber);padding:60px 0;border-top:1px solid rgba(255,255,255,.1)}
+.footer-heading{font-size:clamp(28px,3vw,40px);font-weight:600;letter-spacing:-.04em;color:#faece6;margin-bottom:8px}
+.footer-sub{font-size:14px;color:rgba(250,236,230,.45)}
+.footer-links{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.footer-link{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,236,230,.5);transition:color 150ms}
+.footer-link:hover{color:#faece6}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-l{padding:80px 24px 48px}
+  .hero-r{min-height:280px;height:280px}
+  .metrics-grid,.flows-grid{grid-template-columns:1fr}
+  .before-after{grid-template-columns:1fr 1fr;gap:12px}
+  .ba-arrow{display:none}
+  .cs-footer .inner{display:grid;grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .draft-phone img{width:90px}
+  .final-phone img{width:150px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="cs-nav">
+  <a href="index.html" class="cs-nav-back" aria-label="Back to portfolio">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back
+  </a>
+  <span class="cs-nav-divider"></span>
+  <span class="cs-nav-logo">NS</span>
+  <span class="cs-nav-tag">Rummy Chatbot · Games24x7</span>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-l">
+    <p class="hero-eyebrow">Case Study · Games24x7 · 2022</p>
+    <h1 class="hero-title">Chatbot</h1>
+    <p class="hero-title-sub">Rummy &amp; Fantasy</p>
+    <div class="hero-meta">
+      <div class="hero-meta-row"><span class="hero-meta-label">Company</span><span class="hero-meta-val">Games24x7</span></div>
+      <div class="hero-meta-row"><span class="hero-meta-label">Role</span><span class="hero-meta-val">Product Designer</span></div>
+      <div class="hero-meta-row"><span class="hero-meta-label">Platform</span><span class="hero-meta-val">Haptik (Conversational AI)</span></div>
+      <div class="hero-meta-row"><span class="hero-meta-label">Scale</span><span class="hero-meta-val">~1.9 lakh tickets/month</span></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="hero-r-fallback">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" opacity=".15"><rect x="20" y="30" width="80" height="60" rx="8" fill="#faece6"/><rect x="30" y="45" width="40" height="6" rx="3" fill="#faece6"/><rect x="30" y="57" width="60" height="4" rx="2" fill="#faece6"/><rect x="30" y="67" width="50" height="4" rx="2" fill="#faece6"/><circle cx="90" cy="85" r="14" fill="#a37e71"/><path d="M84 85l4 4 8-8" stroke="#faece6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="section">
+  <div class="inner">
+    <p class="intro-para">A chatbot redesign to transform customer support for Rummy and Fantasy products at Games24x7 — moving from fully human-routed tickets to an intelligent self-service system built on Haptik's conversational AI platform, targeting 75% query resolution without human agent intervention.</p>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="section alt">
+  <div class="inner">
+    <p class="section-label">The Problem</p>
+    <h2 class="section-heading">Manual-only support at scale</h2>
+    <p class="section-body">Customer support can be self-service, especially for the large number of repetitive / redundant queries we get from our customers and we don't have any chat support in our system. For each query we transfer to a human service agent from our CS team.</p>
+    <p class="section-body" style="margin-top:16px">We want to make customer support more transparent, quicker and easier for end users. Additionally, there are a bunch of experience issues as well listed below.</p>
+
+    <p class="section-label" style="margin-top:40px">What We Know</p>
+    <ul class="know-list">
+      <li>All tickets / calls routed to ticket creation (~1.9 lakh p.m.). Significant number of open tickets with no resolution tracking</li>
+      <li>There are 3 sections for end users to find support: Help, Contact Us, and Support on the web. This is super confusing for end users</li>
+      <li>Another confusion is that "Help" on Web is marketing content, whereas on the app it leads to a list of FAQs — there is a need to standardize and clean up the support experience</li>
+      <li>Players do not have visibility on their issues raised, i.e. there's no tracking on their complaints, etc.</li>
+      <li>If an article is not helpful, a player should be able to contact support easily. Instead, the user will today have to navigate back and forth to find touchpoints to connect with us.</li>
+    </ul>
+
+    <div class="img-card" style="margin-top:32px">
+      <img src="image/rc-existing-pages.png" alt="Existing pages with/without Help and Support"/>
+      <p class="img-card-caption">Existing pages — Help and Support touchpoints before redesign</p>
+    </div>
+  </div>
+</section>
+
+<!-- HYPOTHESIS -->
+<section class="section">
+  <div class="inner">
+    <p class="section-label">Hypothesis</p>
+    <h2 class="section-heading">Target 75% self-service</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px">
+      <div class="hypothesis-box">
+        <p class="hypothesis-num">75%</p>
+        <p class="hypothesis-label">Self-service target</p>
+        <p class="hypothesis-text">User queries resolved without intervention of human agents — via chatbot automation.</p>
+      </div>
+      <div class="hypothesis-box">
+        <p class="hypothesis-num">25%</p>
+        <p class="hypothesis-label">Human agent escalation</p>
+        <p class="hypothesis-text">Only complex queries escalated to CS team — open tickets only for genuinely unresolved cases.</p>
+      </div>
+    </div>
+    <p class="section-body">We want to eventually target ~75% user query resolution without the intervention of human agents. That means only complex ~25% queries get transferred to human agents (Games24x7 employees who are resolving queries, i.e. open tickets). Also, we want a speedy, easier and simpler UX for end users to find answers to their questions. This will impact CSAT and also long term help us reduce manpower costs.</p>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section amber">
+  <div class="inner">
+    <p class="section-label">Approach to Solution</p>
+    <h2 class="section-heading">Chatbot as first line of defense</h2>
+    <p class="approach-text">Deploy a chatbot (virtual chat assistant) as the 1st line of defense for end users. The chatbot, via its integration capabilities, is supposed to answer the majority of end-user queries.</p>
+    <p class="approach-text">Only open tickets that are user queries wherein users do not get a resolution, should then form a ticket for our CS team to handle.</p>
+    <span class="approach-key">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Powered by Haptik — Conversational AI Platform
+    </span>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section alt">
+  <div class="inner">
+    <p class="section-label">The Process</p>
+    <h2 class="section-heading">Research to ready-for-dev</h2>
+    <p class="process-intro">After seeing the current flow and pages, I mapped where help and support should be added, conducted competitor research, and iterated through design drafts before final stakeholder approval.</p>
+
+    <div class="process-step">
+      <span class="step-num-badge">01</span>
+      <div class="step-content">
+        <h3 class="step-title">Map the Existing App Flow</h3>
+        <p class="step-desc">I mapped the existing app flow to identify where Help &amp; Support touchpoints should be added — creating a proposed flow showing exactly where chatbot entry points would live.</p>
+        <div class="img-card">
+          <img src="image/rc-flow.png" alt="Flow where help and support can be added"/>
+          <p class="img-card-caption">Flow where help and support can be added</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <span class="step-num-badge">02</span>
+      <div class="step-content">
+        <h3 class="step-title">Competitor Analysis</h3>
+        <p class="step-desc">After flow creation I did market and competitor analysis to understand how other apps are solving customer support. First I checked how many apps are using chatbots — starting with well-known examples like Amazon, Zomato, and Swiggy, then looking closely at direct competitors Junglee Rummy and Dream11.</p>
+        <div class="img-card" style="margin-bottom:12px">
+          <img src="image/rc-chatbot-apps.png" alt="Apps that are using chatbot"/>
+          <p class="img-card-caption">Apps using chatbot support — landscape research</p>
+        </div>
+        <div class="img-card" style="margin-bottom:12px">
+          <img src="image/rc-chatbot-types.png" alt="Type of chatbots used by companies"/>
+          <p class="img-card-caption">Types of chatbots used by different companies</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="img-card" style="margin-top:0">
+            <img src="image/rc-junglee.png" alt="Junglee Rummy support"/>
+            <p class="img-card-caption">Junglee Rummy</p>
+          </div>
+          <div class="img-card" style="margin-top:0">
+            <img src="image/rc-dream11.png" alt="Dream11 support"/>
+            <p class="img-card-caption">Dream11</p>
+          </div>
+          <div class="img-card" style="margin-top:0">
+            <img src="image/rc-zomato.png" alt="Zomato chatbot"/>
+            <p class="img-card-caption">Zomato</p>
+          </div>
+          <div class="img-card" style="margin-top:0">
+            <img src="image/rc-swiggy.png" alt="Swiggy chatbot"/>
+            <p class="img-card-caption">Swiggy</p>
+          </div>
+          <div class="img-card" style="margin-top:0;grid-column:1/-1">
+            <img src="image/rc-amazon.png" alt="Amazon chatbot"/>
+            <p class="img-card-caption">Amazon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <span class="step-num-badge">03</span>
+      <div class="step-content">
+        <h3 class="step-title">Design Drafts</h3>
+        <p class="step-desc">Once done with all research, I started working on first design drafts covering all use cases and scenarios — five help home options, two chat initiation options, and three CTA/page style variations.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <span class="step-num-badge">04</span>
+      <div class="step-content">
+        <h3 class="step-title">Stakeholder Review &amp; Tech Handoff</h3>
+        <p class="step-desc">After months of research, ideation, and design iterations, the final work was shared with stakeholders and approved for handoff to the tech team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN DRAFTS -->
+<section class="section">
+  <div class="inner">
+    <p class="section-label">Design Exploration</p>
+    <h2 class="section-heading">Exploring the design space</h2>
+    <p class="drafts-intro">I explored multiple design directions for each key component — ensuring all use cases and edge cases were covered before converging on the final solution.</p>
+
+    <div class="drafts-group">
+      <p class="drafts-group-title">Help &amp; Support Home Page — Design Options</p>
+      <div class="drafts-grid">
+        <div class="draft-phone"><img src="image/rc-draft-opt1.png" alt="Help support option 1"/></div>
+        <div class="draft-phone"><img src="image/rc-draft-opt2.png" alt="Help support option 2"/></div>
+        <div class="draft-phone"><img src="image/rc-draft-opt1.png" alt="Help support option 3"/></div>
+        <div class="draft-phone"><img src="image/rc-draft-opt4.png" alt="Option 66"/></div>
+        <div class="draft-phone"><img src="image/rc-draft-opt5.png" alt="Option 86"/></div>
+      </div>
+    </div>
+
+    <div class="drafts-group">
+      <p class="drafts-group-title">Chat Initiation Point Designs</p>
+      <div class="drafts-grid">
+        <div class="draft-phone"><img src="image/rc-chat-init1.png" alt="Chat initiation option 1"/></div>
+        <div class="draft-phone"><img src="image/rc-chat-init2.png" alt="Chat initiation option 2"/></div>
+      </div>
+    </div>
+
+    <div class="drafts-group">
+      <p class="drafts-group-title">Different Styles for CTAs and Pages</p>
+      <div class="drafts-grid">
+        <div class="draft-phone"><img src="image/rc-cta1.png" alt="CTA style option 1"/></div>
+        <div class="draft-phone"><img src="image/rc-cta2.png" alt="CTA style option 2"/></div>
+        <div class="draft-phone"><img src="image/rc-contact-form.png" alt="Contact form"/></div>
+        <div class="draft-phone"><img src="image/rc-quick-links.png" alt="Quick links option 1"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL DESIGNS -->
+<section class="section alt">
+  <div class="inner">
+    <p class="section-label">Final Outcome</p>
+    <h2 class="section-heading">Final designs &amp; flows</h2>
+    <p class="drafts-intro" style="margin-bottom:40px">After months of research, ideations, and design iterations — the final work received stakeholder approval and was handed over to tech.</p>
+
+    <div class="final-section">
+      <p class="final-section-label">Final Help Home Page</p>
+      <div class="final-screens">
+        <div class="final-phone"><img src="image/rc-final-home1.png" alt="Final help home page variant 1"/></div>
+        <div class="final-phone"><img src="image/rc-final-home2.png" alt="Final help home page variant 2"/></div>
+      </div>
+    </div>
+
+    <div class="final-section">
+      <p class="final-section-label">Ticket Creation</p>
+      <div class="final-screens">
+        <div class="final-phone"><img src="image/rc-ticket1.png" alt="Ticket creation screen 1"/></div>
+        <div class="final-phone"><img src="image/rc-ticket2.png" alt="Ticket creation screen 2"/></div>
+      </div>
+    </div>
+
+    <div class="final-section">
+      <p class="final-section-label">Inner Pages — Chat &amp; Like/Dislike Actions</p>
+      <div class="final-screens">
+        <div class="final-phone"><img src="image/rc-inner-page.png" alt="Inner page with chat and like dislike"/></div>
+      </div>
+    </div>
+
+    <div class="final-section">
+      <p class="final-section-label">Main Menu Update — Before &amp; After</p>
+      <div class="before-after">
+        <div>
+          <div class="ba-img"><img src="image/rc-menu-before.png" alt="Main menu before"/></div>
+          <p class="ba-label">Before</p>
+        </div>
+        <div class="ba-arrow">→</div>
+        <div>
+          <div class="ba-img"><img src="image/rc-menu-after.png" alt="Main menu after"/></div>
+          <p class="ba-label">After</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="final-section">
+      <p class="final-section-label">Lobby Screen — Before &amp; After</p>
+      <div class="before-after">
+        <div>
+          <div class="ba-img"><img src="image/rc-lobby-before.png" alt="Lobby before"/></div>
+          <p class="ba-label">Before</p>
+        </div>
+        <div class="ba-arrow">→</div>
+        <div>
+          <div class="ba-img"><img src="image/rc-lobby-after.png" alt="Lobby after"/></div>
+          <p class="ba-label">After</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL FLOWS -->
+<section class="section">
+  <div class="inner">
+    <p class="section-label">Final Flows</p>
+    <h2 class="section-heading" style="margin-bottom:8px">Complete chatbot conversation flows</h2>
+    <p class="section-body" style="margin-bottom:40px">Four flow states showing the complete user journey through the chatbot — from the Help Home through FAQs, Ticket Creation, Quick Links, and Call/Chat escalation.</p>
+
+    <div class="flows-grid">
+      <div class="flow-item" style="padding-top:20px">
+        <span class="flow-badge">FAQs</span>
+        <div class="flow-device"><img src="image/rc-flow-faqs-web.png" alt="Chatbot FAQs flow"/></div>
+      </div>
+      <div class="flow-item" style="padding-top:20px">
+        <span class="flow-badge">Ticket Creation</span>
+        <div class="flow-device"><img src="image/rc-flow-ticket-web.png" alt="Ticket creation flow"/></div>
+      </div>
+      <div class="flow-item" style="padding-top:20px">
+        <span class="flow-badge">Quick Links</span>
+        <div class="flow-device"><img src="image/rc-flow-quicklinks-web.png" alt="Quick links flow"/></div>
+      </div>
+      <div class="flow-item" style="padding-top:20px">
+        <span class="flow-badge">Call &amp; Chat</span>
+        <div class="flow-device"><img src="image/rc-flow-callchat-web.png" alt="Call and chat escalation flow"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="section amber">
+  <div class="inner">
+    <p class="section-label">Metrics to Measure</p>
+    <h2 class="section-heading">Measuring what matters</h2>
+    <p class="approach-text">Seven KPIs to track the impact of the chatbot system on customer support performance and satisfaction.</p>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <p class="metric-num">KPI 01</p>
+        <p class="metric-text">Bot automation % — number of queries a bot handled end to end daily/weekly</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-num">KPI 02</p>
+        <p class="metric-text">Number of queries transferred to a human agent daily/weekly</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-num">KPI 03</p>
+        <p class="metric-text">Average resolution time — were we able to bring down resolution time?</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-num">KPI 04</p>
+        <p class="metric-text">Average response time — having a bot would have sped up response times</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-num">KPI 05</p>
+        <p class="metric-text">CSAT — how many customers are unhappy with the query resolution?</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-num">KPI 06</p>
+        <p class="metric-text">Bot accuracy % — # of conversations without bot breaks / total conversations</p>
+      </div>
+      <div class="metric-card" style="grid-column:1/-1">
+        <p class="metric-num">KPI 07</p>
+        <p class="metric-text">Average Bot conversations count per player in a given time period</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="cs-footer">
+  <div class="inner" style="display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px">
+    <div>
+      <h2 class="footer-heading">Let's connect.</h2>
+      <p class="footer-sub">Open to new conversations, collaborations, and complex problems.</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:namratas1502@gmail.com" class="footer-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/namrata-singh-namrata1523/" target="_blank" rel="noopener" class="footer-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.behance.net/namratas1523" target="_blank" rel="noopener" class="footer-link">Behance</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

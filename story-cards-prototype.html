@@ -1,0 +1,1730 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Story Cards — Option 2 Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Mono:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+<style>
+:root {
+  /* Namrata's warm palette */
+  --bg:#FFFDF7; --surface:#FFFFFF; --surface-dk:#1F2933;
+  --border:rgba(31,41,51,.12); --text-1:#1F2933; --text-2:rgba(31,41,51,.60); --text-3:rgba(31,41,51,.38);
+  /* Green — earthy */
+  --green:#2E8B6E; --green-mid:#37A07F; --green-lt:#CDEEDB; --green-tint:#EBF7F3;
+  /* Amber — warm lemon */
+  --amber:#7A5C00; --amber-lt:#FFF3B0;
+  /* Indigo — muted lavender */
+  --indigo:#5B4FCB; --indigo-lt:#E4DDF5;
+  /* Orange — soft peach/terracotta */
+  --orange:#9B4A30; --orange-lt:#FFDCC8; --orange-line:#F5C4AE;
+  /* Blue — soft sky */
+  --blue:#2563EB; --blue-lt:#CFE8F7;
+  --r:14px; color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text-1);font-family:'Roboto',sans-serif;font-size:15px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:48px 80px}
+.wrap{max-width:820px;margin:0 auto}
+.pg-eyebrow{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.pg-hd h1{font-size:clamp(22px,3.5vw,32px);font-weight:700;letter-spacing:-.025em;margin-bottom:8px;text-wrap:balance}
+.pg-hd p{font-size:14px;color:var(--text-2);max-width:560px;line-height:1.65}
+.pg-note{margin-top:14px;display:inline-flex;align-items:center;gap:8px;background:var(--amber-lt);border:1px solid color-mix(in srgb,var(--amber) 25%,transparent);border-radius:8px;padding:8px 14px;font-size:12.5px;color:var(--amber)}
+.pg-hd{margin-bottom:40px}
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:24px}
+.sc-head{display:grid;grid-template-columns:100px 1fr;min-height:100px}
+.sc-thumb{display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.4);writing-mode:vertical-rl}
+.sc-meta{padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:3px;border-left:1px solid rgba(0,0,0,.07)}
+.sc-title{font-size:15px;font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.nda-tag{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--green);border-radius:3px;color:var(--green);flex-shrink:0}
+.sc-co{font-size:12px;color:var(--text-3)}
+.sc-metric{display:inline-flex;align-items:center;gap:6px;margin-top:6px;align-self:flex-start;background:var(--green-tint);border:1px solid var(--green-lt);border-radius:100px;padding:4px 12px;font-size:11.5px;font-weight:500;color:var(--green)}
+.sc-tabs{display:flex;border-top:1px solid var(--border);overflow-x:auto}
+.sc-tab{flex:1;min-width:0;padding:10px 4px;text-align:center;font-size:11.5px;font-weight:500;letter-spacing:.04em;color:var(--text-3);border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none;font-family:'Roboto',sans-serif;transition:color .15s}
+.sc-tab:hover{color:var(--text-2)}
+.sc-tab.active{color:var(--text-1);border-bottom-color:var(--text-1)}
+.sc-tab.concept-tab.active{color:var(--indigo);border-bottom:3px solid var(--indigo);box-shadow:0 2px 8px rgba(91,79,203,0.25)}
+.sc-tab.demo-tab.active{color:var(--green);border-bottom:3px solid var(--green);box-shadow:0 2px 8px rgba(46,139,110,0.25)}
+/* POC → MVP evolution section */
+.poc-mvp-section{margin-top:20px;border-top:1px solid var(--border);padding-top:20px}
+.poc-mvp-phase{margin-bottom:4px}
+.poc-mvp-phase-header{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.phase-badge{font-size:9px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:10px;text-transform:uppercase}
+.phase-poc{background:#FFDCC8;color:#9B4A30}
+.phase-mvp{background:#E4DDF5;color:#5B4FCB}
+.poc-mvp-h{font-size:12.5px;font-weight:600;color:var(--text-1);margin:0}
+.poc-mvp-desc{font-size:11.5px;color:var(--text-2);line-height:1.55;margin:0 0 10px}
+.poc-flow-img{width:100%;border-radius:6px;border:1px solid var(--border);display:block;cursor:zoom-in}
+.poc-mvp-caption{font-size:10px;color:var(--text-2);margin-top:5px;text-align:center;line-height:1.4}
+.poc-mvp-transition{display:flex;flex-direction:column;align-items:center;gap:5px;margin:18px 0;padding:12px 16px;background:var(--surface);border-radius:8px;border:1px solid var(--border)}
+.poc-mvp-transition-text{font-size:11px;color:var(--text-2);text-align:center;font-weight:500;line-height:1.4}
+.poc-mvp-arrow{font-size:16px;color:var(--text-2)}
+.workflow-spotlight{margin-bottom:16px;border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.workflow-spotlight-label{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--indigo);margin-bottom:6px}
+.workflow-screens-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.workflow-screens-scroll{display:flex;overflow-x:auto;gap:8px;margin-top:8px;padding-bottom:6px;scrollbar-width:thin}
+.workflow-screens-scroll .workflow-screen-item{flex-shrink:0;width:160px}
+.workflow-screen-item .scr-wrap{position:relative;border-radius:5px;overflow:hidden}
+.workflow-screen-item .scr-wrap img{width:100%;display:block;border-radius:5px;border:1px solid var(--border);cursor:zoom-in}
+.workflow-screen-cap{font-size:9px;color:var(--text-2);margin-top:4px;line-height:1.35;text-align:center}
+.sc-panel{display:none;padding:20px 22px 24px}
+.sc-panel.active{display:block}
+#ir-demo.sc-panel,#ia-demo.sc-panel{padding:0;overflow:hidden;border-radius:0 0 var(--r) var(--r)}
+.sc-panel p{font-size:13.5px;color:var(--text-2);line-height:1.72}
+.concept-wrap{display:flex;flex-direction:column;gap:24px}
+.flow-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:12px}
+.concept-principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.cp-item{padding:14px 16px;border-radius:10px;background:var(--bg);border:1px solid var(--border)}
+.cp-icon{font-size:18px;margin-bottom:8px}
+.cp-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:4px}
+.cp-text{font-size:12px;color:var(--text-2);line-height:1.55}
+.flow-nodes{display:flex;align-items:center;gap:0;flex-wrap:wrap}
+.flow-node{flex:1;min-width:80px;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);text-align:center}
+.flow-node-icon{font-size:16px;margin-bottom:4px}
+.flow-node-title{font-size:10.5px;font-weight:600;color:var(--text-1);margin-bottom:2px}
+.flow-node-sub{font-size:9.5px;color:var(--text-3);line-height:1.4}
+.flow-node.ai{background:#EBF7F1;border-color:var(--green-lt)}
+.flow-node.ai .flow-node-title{color:var(--green)}
+.flow-node.human{background:var(--indigo-lt);border-color:color-mix(in srgb,var(--indigo) 20%,transparent)}
+.flow-node.human .flow-node-title{color:var(--indigo)}
+.flow-node.decision{background:var(--amber-lt);border-color:color-mix(in srgb,var(--amber) 20%,transparent)}
+.flow-node.decision .flow-node-title{color:var(--amber)}
+.flow-arrow{flex-shrink:0;color:var(--text-3);font-size:14px;padding:0 6px}
+.hitl-banner{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--indigo-lt);border:1px solid color-mix(in srgb,var(--indigo) 20%,transparent);border-radius:10px;border-left:3px solid var(--indigo)}
+.hitl-icon{font-size:20px;flex-shrink:0}
+.hitl-text h4{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);margin-bottom:4px}
+.hitl-text p{font-size:12.5px;color:var(--text-2);line-height:1.55}
+.wireframe{border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.wf-bar{background:#EEE9E0;padding:8px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.wf-dot{width:8px;height:8px;border-radius:50%}
+.wf-title{font-size:10px;color:var(--text-3);letter-spacing:.06em;text-transform:uppercase;font-family:'Roboto Mono',monospace}
+.wf-body{padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.wf-row{display:flex;gap:10px}
+.wf-block{border-radius:6px;background:var(--surface);border:1px solid var(--border)}
+.wf-block-label{font-size:9px;padding:6px 10px 0;color:var(--text-3);font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.wf-block-content{padding:6px 10px 10px}
+.wf-pill{display:inline-block;height:10px;border-radius:100px;background:var(--border);margin:2px 2px 0 0}
+.wf-pill.green{background:var(--green-lt)}
+.wf-pill.amber{background:#FDE68A}
+.wf-pill.red{background:#FECACA}
+.wf-ai-box{background:#EBF7F1;border:1px solid var(--green-lt);border-radius:6px;padding:8px 12px;display:flex;gap:8px;align-items:flex-start}
+.wf-ai-badge{font-size:8px;font-weight:700;padding:2px 6px;background:var(--green);color:#fff;border-radius:100px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.wf-ai-lines{display:flex;flex-direction:column;gap:4px;flex:1}
+.wf-ai-line{height:8px;border-radius:100px;background:rgba(10,92,56,.15)}
+.wf-provenance{display:inline-flex;align-items:center;gap:5px;font-size:8px;font-weight:700;padding:2px 6px;border-radius:4px;margin-bottom:4px}
+.wf-provenance.draft{background:var(--orange-lt);color:var(--orange);border:1px solid var(--orange-line)}
+.wf-provenance.reviewed{background:var(--green-tint);color:var(--green);border:1px solid var(--green-lt)}
+.wf-panels{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wf-panel-head{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text-3)}
+.wf-chat-msg{display:flex;gap:6px;padding:6px 10px}
+.wf-chat-av{width:18px;height:18px;border-radius:4px;flex-shrink:0;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--blue)}
+.wf-chat-bubble{background:var(--orange-lt);border-radius:4px;padding:5px 8px;flex:1}
+.wf-chat-line{height:7px;border-radius:100px;background:rgba(0,0,0,.12);margin-bottom:3px}
+.wf-chat-actions{display:flex;gap:4px;margin-top:4px}
+.wf-chat-btn{font-size:7px;padding:2px 6px;border-radius:3px;border:1px solid var(--border);background:var(--surface);color:var(--text-2)}
+.wf-chat-btn.primary{background:var(--green);color:#fff;border-color:var(--green)}
+.wf-table{width:100%;border-collapse:collapse;font-size:9px}
+.wf-table th{padding:5px 8px;text-align:left;border-bottom:1px solid var(--border);color:var(--text-3);font-weight:600;font-size:8px;text-transform:uppercase;letter-spacing:.06em}
+.wf-table td{padding:5px 8px;border-bottom:1px solid var(--border);color:var(--text-2)}
+.wf-table tr:last-child td{border-bottom:none}
+.wf-status-pill{display:inline-block;padding:1px 6px;border-radius:100px;font-size:7px;font-weight:700}
+.wf-status-pill.full{background:#EF4444;color:#fff}
+.wf-status-pill.partial{background:#F97316;color:#fff}
+.wf-status-pill.nogap{background:var(--blue-lt);color:var(--blue)}
+.journey{display:flex;flex-direction:column;gap:8px}
+.j-step{display:flex;gap:12px;align-items:flex-start}
+.j-num{width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.j-content h4{font-size:12.5px;font-weight:600;color:var(--text-1);margin-bottom:2px}
+.j-content p{font-size:12px;color:var(--text-2);line-height:1.55}
+.j-connector{width:24px;display:flex;justify-content:center}
+.j-line{width:2px;height:16px;background:var(--border);margin:0 auto}
+.sc-outcome-stat{font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--green);margin-bottom:4px}
+.sc-outcome-label{font-size:12px;color:var(--text-2);margin-bottom:12px}
+.decision-list{display:flex;flex-direction:column;gap:1px;border-radius:10px;overflow:hidden;background:var(--border)}
+.decision-item{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.decision-item h4{font-size:12.5px;font-weight:700;color:var(--text-1)}
+.decision-item p{font-size:12px;color:var(--text-2);line-height:1.55}
+/* ── Material Symbols base ── */
+.material-symbols-outlined{font-style:normal;font-size:inherit;line-height:1;vertical-align:middle;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;display:inline-block}
+/* ── Prototype Showcase ── */
+.proto-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;overflow:hidden;margin-bottom:4px}
+.proto-card-ia{}
+.proto-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.proto-live{display:flex;align-items:center;gap:6px;background:var(--green-tint);border:1px solid var(--green-lt);border-radius:100px;padding:4px 11px;flex-shrink:0}
+.proto-live-ia{background:var(--indigo-lt);border-color:color-mix(in srgb,var(--indigo) 25%,transparent)}
+.proto-dot{width:7px;height:7px;border-radius:50%;background:#2E8B6E;flex-shrink:0;animation:proto-pulse 1.8s ease-in-out infinite}
+.proto-dot-ia{background:var(--indigo);animation:proto-pulse-ia 1.8s ease-in-out infinite}
+@keyframes proto-pulse{0%,100%{box-shadow:0 0 0 0 rgba(46,139,110,.45)}50%{box-shadow:0 0 0 5px rgba(46,139,110,0)}}
+@keyframes proto-pulse-ia{0%,100%{box-shadow:0 0 0 0 rgba(91,79,203,.35)}50%{box-shadow:0 0 0 5px rgba(91,79,203,0)}}
+.proto-live-label{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--green)}
+.proto-live-label-ia{color:var(--indigo)}
+.proto-name{font-size:13px;font-weight:700;color:var(--text-1);letter-spacing:-.01em}
+.proto-desc{font-size:12px;color:var(--text-2);line-height:1.5;margin-bottom:16px}
+.proto-stats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.proto-stat{display:inline-flex;align-items:center;gap:5px;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:5px 10px;font-size:11px;font-weight:500;color:var(--text-2)}
+.proto-stat-icon{font-size:14px;line-height:1;color:var(--text-3)}
+.proto-ctas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.proto-btn-primary{display:inline-flex;align-items:center;gap:7px;background:#2E8B6E;border:1px solid rgba(46,139,110,.8);border-radius:7px;padding:9px 18px;font-size:12.5px;font-weight:600;color:#fff;text-decoration:none;cursor:pointer;transition:background .15s,transform .1s;letter-spacing:-.01em}
+.proto-btn-primary:hover{background:#37A07F;transform:translateY(-1px)}
+.proto-btn-primary-ia{background:#5B4FCB;border-color:rgba(91,79,203,.8)}
+.proto-btn-primary-ia:hover{background:#6B5FD8}
+.proto-btn-secondary{display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:9px 16px;font-size:12.5px;font-weight:500;color:var(--text-2);text-decoration:none;cursor:pointer;transition:background .15s,transform .1s}
+.proto-btn-secondary:hover{background:var(--bg);transform:translateY(-1px)}
+.proto-links{display:flex;flex-wrap:wrap;gap:4px 16px}
+.proto-link{font-size:11.5px;color:var(--text-3);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .15s}
+.proto-link:hover{color:var(--text-1)}
+.proto-link-arrow{font-size:10px}
+.proto-note{margin-top:10px;font-size:11px;color:var(--text-3);line-height:1.4;padding-top:10px;border-top:1px solid var(--border)}
+/* ── Guided Demo Walkthrough ── */
+.demo-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:4px}
+.demo-header{padding:11px 15px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.demo-label{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--indigo);display:flex;align-items:center;gap:7px}
+.demo-label::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--indigo);flex-shrink:0}
+.demo-counter{font-size:11px;font-weight:600;color:var(--text-3);font-family:'Roboto Mono',monospace}
+.demo-progress{height:3px;background:var(--border)}
+.demo-bar{height:3px;background:var(--indigo);transition:width .35s ease}
+.demo-step{display:none}
+.demo-step.active{display:block}
+.demo-tip{margin:12px 15px;background:var(--indigo-lt);border-left:3px solid var(--indigo);border-radius:0 6px 6px 0;padding:9px 13px;font-size:12px;color:var(--text-1);line-height:1.6}
+.demo-tip strong{color:var(--indigo)}
+.demo-screen{margin:0 15px 12px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.demo-chrome{background:#EEE9E0;padding:7px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid var(--border)}
+.demo-cdot{width:6px;height:6px;border-radius:50%}
+.demo-ctitle{font-size:8.5px;color:var(--text-3);font-family:'Roboto Mono',monospace;margin-left:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.demo-body{padding:11px;background:var(--bg)}
+.demo-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;border-top:1px solid var(--border)}
+.demo-btn-prev{background:none;border:none;font-size:12px;font-weight:500;color:var(--text-3);cursor:pointer;padding:6px 0}
+.demo-btn-prev:disabled{opacity:.25;cursor:default}
+.demo-btn-next{background:var(--green);color:#fff;border:none;border-radius:7px;padding:8px 18px;font-size:12px;font-weight:600;cursor:pointer;transition:background .15s}
+.demo-btn-next:hover{background:var(--green-mid)}
+/* stat row */
+.demo-srow{display:grid;gap:5px;margin-bottom:9px}
+.demo-sbox{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 8px}
+.demo-snum{font-size:17px;font-weight:700;font-family:'Roboto Mono',monospace;line-height:1.1}
+.demo-slbl{font-size:8px;color:var(--text-3);margin-top:1px}
+/* table */
+.demo-tbl{width:100%;border-collapse:collapse}
+.demo-tbl th{font-size:8.5px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;padding:5px 7px;border-bottom:1px solid var(--border);text-align:left}
+.demo-tbl td{padding:5px 7px;border-bottom:1px solid var(--border);font-size:10px;color:var(--text-2)}
+.demo-tbl tr.hi td{background:var(--indigo-lt);color:var(--indigo)}
+.demo-pill{display:inline-block;padding:1px 6px;border-radius:100px;font-size:7px;font-weight:700}
+.demo-pill.full{background:#EF4444;color:#fff}
+.demo-pill.partial{background:#F97316;color:#fff}
+.demo-pill.nogap{background:var(--blue-lt);color:var(--blue)}
+.demo-pill.ok{background:var(--green);color:#fff}
+/* side-by-side comparison */
+.demo-cols{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px}
+.demo-doc{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:8px}
+.demo-doc-lbl{font-size:8px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.demo-doc-txt{font-size:10px;color:var(--text-2);line-height:1.5}
+.demo-miss{color:#EF4444;background:rgba(239,68,68,.1);border-radius:2px;padding:0 2px}
+.demo-ai-finding{background:var(--green-tint);border:1px solid var(--green-lt);border-radius:6px;padding:8px;font-size:10px;color:var(--green);line-height:1.5}
+/* feedback form */
+.demo-radios{display:flex;flex-direction:column;gap:4px;margin-bottom:9px}
+.demo-radio{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:5px;font-size:10.5px;color:var(--text-2)}
+.demo-radio.sel{background:var(--green-tint);color:var(--green)}
+.demo-rdot{width:11px;height:11px;border-radius:50%;border:2px solid var(--border);flex-shrink:0}
+.demo-radio.sel .demo-rdot{border-color:var(--green);background:var(--green)}
+.demo-flbl{font-size:9px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.demo-textarea{width:100%;border:1px solid var(--border);border-radius:5px;padding:6px 8px;font-size:10px;color:var(--text-2);background:var(--surface);font-family:'Roboto',sans-serif;line-height:1.4;resize:none}
+.demo-cbanner{background:var(--green-tint);border:1px solid var(--green-lt);border-radius:7px;padding:9px 12px;font-size:11px;color:var(--green);margin-top:9px;line-height:1.5}
+/* chat */
+.demo-chat{display:flex;flex-direction:column;gap:7px}
+.demo-msg{display:flex;gap:7px;align-items:flex-start}
+.demo-av{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7.5px;font-weight:700;color:#fff;flex-shrink:0}
+.demo-av.u{background:var(--blue)}
+.demo-av.a{background:var(--green-lt);color:var(--green)}
+.demo-bubble{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:7px 10px;font-size:10px;color:var(--text-2);line-height:1.5}
+.demo-bubble.umsg{background:var(--blue-lt);border-color:transparent;color:var(--blue)}
+.demo-draft-badge{font-size:8px;font-weight:700;color:var(--orange);margin-top:4px;display:block}
+.demo-cbtns{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.demo-cbtn{font-size:9px;padding:3px 10px;border-radius:4px;border:1px solid var(--border);background:var(--surface);color:var(--text-2);font-weight:500;cursor:pointer}
+.demo-cbtn.g{background:var(--green);color:#fff;border-color:var(--green)}
+/* provenance */
+.demo-prov{font-size:8px;font-weight:700;padding:2px 6px;border-radius:3px;display:inline-block;margin-bottom:3px;transition:all .45s ease}
+.demo-prov.d{background:var(--orange-lt);color:var(--orange)}
+.demo-prov.r{background:var(--green-lt);color:var(--green)}
+.demo-fbox{border-radius:5px;padding:7px 9px;font-size:10px;line-height:1.5;color:var(--text-2);transition:all .45s ease}
+.demo-fbox.d{border:1px solid var(--orange-line);background:var(--orange-lt)}
+.demo-fbox.r{border:1px solid var(--green-lt);background:var(--green-tint)}
+/* workspace panels */
+.demo-ws{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.demo-pane{background:var(--surface);border:1px solid var(--border);border-radius:7px;overflow:hidden}
+.demo-pane-hd{background:var(--bg);padding:6px 10px;font-size:9px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;border-bottom:1px solid var(--border)}
+.demo-pane-bd{padding:9px}
+/* deviation header */
+.demo-devhd{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:10px 12px;margin-bottom:8px}
+.demo-devid{font-size:11px;font-weight:700;color:var(--text-1);letter-spacing:-.01em;margin-bottom:2px}
+.demo-devdesc{font-size:10px;color:var(--text-2);line-height:1.4;margin-bottom:5px}
+.demo-chips{display:flex;gap:5px;flex-wrap:wrap}
+.demo-chip{font-size:9px;padding:2px 7px;border-radius:4px;background:var(--bg);border:1px solid var(--border);color:var(--text-3)}
+.demo-agrow{display:flex;gap:5px;flex-wrap:wrap}
+.demo-ag{font-size:9px;padding:3px 9px;border-radius:5px;background:var(--indigo-lt);color:var(--indigo);border:1px solid color-mix(in srgb,var(--indigo) 20%,transparent);font-weight:500}
+/* attestation */
+.demo-attest{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px}
+.demo-attest-title{font-size:11.5px;font-weight:700;color:var(--text-1);margin-bottom:9px}
+.demo-alist{list-style:none;margin-bottom:9px}
+.demo-alist li{font-size:10px;color:var(--text-2);margin-bottom:3px;display:flex;gap:6px;align-items:flex-start}
+.demo-checkwrap{display:flex;align-items:center;gap:8px;background:var(--indigo-lt);border-radius:6px;padding:8px 10px;margin-bottom:9px}
+.demo-chk{width:15px;height:15px;border-radius:3px;border:2px solid var(--indigo);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .35s ease;font-size:9px;color:transparent}
+.demo-chk.on{background:var(--indigo);color:#fff}
+.demo-chklbl{font-size:10px;color:var(--indigo);font-weight:500;line-height:1.4}
+.demo-wbtn{width:100%;padding:9px;background:var(--indigo);color:#fff;border:none;border-radius:6px;font-size:11.5px;font-weight:700;cursor:pointer}
+@media(max-width:600px){
+  .sc-head{grid-template-columns:72px 1fr}
+  .sc-tab{font-size:10.5px;padding:9px 2px}
+  .flow-nodes{gap:4px}
+  .flow-arrow{padding:0 2px;font-size:12px}
+  .wf-panels{grid-template-columns:1fr}
+  .demo-cols{grid-template-columns:1fr}
+  .demo-ws{grid-template-columns:1fr}
+  .demo-srow{grid-template-columns:repeat(2,1fr)!important}
+}
+
+/* ── SCREEN SHOWCASE ── */
+.scr-wrap{position:relative;border-radius:7px;overflow:hidden;line-height:0;box-shadow:0 2px 10px rgba(0,0,0,.14),0 0 0 1px var(--border)}
+.scr-wrap img{width:100%;display:block;filter:contrast(1.04) brightness(1.01) saturate(1.08)}
+.scr-logo{position:absolute;top:0;left:0;width:100%;height:5%;min-height:20px;background:#fff}
+
+/* ── POC SCREEN GALLERY ── */
+.poc-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin-top:10px}
+.poc-scroll::-webkit-scrollbar{height:3px}
+.poc-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.poc-scroll::-webkit-scrollbar-track{background:transparent}
+.poc-sitem{flex:0 0 220px;scroll-snap-align:start}
+.poc-scap{font-size:9.5px;color:var(--text-3);margin-top:5px;line-height:1.35}
+.poc-section{margin-bottom:16px}
+
+/* ── FORM STATES GRID ── */
+.form-states-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.form-state-item{display:flex;flex-direction:column}
+.form-state-lbl{font-size:9px;color:var(--text-3);margin-top:4px;text-align:center;line-height:1.3}
+
+/* ── MVP SECTION ── */
+.mvp-banner{background:linear-gradient(135deg,rgba(232,82,26,.07),rgba(232,82,26,.02));border:1px solid rgba(232,82,26,.18);border-radius:8px;padding:12px 14px;margin:16px 0 10px}
+.mvp-eyebrow{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#E8521A;font-weight:700;margin-bottom:4px}
+.mvp-title{font-size:12.5px;font-weight:700;color:var(--text-1);line-height:1.3}
+.mvp-desc{font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.5;margin-bottom:0}
+.mvp-screens-wrap{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:16px}
+.mvp-scr-lbl{font-size:9.5px;color:var(--text-3);margin-top:5px;line-height:1.35}
+
+/* ── APPROACH / RESEARCH ── */
+.appr-section{margin-top:14px}
+.appr-label{font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3);font-weight:600;margin-bottom:6px}
+.appr-finding{background:linear-gradient(135deg,rgba(232,82,26,.06),transparent);border-left:2px solid #E8521A;border-radius:0 6px 6px 0;padding:10px 12px;margin:10px 0}
+.appr-finding-label{font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:#E8521A;font-weight:700;margin-bottom:3px}
+.appr-finding-text{font-size:11px;color:var(--text-2);line-height:1.5;margin:0}
+.eval-wrap{margin:10px 0;border-radius:8px;overflow:hidden;line-height:0}
+.eval-wrap img{width:100%;display:block;border-radius:7px}
+.appr-caption{font-size:10.5px;color:var(--text-3);margin-top:6px;line-height:1.4;font-style:italic}
+.appr-text{font-size:11.5px;color:var(--text-2);line-height:1.6;margin:0 0 8px}
+
+/* ── RESEARCH USER CARDS ── */
+.research-users{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0}
+.research-user{background:var(--surface-2);border-radius:7px;padding:9px 10px}
+.research-user-role{font-size:8.5px;text-transform:uppercase;letter-spacing:.07em;color:#E8521A;font-weight:700;margin-bottom:5px}
+.research-user-tasks{font-size:10px;color:var(--text-2);line-height:1.4}
+
+/* ── RESEARCH IMAGE WITH NAME MASK ── */
+.research-img-wrap{position:relative;border-radius:8px;overflow:hidden;line-height:0;box-shadow:0 2px 10px rgba(0,0,0,.1),0 0 0 1px var(--border)}
+.research-img-wrap img{width:100%;display:block;filter:contrast(1.08) brightness(1.05) saturate(1.1)}
+.research-name-mask{position:absolute;top:0;left:0;right:0;background:var(--surface-1);display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:6px 8px}
+.research-role-chip{background:var(--surface-2);border-radius:4px;padding:4px 7px;font-size:8px;font-weight:700;color:var(--text-2);text-align:center;line-height:1.2}
+
+/* ── CONCEPT EXPLORATION ── */
+.concept-expl-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;margin:10px 0}
+.concept-expl-scroll::-webkit-scrollbar{height:3px}
+.concept-expl-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.concept-expl-sitem{flex:0 0 230px;scroll-snap-align:start}
+.concept-expl-sitem.chosen .scr-wrap{outline:2px solid #E8521A;outline-offset:1px}
+.concept-chosen-badge{position:absolute;top:6px;right:6px;background:#E8521A;color:#fff;font-size:7.5px;font-weight:700;padding:2px 5px;border-radius:3px;letter-spacing:.04em;z-index:1}
+.concept-expl-cap{font-size:9.5px;color:var(--text-3);margin-top:5px;line-height:1.35}
+.concept-expl-cap strong{color:var(--text-2)}
+
+/* ── FLOW / ARCHITECTURE IMAGES ── */
+.flow-img-wrap{margin:10px 0;border-radius:8px;overflow:hidden;line-height:0;box-shadow:0 2px 10px rgba(0,0,0,.12),0 0 0 1px var(--border)}
+.flow-img-wrap img{width:100%;display:block}
+
+/* ── MVP INTERACTIVE PROTOTYPE ── */
+.mvp-proto{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface-1)}
+.mvp-proto-header{background:var(--surface-2);padding:9px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.mvp-proto-label{font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3);font-weight:600}
+.mvp-proto-counter{font-size:9px;color:var(--text-3);font-variant-numeric:tabular-nums}
+.mvp-proto-tip{padding:9px 12px;font-size:10.5px;color:var(--text-2);line-height:1.5;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(232,82,26,.05),transparent);min-height:52px}
+.mvp-proto-screen{position:relative;line-height:0}
+.mvp-proto-screen img{width:100%;display:block}
+.mvp-proto-screen .scr-logo{position:absolute;top:0;left:0;width:100%;height:5%;min-height:20px;background:#fff}
+.scr-logo-btm{position:absolute;bottom:0;left:0;width:100%;height:4%;min-height:16px;background:#fff}
+.mvp-proto-screen .scr-logo-btm{position:absolute;bottom:0;left:0;width:100%;height:4%;min-height:16px;background:#fff}
+.mvp-proto-nav{padding:9px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid var(--border)}
+.mvp-proto-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:7px 12px;font-size:10px;font-weight:600;color:var(--text-2);cursor:pointer;transition:all .15s;white-space:nowrap}
+.mvp-proto-btn:hover:not(:disabled){background:var(--surface-2);color:var(--text-1)}
+.mvp-proto-btn:disabled{opacity:.3;cursor:not-allowed}
+.mvp-proto-btn-primary{background:#E8521A;border-color:#E8521A;color:#fff}
+.mvp-proto-btn-primary:hover:not(:disabled){background:#d4481a;border-color:#d4481a;color:#fff}
+.mvp-proto-dots{display:flex;gap:4px;align-items:center;flex:1;justify-content:center}
+.mvp-proto-dot{width:5px;height:5px;border-radius:50%;background:var(--border);transition:background .2s}
+.mvp-proto-dot.active{background:#E8521A;width:14px;border-radius:3px}
+.mvp-role-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(232,82,26,.1);border:1px solid rgba(232,82,26,.2);border-radius:20px;padding:3px 10px;font-size:9px;font-weight:700;color:#E8521A;margin-bottom:4px}
+
+/* ── LIGHTBOX ── */
+.lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.lb-overlay.open{display:flex}
+.lb-close{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;width:36px;height:36px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.lb-close:hover{background:rgba(255,255,255,.28)}
+.lb-img-wrap{overflow:auto;max-width:100%;max-height:calc(100dvh - 90px);display:flex;align-items:center;justify-content:center;cursor:grab;border-radius:6px}
+.lb-img-wrap:active{cursor:grabbing}
+#lb-img{max-width:min(900px,90vw);max-height:calc(100dvh - 100px);border-radius:6px;transform-origin:center center;transition:transform .18s ease;display:block;user-select:none}
+.lb-controls{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);border-radius:30px;padding:7px 16px}
+.lb-btn{background:rgba(255,255,255,.18);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:18px;font-weight:300;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;line-height:1}
+.lb-btn:hover{background:rgba(255,255,255,.32)}
+.lb-btn:disabled{opacity:.3;cursor:not-allowed}
+#lb-pct{color:#fff;font-size:11px;font-weight:600;min-width:40px;text-align:center;font-variant-numeric:tabular-nums}
+.lb-reset{font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.55);background:none;border:none;cursor:pointer;padding:0 2px}
+.lb-reset:hover{color:#fff}
+.lb-hint{position:absolute;bottom:6px;right:8px;font-size:7.5px;color:rgba(255,255,255,.35);pointer-events:none}
+/* zoom cursor on zoomable images */
+.zoomable-wrap{cursor:zoom-in;position:relative}
+.zoomable-wrap::after{content:'⤢';position:absolute;bottom:5px;right:6px;font-size:11px;color:#fff;background:rgba(0,0,0,.45);border-radius:3px;padding:1px 4px;opacity:0;transition:opacity .2s;pointer-events:none;line-height:1.4}
+.zoomable-wrap:hover::after{opacity:1}
+</style>
+
+<div class="wrap">
+
+  <div class="pg-hd">
+    <p class="pg-eyebrow">Option 2 · Story Cards · Interactive Prototype</p>
+    <h1>Story Cards with the Concept tab</h1>
+    <p>Click the tabs on each card. The <strong>Concept</strong> tab on the NDA projects shows your actual design thinking, real AI integration principles, and human-in-the-loop decisions — built from your IRO and Investigation AI POCs.</p>
+    <div class="pg-note">⚑ NDA projects: Concept tab uses real design decisions and abstract wireframes — no confidential GSK screens.</div>
+  </div>
+
+  <!-- CARD 1: Inspection Readiness -->
+  <div class="sc" id="card-ir">
+    <div class="sc-head">
+      <div class="sc-thumb" style="background:linear-gradient(145deg,#EBF7F3,#CDEEDB);color:var(--green);">GSK · IRO</div>
+      <div class="sc-meta">
+        <div class="sc-title">Inspection Readiness Oversight <span class="nda-tag">NDA</span></div>
+        <div class="sc-co">Principal Product Designer · GSK Science &amp; Technology · 2025–Present</div>
+        <div class="sc-metric">↓ Compliance gaps: 11,000 → 800</div>
+      </div>
+    </div>
+    <div class="sc-tabs">
+      <button class="sc-tab active" data-card="ir" data-tab="problem">Problem</button>
+      <button class="sc-tab" data-card="ir" data-tab="approach">Approach</button>
+      <button class="sc-tab concept-tab" data-card="ir" data-tab="concept">Concept</button>
+      <button class="sc-tab demo-tab" data-card="ir" data-tab="demo">Demo</button>
+      <button class="sc-tab" data-card="ir" data-tab="outcome">Outcome</button>
+    </div>
+    <div class="sc-panel active" id="ir-problem">
+      <p style="margin-bottom:14px">GSK's pharmaceutical sites were reactive to inspections by design. Each compliance risk lived in a different system — local SOPs checked manually against global requirements only when regulators arrived, trigger events going unlogged as formal deviations, and risk assessments sitting static while quality incidents accumulated. There was no aggregated view of inspection readiness across the network, and no way to act before an auditor walked in the door.</p>
+
+      <div style="background:var(--surface-2);border-radius:8px;padding:12px 14px;margin-bottom:10px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--orange);margin-bottom:8px">POC · 3 workstreams · Sterility Assurance scope · 2 sites</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:start">
+            <div style="font-size:9px;font-weight:700;color:var(--text-2);padding-top:1px;white-space:nowrap">01 · QMS Alignment</div>
+            <div style="font-size:11px;color:var(--text-2);line-height:1.45">Local SOPs were not continuously monitored against global QMS and regulatory requirements. Gaps were only discovered when auditors arrived — with no way to act proactively before an inspection.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:start">
+            <div style="font-size:9px;font-weight:700;color:var(--text-2);padding-top:1px;white-space:nowrap">02 · Missed Deviations</div>
+            <div style="font-size:11px;color:var(--text-2);line-height:1.45">Trigger events — repeat alarms, out-of-spec results, non-routine maintenance — weren't consistently raising formal deviations. Potential compliance failures were falling through the cracks.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:start">
+            <div style="font-size:9px;font-weight:700;color:var(--text-2);padding-top:1px;white-space:nowrap">03 · GMP Risk Assessments</div>
+            <div style="font-size:11px;color:var(--text-2);line-height:1.45">Sterility assurance risk assessments had unmonitored gaps against QMS requirements. No continuous improvement loop existed — learnings from deviations and quality events weren't feeding back in.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface-2);border-radius:8px;padding:12px 14px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px">MVP · Expanded to 4–5 workstreams · 3 roles</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:start">
+            <div style="font-size:9px;font-weight:700;color:var(--text-2);padding-top:1px;white-space:nowrap">04 · Investigation Quality</div>
+            <div style="font-size:11px;color:var(--text-2);line-height:1.45">Deviation investigations lacked consistent rationale and classification. No visibility on AI overrule rates or investigation quality trends across the GSK network.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:start">
+            <div style="font-size:9px;font-weight:700;color:var(--text-2);padding-top:1px;white-space:nowrap">05 · Gemba & Oversight</div>
+            <div style="font-size:11px;color:var(--text-2);line-height:1.45">No data-driven targeting for quality oversight on the shop floor across Production, Lab, Warehouse, and Utilities — leading to unforeseen regulatory observations and adverse quality trends.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sc-panel" id="ir-approach">
+      <p>The challenge wasn't just designing a tool — it was figuring out whether the data was even ready for one. The design process ran parallel to the data science discovery: every research finding changed the product scope, and every scoping decision changed the design.</p>
+
+      <!-- Who we spoke to -->
+      <div class="appr-section">
+        <div class="appr-label">Who we spoke to · Jan 2026 · 6 user interviews · facilitated by me</div>
+        <div class="research-users">
+          <div class="research-user">
+            <div class="research-user-role">QMS Champion</div>
+            <div class="research-user-tasks">Tracks global SOP changes. Manually identifies which local SOPs are affected. Coordinates SMEs, approvers, and training materials across the site.</div>
+          </div>
+          <div class="research-user">
+            <div class="research-user-role">Compliance Specialist</div>
+            <div class="research-user-tasks">Manages SOP documentation in Veeva. Coordinates gap analyses, inspection readiness, and regulatory updates across both global and market-specific requirements.</div>
+          </div>
+          <div class="research-user">
+            <div class="research-user-role">Quality Oversight Specialist</div>
+            <div class="research-user-tasks">Responsible for batch release across the site. Reviews, approves and monitors compliance using KPIs and Power BI dashboards. Spans nearly every department on site.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research findings image -->
+      <div class="appr-section">
+        <div class="appr-label">What they were dealing with · pain points per role</div>
+        <div class="research-img-wrap">
+          <div class="research-name-mask">
+            <div class="research-role-chip">QMS Champion</div>
+            <div class="research-role-chip">Compliance Specialist</div>
+            <div class="research-role-chip">Quality Oversight</div>
+          </div>
+          <img src="assets/iro/iro-research-findings.jpg" alt="User research pain points" style="object-fit:cover;height:200px;object-position:0% 60%;width:100%">
+        </div>
+        <div class="appr-finding" style="border-left-color:var(--text-3);background:transparent;margin-top:8px">
+          <div class="appr-finding-label" style="color:var(--text-3)">"It's more of a do-and-report kind of activity — separate to actually improving things."</div>
+          <p class="appr-finding-text">Manual, reactive processes. No real-time visibility. Tools that audit rather than coach. This came up in every interview, across all three roles.</p>
+        </div>
+      </div>
+
+      <!-- Key insights image -->
+      <div class="appr-section">
+        <div class="appr-label">What we took away · cross-role patterns</div>
+        <div class="research-img-wrap">
+          <div class="research-name-mask">
+            <div class="research-role-chip">QMS Champion</div>
+            <div class="research-role-chip">Compliance Specialist</div>
+            <div class="research-role-chip">Quality Oversight</div>
+          </div>
+          <img src="assets/iro/iro-research-insights.jpg" alt="Research key insights" style="object-fit:cover;height:190px;object-position:0% 40%;width:100%">
+        </div>
+        <p class="appr-caption" style="margin-top:7px">Manual mapping is a major pain point. No standardised or automated way to link global SOP changes to local SOPs. Compliance processes are largely reactive. Teams benefit most from tools that highlight specific hotspots — not generic dashboards.</p>
+      </div>
+
+      <!-- Discovery + pivot -->
+      <div class="appr-section">
+        <div class="appr-label">The discovery that changed everything</div>
+        <p class="appr-text">We set out to validate that data was ready to train an AI model. What we found: each site documented compliance differently — some in Excel, some in Word, some in legacy QMS systems. No consistent data pattern meant any model trained on the raw 11,000 gaps would produce unreliable results.</p>
+        <div class="appr-finding">
+          <div class="appr-finding-label">The pivot</div>
+          <p class="appr-finding-text">We narrowed scope to Sterility Assurance — the one stream with mature, consistently structured data across sites. This was a research finding, not a product decision. The design constraint came from the data.</p>
+        </div>
+      </div>
+
+      <!-- AS-IS process mapping -->
+      <div class="appr-section">
+        <div class="appr-label">As-is process · mapped in the workshop with PMs + engineers</div>
+        <div class="eval-wrap">
+          <img src="assets/iro/iro-workshop-flow.jpg" alt="AS-IS QMS process flow from FigJam workshop synthesis">
+        </div>
+        <p class="appr-caption">The broken link: Global QMS sends a change → QMS Champion manually identifies which local SOPs are affected → routes to SMEs → no system tracks whether it happened. Every step is manual, invisible to the global team, and prone to delay.</p>
+      </div>
+
+      <!-- Three concepts explored -->
+      <div class="appr-section">
+        <div class="appr-label">Three concepts explored · before we decided on the POC direction</div>
+        <div class="concept-expl-scroll">
+          <div class="concept-expl-sitem chosen">
+            <div class="scr-wrap">
+              <img src="assets/iro/iro-concept1.jpg" alt="QMS flow Concept 1">
+              <div class="scr-logo"></div>
+              <div class="concept-chosen-badge">CHOSEN</div>
+            </div>
+            <div class="concept-expl-cap"><strong>Concept 1 — Simpler, familiar</strong><br>Task-based queue, builds on existing VI app structure. Lowest engineering lift for the POC. Users already operate in this pattern.</div>
+          </div>
+          <div class="concept-expl-sitem">
+            <div class="scr-wrap"><img src="assets/iro/iro-concept2.jpg" alt="QMS flow Concept 2"><div class="scr-logo"></div></div>
+            <div class="concept-expl-cap"><strong>Concept 2 — Dashboard-first</strong><br>Leads with an overview dashboard. Better for site leaders but higher cognitive load for daily reviewers. Deferred to MVP.</div>
+          </div>
+          <div class="concept-expl-sitem">
+            <div class="scr-wrap"><img src="assets/iro/iro-concept3.jpg" alt="QMS flow Concept 3"><div class="scr-logo"></div></div>
+            <div class="concept-expl-cap"><strong>Concept 3 — Process-mapped flow</strong><br>Closest to the existing QMS workflow. Complex interaction model with multiple branching paths. Too much re-training for a first version.</div>
+          </div>
+        </div>
+        <div class="appr-finding" style="margin-top:4px">
+          <div class="appr-finding-label">Why I advocated for Concept 1</div>
+          <p class="appr-finding-text">Users already operate in task-based queues — QMS, ServiceNow, email inboxes. Concept 1 met them where they were, minimised re-training, and gave us the fastest path to validating the core feedback loop. That was the POC goal. Features from Concepts 2 and 3 were carried into the MVP.</p>
+        </div>
+      </div>
+
+      <!-- Evaluation methodology -->
+      <div class="appr-section">
+        <div class="appr-label">Evaluation methodology · 4 stages · designed with the data science team</div>
+        <div class="eval-wrap">
+          <img src="assets/iro/iro-evaluation.jpg" alt="Evaluation overview by stage: Parsing, Enrichment, Extraction, Gap Analysis">
+        </div>
+        <p class="appr-caption">Parsing → Enrichment → Extraction → Gap Analysis. Each stage had a defined reviewer, platform, and feedback loop. I designed the Gap Analysis stage as the user-facing layer that fed directly back into model training.</p>
+      </div>
+    </div>
+    <div class="sc-panel" id="ir-concept">
+      <div class="concept-wrap">
+
+        <div class="poc-section">
+          <div class="flow-label">POC screens · what users validated in the field</div>
+          <div class="poc-scroll">
+            <div class="poc-sitem">
+              <div class="scr-wrap"><img src="assets/iro/iro-landing.jpg" alt="IRO landing page — 3 workstreams"><div class="scr-logo"></div></div>
+              <div class="poc-scap">Landing · 3 workstreams</div>
+            </div>
+            <div class="poc-sitem">
+              <div class="scr-wrap"><img src="assets/iro/iro-tasks.jpg" alt="My QMS Tasks — gap validation queue"><div class="scr-logo"></div></div>
+              <div class="poc-scap">My QMS Tasks · gap validation queue</div>
+            </div>
+            <div class="poc-sitem">
+              <div class="scr-wrap"><img src="assets/iro/iro-taskdetail.jpg" alt="Task detail — AI analysis and side-by-side documents"><div class="scr-logo"></div></div>
+              <div class="poc-scap">Task detail · AI analysis + documents side by side</div>
+            </div>
+            <div class="poc-sitem">
+              <div class="scr-wrap"><img src="assets/iro/iro-feedback.jpg" alt="Feedback form in context with tooltip open"><div class="scr-logo"></div></div>
+              <div class="poc-scap">Feedback modal · in-context with tooltip open</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="poc-section">
+          <div class="flow-label">Situational feedback form · 4 adaptive states</div>
+          <p style="font-size:11px;color:var(--text-2);line-height:1.5;margin-bottom:8px">The form adapts based on whether the AI was correct and which gap type the reviewer selects. Designed with data scientists and SMEs — structured to capture exactly the training signal needed, nothing extra.</p>
+          <div class="form-states-grid">
+            <div class="form-state-item">
+              <div class="scr-wrap"><img src="assets/iro/iro-form-nogap.jpg" alt="AI correct — No gap state"><div class="scr-logo"></div></div>
+              <div class="form-state-lbl">AI correct · No gap</div>
+            </div>
+            <div class="form-state-item">
+              <div class="scr-wrap"><img src="assets/iro/iro-form-partial.jpg" alt="AI correct — Partial or full gap state"><div class="scr-logo"></div></div>
+              <div class="form-state-lbl">AI correct · Partial / Full gap</div>
+            </div>
+            <div class="form-state-item">
+              <div class="scr-wrap"><img src="assets/iro/iro-form-incorrect-nogap.jpg" alt="AI incorrect — user corrects to no gap"><div class="scr-logo"></div></div>
+              <div class="form-state-lbl">AI incorrect · User corrects</div>
+            </div>
+            <div class="form-state-item">
+              <div class="scr-wrap"><img src="assets/iro/iro-form-tooltips.jpg" alt="Tooltips showing criticality definitions"><div class="scr-logo"></div></div>
+              <div class="form-state-lbl">Tooltips · criticality definitions</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proto-card">
+          <div class="proto-top">
+            <div class="proto-live">
+              <div class="proto-dot"></div>
+              <span class="proto-live-label">Live POC</span>
+            </div>
+            <div class="proto-name">Inspection Readiness Oversight · Interactive Prototype</div>
+          </div>
+          <p class="proto-desc">The working POC built in Claude — explore the AI gap-detection flow, the feedback mechanism, and the human-validation loop firsthand. No sign-in required to view.</p>
+          <div class="proto-stats">
+            <div class="proto-stat"><span class="proto-stat-icon material-symbols-outlined">search</span>AI gap detection across 10+ requirement classes</div>
+            <div class="proto-stat"><span class="proto-stat-icon material-symbols-outlined">sync</span>Human feedback captured per gap</div>
+            <div class="proto-stat"><span class="proto-stat-icon material-symbols-outlined">assignment</span>Real gap IDs: GAP-0101 to GAP-0110</div>
+            <div class="proto-stat"><span class="proto-stat-icon material-symbols-outlined">language</span>Multi-site: Site A, B, C</div>
+          </div>
+          <div class="proto-ctas">
+            <a class="proto-btn-primary" href="https://claude.ai/artifact/S14bd17NcLdtPs829HwaL5" target="_blank" rel="noopener">
+              ↗ Open IRO POC &amp; explore
+            </a>
+          </div>
+          <p class="proto-note">This is a Claude-built proof of concept — open in any browser. It demonstrates the core AI-mapping and human-review interaction model, not a final GSK product.</p>
+        </div>
+
+        <div class="demo-wrap" id="demo-ir">
+          <div class="demo-header">
+            <span class="demo-label">Guided Demo · IRO 2.0 · Ideal scenario</span>
+            <span class="demo-counter">Step 1 of 4</span>
+          </div>
+          <div class="demo-progress"><div class="demo-bar" style="width:25%"></div></div>
+
+          <!-- Step 1: Task Board -->
+          <div class="demo-step active">
+            <div class="demo-tip">You're a Quality Manager at Site A. The AI has just finished scanning GP-014 against your 23 local procedures. <strong>10 gaps flagged — none confirmed yet.</strong> You are the reviewer, not the fixer.</div>
+            <div class="demo-screen">
+              <div class="demo-chrome"><div class="demo-cdot" style="background:#FF5F57"></div><div class="demo-cdot" style="background:#FFBD2E"></div><div class="demo-cdot" style="background:#28C840"></div><span class="demo-ctitle">IRO 2.0 · My Tasks · Site A — GP-014 · Batch review</span></div>
+              <div class="demo-body">
+                <div class="demo-srow" style="grid-template-columns:repeat(4,1fr)">
+                  <div class="demo-sbox"><div class="demo-snum">10</div><div class="demo-slbl">AI findings</div></div>
+                  <div class="demo-sbox"><div class="demo-snum" style="color:#EF4444">3</div><div class="demo-slbl">Full gaps</div></div>
+                  <div class="demo-sbox"><div class="demo-snum" style="color:var(--orange)">5</div><div class="demo-slbl">Partial gaps</div></div>
+                  <div class="demo-sbox"><div class="demo-snum" style="color:var(--text-3)">0</div><div class="demo-slbl">Reviewed</div></div>
+                </div>
+                <div style="overflow:auto;border:1px solid var(--border);border-radius:6px">
+                  <table class="demo-tbl">
+                    <thead><tr><th>Gap ID</th><th>Requirement</th><th>AI status</th><th>Reviewed?</th></tr></thead>
+                    <tbody>
+                      <tr class="hi"><td><strong>GAP-0101</strong> <span style="font-size:8px;font-style:italic;opacity:.65">← tap to open</span></td><td>Start-up controls</td><td><span class="demo-pill partial">AI: Partial</span></td><td><span style="color:var(--text-3)">—</span></td></tr>
+                      <tr><td>GAP-0102</td><td>Shut-down controls</td><td><span class="demo-pill full">AI: Full gap</span></td><td><span style="color:var(--text-3)">—</span></td></tr>
+                      <tr><td>GAP-0109</td><td>Shut-down controls</td><td><span class="demo-pill nogap">AI: No gap</span></td><td><span style="color:var(--text-3)">—</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Gap Detail -->
+          <div class="demo-step">
+            <div class="demo-tip">GAP-0101 open. The AI placed the global requirement and local procedure side by side, then highlighted what's missing. <strong>"AI says: Partial gap" is a suggestion — not confirmed until you say so.</strong></div>
+            <div class="demo-screen">
+              <div class="demo-chrome"><div class="demo-cdot" style="background:#FF5F57"></div><div class="demo-cdot" style="background:#FFBD2E"></div><div class="demo-cdot" style="background:#28C840"></div><span class="demo-ctitle">IRO 2.0 · GAP-0101 · Start-up controls · Site A</span></div>
+              <div class="demo-body">
+                <div style="font-size:11px;font-weight:700;margin-bottom:8px;color:var(--text-1)">GAP-0101 &nbsp;<span class="demo-pill partial" style="font-size:9px;vertical-align:middle">AI says: Partial gap</span></div>
+                <div class="demo-cols">
+                  <div class="demo-doc">
+                    <div class="demo-doc-lbl">Global · GP-014 §R1</div>
+                    <div class="demo-doc-txt">Start-up controls require equipment status checks. A <span class="demo-miss">second-person verification step</span> must be completed and recorded before operation begins.</div>
+                  </div>
+                  <div class="demo-doc">
+                    <div class="demo-doc-lbl">Local · LP-221 §3.1</div>
+                    <div class="demo-doc-txt">Cleanliness check required before equipment start-up. Equipment operator to sign log before operation. <em style="color:var(--text-3)">(No second-person step mentioned.)</em></div>
+                  </div>
+                </div>
+                <div class="demo-ai-finding"><strong>AI analysis:</strong> Local procedure covers the cleanliness check but is missing the second-person verification requirement from GP-014 §R1. Classification: Partial gap.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Feedback Form -->
+          <div class="demo-step">
+            <div class="demo-tip">You agree with the AI. The form captures your expert judgment in a structured format. <strong>This exact selection enters the training dataset.</strong> Your correction makes the model smarter for the next review cycle across all sites.</div>
+            <div class="demo-screen">
+              <div class="demo-chrome"><div class="demo-cdot" style="background:#FF5F57"></div><div class="demo-cdot" style="background:#FFBD2E"></div><div class="demo-cdot" style="background:#28C840"></div><span class="demo-ctitle">IRO 2.0 · GAP-0101 · Give feedback</span></div>
+              <div class="demo-body" style="display:flex;flex-direction:column;gap:9px">
+                <div>
+                  <div class="demo-flbl">Is the AI correct?</div>
+                  <div class="demo-radios">
+                    <div class="demo-radio sel"><div class="demo-rdot"></div>Yes — the gap is real</div>
+                    <div class="demo-radio"><div class="demo-rdot"></div>No — AI is wrong (I'll explain)</div>
+                    <div class="demo-radio"><div class="demo-rdot"></div>Partially — needs more context</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="demo-flbl">Recommended action</div>
+                  <textarea class="demo-textarea" rows="2" readonly>Update LP-221 §3.1 to include a second-person verification step and equipment status check before start-up.</textarea>
+                </div>
+                <div style="display:flex;justify-content:flex-end"><div style="background:var(--green);color:#fff;border-radius:6px;padding:7px 16px;font-size:11.5px;font-weight:700;cursor:pointer">Submit feedback →</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Confirmed -->
+          <div class="demo-step">
+            <div class="demo-tip"><strong>Done. GAP-0101 is now human-confirmed.</strong> Your feedback is captured. 9 gaps still await review. This correction will improve AI accuracy across the next review cycle — your expert judgment, applied at scale.</div>
+            <div class="demo-screen">
+              <div class="demo-chrome"><div class="demo-cdot" style="background:#FF5F57"></div><div class="demo-cdot" style="background:#FFBD2E"></div><div class="demo-cdot" style="background:#28C840"></div><span class="demo-ctitle">IRO 2.0 · My Tasks · Site A — GP-014</span></div>
+              <div class="demo-body">
+                <div class="demo-srow" style="grid-template-columns:repeat(4,1fr)">
+                  <div class="demo-sbox"><div class="demo-snum">10</div><div class="demo-slbl">AI findings</div></div>
+                  <div class="demo-sbox"><div class="demo-snum" style="color:#EF4444">3</div><div class="demo-slbl">Full gaps</div></div>
+                  <div class="demo-sbox"><div class="demo-snum" style="color:var(--orange)">5</div><div class="demo-slbl">Partial gaps</div></div>
+                  <div class="demo-sbox"><div class="demo-snum" style="color:var(--green)">1</div><div class="demo-slbl">Reviewed</div></div>
+                </div>
+                <div style="overflow:auto;border:1px solid var(--border);border-radius:6px">
+                  <table class="demo-tbl">
+                    <thead><tr><th>Gap ID</th><th>Requirement</th><th>Status</th><th>Reviewed?</th></tr></thead>
+                    <tbody>
+                      <tr><td><strong>GAP-0101</strong></td><td>Start-up controls</td><td><span class="demo-pill ok">Partial gap ✓</span></td><td><span style="color:var(--green);font-size:9px;font-weight:700">✓ You</span></td></tr>
+                      <tr><td>GAP-0102</td><td>Shut-down controls</td><td><span class="demo-pill full">AI: Full gap</span></td><td><span style="color:var(--text-3)">—</span></td></tr>
+                      <tr><td>GAP-0109</td><td>Shut-down controls</td><td><span class="demo-pill nogap">AI: No gap</span></td><td><span style="color:var(--text-3)">—</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="demo-cbanner">Feedback captured · Training dataset updated · 1 of 10 gaps confirmed · 9 awaiting your review</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-nav">
+            <button class="demo-btn-prev" onclick="demoStep('ir',-1)" disabled>← Prev</button>
+            <button class="demo-btn-next" onclick="demoStep('ir',1)">Next →</button>
+          </div>
+        </div>
+
+        <div class="mvp-banner">
+          <div class="mvp-eyebrow">From POC to MVP</div>
+          <div class="mvp-title">React application · 4 streams · Priority-driven action queue</div>
+          <p class="mvp-desc">The POC validated the feedback loop. The MVP rebuilt it as a full React app, expanded to Quality Oversight, Deviation Management, Facility & Housekeeping, and Inspection Intel. The key UX shift: from "review a list of gaps" to "act on AI-flagged signals by priority" — with a separate escalation layer so leaders could oversee high-risk actions without being in the weeds.</p>
+        </div>
+        <div class="mvp-screens-wrap">
+          <div>
+            <div class="scr-wrap"><img src="assets/iro/iro-mvp-actions.jpg" alt="My Actions — priority action queue"><div class="scr-logo"></div><div class="scr-logo-btm"></div></div>
+            <div class="mvp-scr-lbl">My Actions · 227 open · P1 overdue items surface first · AI-generated priority queue</div>
+          </div>
+          <div>
+            <div class="scr-wrap"><img src="assets/iro/iro-mvp-review.jpg" alt="Review and Action — AI confidence 90%"><div class="scr-logo"></div><div class="scr-logo-btm"></div></div>
+            <div class="mvp-scr-lbl">Initial Review & Action · AI confidence score 90% · evidence panel · Accept or Reject in 1 click</div>
+          </div>
+          <div>
+            <div class="scr-wrap"><img src="assets/iro/iro-mvp-oversight.jpg" alt="My Oversight Actions — escalation queue for leaders"><div class="scr-logo"></div><div class="scr-logo-btm"></div></div>
+            <div class="mvp-scr-lbl">My Oversight Actions · escalation queue for leaders · action rejections bubble up automatically</div>
+          </div>
+        </div>
+
+        <!-- MVP Process Flow -->
+        <div class="poc-section">
+          <div class="flow-label">MVP: End-to-end process flow · 5 phases</div>
+          <div class="flow-img-wrap">
+            <img src="assets/iro/iro-process-flow.jpg" alt="MVP process flow: Detection & Routing, Processing, Pool Management, Oversight & Reporting, Resolution">
+          </div>
+          <p class="appr-caption">Detection & Routing → Processing → Pool Management → Oversight & Reporting → Resolution. Spans the Action Taker journey (review, accept/reject) and the Oversight journey (escalation bridge, leader review, audit archive).</p>
+        </div>
+
+        <!-- MVP UX Architecture -->
+        <div class="poc-section">
+          <div class="flow-label">MVP: UX architecture · from data sources to the user's screen</div>
+          <div class="flow-img-wrap">
+            <img src="assets/iro/iro-ux-architecture.jpg" alt="UX Architecture: data sources, signal generation, IRO core platform, UX layer">
+          </div>
+          <p class="appr-caption">Data sources (QMS, Deviations, Facilities, Missed Events) → AI signal generation → IRO Core Platform (prioritisation, assignment, lifecycle, audit) → UX Layer: Inbox, Action Detail View, Oversight/Reporting.</p>
+        </div>
+
+        <!-- MVP Interactive Prototype -->
+        <div class="poc-section" id="mvp-proto-section">
+          <div class="flow-label">MVP: Interactive walkthrough · full round-trip with Oversight</div>
+          <p style="font-size:11px;color:var(--text-2);line-height:1.5;margin-bottom:10px">Walk through the actual interaction model — from a P1 action in your queue, through the evidence-backed 4-step review, to accepting it, then switching to the Oversight role to see how leaders manage escalations.</p>
+          <div class="mvp-proto" id="mvp-proto">
+            <div class="mvp-proto-header">
+              <span class="mvp-proto-label">IRO MVP · Interactive walkthrough</span>
+              <span class="mvp-proto-counter" id="mvp-step-label">Step 1 of 6</span>
+            </div>
+            <div class="mvp-proto-tip" id="mvp-tip">
+              <span class="mvp-role-badge"><span class="material-symbols-outlined" style="font-size:11px">person</span> Quality Manager</span><br>
+              227 open actions, 5 overdue. P1 items surface first — the AI has already scored and prioritised them by urgency and risk.
+            </div>
+            <div class="mvp-proto-screen" id="mvp-screen-wrap">
+              <img id="mvp-screen-img" src="assets/iro/iro-mvp-actions.jpg" alt="My Actions">
+              <div class="scr-logo"></div>
+              <div class="scr-logo-btm"></div>
+            </div>
+            <div class="mvp-proto-nav">
+              <button class="mvp-proto-btn" id="mvp-btn-prev" onclick="mvpStep(-1)" disabled>← Back</button>
+              <div class="mvp-proto-dots" id="mvp-dots"></div>
+              <button class="mvp-proto-btn mvp-proto-btn-primary" id="mvp-btn-next" onclick="mvpStep(1)">Review a P1 item →</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flow-label">Core design decisions</div>
+          <div class="decision-list">
+            <div class="decision-item">
+              <h4>AI maps, human validates — every time</h4>
+              <p>The AI maps each global requirement to the site's local procedure and flags gaps. But every AI finding is unconfirmed until a quality manager reviews it. The dashboard shows "AI says: Partial gap" — not "Partial gap" — until a human confirms.</p>
+            </div>
+            <div class="decision-item">
+              <h4>Gap transparency — both documents, side by side</h4>
+              <p>Every gap view shows the exact text of the global requirement next to the local procedure text. The AI highlights where the local text falls short. The reviewer can always see the source — nothing is hidden in a summary.</p>
+            </div>
+            <div class="decision-item">
+              <h4>Corrections train the model</h4>
+              <p>When a reviewer says the AI got it wrong, they pick the correct status and their reason is captured. The feedback form is part of the product, not a separate research channel. These corrections feed back into the training dataset.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flow-label">How AI is integrated — gap detection flow</div>
+          <div class="flow-nodes">
+            <div class="flow-node">
+              <div class="flow-node-icon"><span class="material-symbols-outlined">article</span></div>
+              <div class="flow-node-title">Global Procedure</div>
+              <div class="flow-node-sub">GP-014: Equipment start-up, shut-down &amp; maintenance</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node ai">
+              <div class="flow-node-icon"><span class="material-symbols-outlined">smart_toy</span></div>
+              <div class="flow-node-title">AI Mapping</div>
+              <div class="flow-node-sub">Maps each requirement to local site procedures</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node human">
+              <div class="flow-node-icon"><span class="material-symbols-outlined">visibility</span></div>
+              <div class="flow-node-title">Human Review</div>
+              <div class="flow-node-sub">Quality manager validates each AI finding</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node decision">
+              <div class="flow-node-icon"><span class="material-symbols-outlined">check_circle</span></div>
+              <div class="flow-node-title">Action</div>
+              <div class="flow-node-sub">Confirm · Correct · Feed back to AI</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hitl-banner">
+          <div class="hitl-icon"><span class="material-symbols-outlined">sync</span></div>
+          <div class="hitl-text">
+            <h4>Human-in-the-loop design</h4>
+            <p>The AI surfaces 11,000 potential gaps. The quality manager's job is not to fix them — it's to validate which ones are real. The design separates those two jobs clearly: the AI does the searching, the human does the judging. A "Full gap" only becomes official when a person confirms it.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="flow-label">Conceptual UI — IRO 2.0 task board (abstract)</div>
+          <div class="wireframe">
+            <div class="wf-bar">
+              <div class="wf-dot" style="background:#FF5F57;"></div>
+              <div class="wf-dot" style="background:#FFBD2E;"></div>
+              <div class="wf-dot" style="background:#28C840;"></div>
+              <div class="wf-title">IRO 2.0 · My QMS Tasks · Quality Oversight (QMS)</div>
+            </div>
+            <div class="wf-body">
+              <div class="wf-row">
+                <div class="wf-block" style="flex:1;"><div class="wf-block-label">AI findings</div><div class="wf-block-content"><div style="font-size:22px;font-weight:700;color:var(--text-1);font-family:'Roboto Mono',monospace;line-height:1;">10</div><div style="font-size:9px;color:var(--text-3);">Batch · GP-014</div></div></div>
+                <div class="wf-block" style="flex:1;"><div class="wf-block-label">Full gaps</div><div class="wf-block-content"><div style="font-size:22px;font-weight:700;color:#C0392B;font-family:'Roboto Mono',monospace;line-height:1;">3</div></div></div>
+                <div class="wf-block" style="flex:1;"><div class="wf-block-label">Partial gaps</div><div class="wf-block-content"><div style="font-size:22px;font-weight:700;color:var(--orange);font-family:'Roboto Mono',monospace;line-height:1;">5</div></div></div>
+                <div class="wf-block" style="flex:1;"><div class="wf-block-label">Feedback given</div><div class="wf-block-content"><div style="font-size:22px;font-weight:700;color:var(--green);font-family:'Roboto Mono',monospace;line-height:1;">4</div></div></div>
+              </div>
+              <div style="overflow:auto;border:1px solid var(--border);border-radius:6px;background:var(--surface);">
+                <table class="wf-table">
+                  <thead><tr><th>Gap ID</th><th>Requirement</th><th>Local section</th><th>AI status</th><th>Site</th><th>Feedback</th></tr></thead>
+                  <tbody>
+                    <tr><td>GAP-0101</td><td>Start-up controls</td><td>LP-221 §3.1</td><td><span class="wf-status-pill partial">Partial gap</span></td><td>Site A</td><td><span style="font-size:8px;color:var(--text-3);">Not given</span></td></tr>
+                    <tr><td>GAP-0102</td><td>Shut-down controls</td><td>—</td><td><span class="wf-status-pill full">Full gap</span></td><td>Site A</td><td><span style="font-size:8px;color:var(--text-3);">Not given</span></td></tr>
+                    <tr><td>GAP-0109</td><td>Shut-down controls</td><td>LP-309 §4.1</td><td><span class="wf-status-pill nogap">No gap</span></td><td>Site B</td><td><span style="font-size:8px;color:var(--green);">✓ Given</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="wf-ai-box">
+                <div class="wf-ai-badge">AI · Analysis</div>
+                <div class="wf-ai-lines">
+                  <div style="font-size:10.5px;font-weight:600;color:var(--green);">GAP-0101 · The local section covers the cleanliness check but doesn't require equipment status checks or a second-person verification.</div>
+                  <div style="font-size:9px;color:var(--text-3);margin-top:2px;">Global: GP-014 §R1 · Local: LP-221 §3.1 · Site A</div>
+                  <div style="display:flex;gap:6px;margin-top:6px;">
+                    <span style="font-size:9px;padding:2px 8px;border-radius:4px;background:var(--green);color:#fff;font-weight:600;">Give feedback</span>
+                    <span style="font-size:9px;padding:2px 8px;border-radius:4px;background:var(--surface);border:1px solid var(--border);color:var(--text-2);">View details</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flow-label">User journey — Quality Manager validating AI findings</div>
+          <div class="journey">
+            <div class="j-step"><div class="j-num">1</div><div class="j-content"><h4>Opens the task board</h4><p>Sees all AI-flagged gaps for their site. Each row shows what the AI found — but nothing is confirmed yet. Filters by site, status, or searches by gap ID.</p></div></div>
+            <div class="j-connector"><div class="j-line"></div></div>
+            <div class="j-step"><div class="j-num">2</div><div class="j-content"><h4>Reviews a gap in detail</h4><p>Opens GAP-0101. Sees the global requirement text side by side with the local procedure. The AI has highlighted the exact clause that is missing: "second-person verification."</p></div></div>
+            <div class="j-connector"><div class="j-line"></div></div>
+            <div class="j-step"><div class="j-num">3</div><div class="j-content"><h4>Gives structured feedback</h4><p>Confirms the AI is correct. Rates how close the section linkage was. Confirms the recommended action is right. All answers are captured for the training dataset.</p></div></div>
+            <div class="j-connector"><div class="j-line"></div></div>
+            <div class="j-step"><div class="j-num">4</div><div class="j-content"><h4>Correction feeds back (when wrong)</h4><p>If the AI was wrong — "this is No gap because we have a site-specific exemption" — the manager picks the correct status, selects the reason from a structured list, and that correction enters the training data.</p></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="sc-panel" id="ir-demo">
+      <div id="demo-ir-tab"></div>
+      <div id="demo-ir-mvp-tab" style="padding:0 16px 16px"></div>
+    </div>
+    <div class="sc-panel" id="ir-outcome">
+      <div class="sc-outcome-stat">800</div>
+      <div class="sc-outcome-label">compliance gaps — down from 11,000</div>
+      <p>AI-assisted oversight moved GSK's quality teams from reactive to proactive. Quality managers shifted from manual gap-hunting to acting on AI-surfaced signals. IRO 2.0 is now used daily by quality managers across multiple global sites.</p>
+    </div>
+  </div>
+
+  <!-- CARD 2: Investigation AI -->
+  <div class="sc" id="card-ia">
+    <div class="sc-head">
+      <div class="sc-thumb" style="background:linear-gradient(145deg,#EDE9FB,#E4DDF5);color:var(--indigo);">GSK · InvAI</div>
+      <div class="sc-meta">
+        <div class="sc-title">Investigation AI <span class="nda-tag">NDA</span></div>
+        <div class="sc-co">Principal Product Designer · GSK Science &amp; Technology · 2025–Present</div>
+        <div class="sc-metric">↑ CSAT +30% · Investigation time ↓ 50%</div>
+      </div>
+    </div>
+    <div class="sc-tabs">
+      <button class="sc-tab active" data-card="ia" data-tab="problem">Problem</button>
+      <button class="sc-tab" data-card="ia" data-tab="approach">Approach</button>
+      <button class="sc-tab concept-tab" data-card="ia" data-tab="concept">Concept</button>
+      <button class="sc-tab demo-tab" data-card="ia" data-tab="demo">Demo</button>
+      <button class="sc-tab" data-card="ia" data-tab="outcome">Outcome</button>
+    </div>
+    <div class="sc-panel active" id="ia-problem">
+      <p>Pharmaceutical manufacturing generates thousands of quality deviations a year. Scientists were manually triaging each one — deciding severity, root cause, and remediation — through a slow, unstructured process disconnected from regulatory context. Each investigation took 3–6 months. Root cause identification was inconsistent, and there was no way to learn from past cases at scale.</p>
+    </div>
+    <div class="sc-panel" id="ia-approach">
+      <p>Designed a conversational AI workspace for pharmaceutical deviation investigations — 10 specialist agents that draft the investigation alongside the scientist. Built around one central design question: <em>"Where to put the human, so that AI drafting is genuinely useful and every entry in the quality record stays attributable."</em> The AI can never write to the record. Only the scientist can.</p>
+    </div>
+    <div class="sc-panel" id="ia-concept">
+      <div class="concept-wrap">
+
+        <div class="proto-card proto-card-ia">
+          <div class="proto-top">
+            <div class="proto-live proto-live-ia">
+              <div class="proto-dot proto-dot-ia"></div>
+              <span class="proto-live-label proto-live-label-ia">Live MVP + POC</span>
+            </div>
+            <div class="proto-name">Investigation AI · Interactive Prototypes</div>
+          </div>
+          <p class="proto-desc">Two live builds to explore: the full MVP showing the scientist-AI workflow end to end, and a POC walkthrough stepping through each of the 10 specialist agents. Click into the real interaction model — draft, insert, attest, write-back.</p>
+          <div class="proto-stats">
+            <div class="proto-stat"><span class="proto-stat-icon material-symbols-outlined">smart_toy</span>10 specialist conversational agents</div>
+            <div class="proto-stat"><span class="proto-stat-icon material-symbols-outlined">science</span>Insert · Replace · Not useful flow</div>
+            <div class="proto-stat"><span class="proto-stat-icon material-symbols-outlined">description</span>Attestation &amp; write-back screen</div>
+            <div class="proto-stat"><span class="proto-stat-icon material-symbols-outlined">search</span>Real deviation: DEV-2026-0417</div>
+          </div>
+          <div class="proto-ctas">
+            <a class="proto-btn-primary proto-btn-primary-ia" href="https://claude.ai/artifact/Jd7My7xwc6mopqaAvy5psg" target="_blank" rel="noopener">
+              ↗ Open MVP &amp; interact
+            </a>
+            <a class="proto-btn-secondary" href="https://claude.ai/artifact/6D33QGQjqwtnQhKVMgdjmJ" target="_blank" rel="noopener">
+              ↗ POC walkthrough
+            </a>
+          </div>
+          <div class="proto-links">
+            <a class="proto-link" href="https://claude.ai/artifact/9MHfQdvZRJQkwrmAagskJQ" target="_blank" rel="noopener">
+              <span class="proto-link-arrow">↗</span> Interactive prototype
+            </a>
+            <a class="proto-link" href="https://claude.ai/artifact/FmtRA5XXqGF1sMtSeVrhNU" target="_blank" rel="noopener">
+              <span class="proto-link-arrow">↗</span> Process flow map
+            </a>
+            <a class="proto-link" href="https://claude.ai/artifact/KgcuM6Cr4ce1TXU8Vnrm6q" target="_blank" rel="noopener">
+              <span class="proto-link-arrow">↗</span> Design slides
+            </a>
+          </div>
+          <p class="proto-note">These are Claude-built prototypes — open in any browser. They show the real interaction model: how the AI drafts, how the scientist reviews, and how the attestation works.</p>
+        </div>
+
+        <div class="demo-wrap" id="demo-ia">
+          <div class="demo-header">
+            <span class="demo-label">Guided Demo · Investigation AI · Ideal scenario</span>
+            <span class="demo-counter">Step 1 of 5</span>
+          </div>
+          <div class="demo-progress"><div class="demo-bar" style="width:20%"></div></div>
+
+          <!-- Step 1: Deviation Opens -->
+          <div class="demo-step active">
+            <div class="demo-tip">DEV-2026-0417 has just been raised — tablet weight OOS on compression suite 3. <strong>10 AI specialist agents are ready. The investigation record is completely blank.</strong> You haven't done anything yet.</div>
+            <div class="demo-screen">
+              <div class="demo-chrome"><div class="demo-cdot" style="background:#FF5F57"></div><div class="demo-cdot" style="background:#FFBD2E"></div><div class="demo-cdot" style="background:#28C840"></div><span class="demo-ctitle">Investigation AI · DEV-2026-0417 · Overview</span></div>
+              <div class="demo-body">
+                <div class="demo-devhd">
+                  <div class="demo-devid">DEV-2026-0417 — Tablet weight OOS</div>
+                  <div class="demo-devdesc">207.4 mg / 208.1 mg against limit 205.0 mg · Compression suite 3, batch B-2411-087 · Equipment TP-204 · 2026-02-14 14:32</div>
+                  <div class="demo-chips">
+                    <span class="demo-chip">Site: Barnard Castle</span>
+                    <span class="demo-chip">Operator: T.Chen · Shift 2</span>
+                    <span class="demo-chip">Status: Open</span>
+                  </div>
+                </div>
+                <div class="demo-flbl" style="margin-bottom:5px">AI agents ready — select to begin</div>
+                <div class="demo-agrow">
+                  <span class="demo-ag">5W2H</span><span class="demo-ag">Root Cause</span><span class="demo-ag">5-Why</span><span class="demo-ag">Fishbone</span><span class="demo-ag">Risk</span><span class="demo-ag">CAPA</span><span class="demo-ag">Similar Cases</span><span class="demo-ag">Regulatory</span><span class="demo-ag">Human Factors</span><span class="demo-ag">Summary</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Agent Drafts -->
+          <div class="demo-step">
+            <div class="demo-tip">You ask the 5W2H agent to draft all seven elements. It drafts them and presents each one as a proposal with three options. <strong>Nothing has been inserted into the record yet.</strong> The orange badge means: AI suggestion, not your record entry.</div>
+            <div class="demo-screen">
+              <div class="demo-chrome"><div class="demo-cdot" style="background:#FF5F57"></div><div class="demo-cdot" style="background:#FFBD2E"></div><div class="demo-cdot" style="background:#28C840"></div><span class="demo-ctitle">Investigation AI · DEV-2026-0417 · 5W2H Agent</span></div>
+              <div class="demo-body">
+                <div class="demo-chat">
+                  <div class="demo-msg">
+                    <div class="demo-av u">You</div>
+                    <div class="demo-bubble umsg">Draft all seven 5W2H elements for DEV-2026-0417.</div>
+                  </div>
+                  <div class="demo-msg">
+                    <div class="demo-av a">AI</div>
+                    <div class="demo-bubble">
+                      <strong>What:</strong> Tablet weight OOS (207.4 mg / 208.1 mg vs limit 205.0 mg) on compression suite 3<br>
+                      <strong>Where:</strong> TP-204, Barnard Castle, suite 3<br>
+                      <strong>When:</strong> 2026-02-14 14:32, Shift 2<br>
+                      <strong>Who:</strong> Operator T.Chen; Supervisor J.Obi<br>
+                      <strong>Why (preliminary):</strong> Possible feed frame calibration drift — confirm with physical inspection…
+                      <span class="demo-draft-badge">Agent draft · not yet reviewed</span>
+                      <div class="demo-cbtns">
+                        <span class="demo-cbtn g">Insert</span>
+                        <span class="demo-cbtn">Replace</span>
+                        <span class="demo-cbtn">Not useful</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Draft Inserted -->
+          <div class="demo-step">
+            <div class="demo-tip">You click <strong>Insert</strong>. The draft moves into the investigation record — still marked "Agent draft, not yet reviewed" in orange. It is now in your record, but attributed to the AI, not to you.</div>
+            <div class="demo-screen">
+              <div class="demo-chrome"><div class="demo-cdot" style="background:#FF5F57"></div><div class="demo-cdot" style="background:#FFBD2E"></div><div class="demo-cdot" style="background:#28C840"></div><span class="demo-ctitle">Investigation AI · DEV-2026-0417 · Draft inserted</span></div>
+              <div class="demo-body">
+                <div class="demo-ws">
+                  <div class="demo-pane">
+                    <div class="demo-pane-hd">AI Agent · 5W2H</div>
+                    <div class="demo-pane-bd" style="font-size:10px;color:var(--text-3);line-height:1.5">
+                      <div class="demo-cbtns" style="margin-bottom:6px"><span class="demo-cbtn g" style="opacity:.4">Insert ✓</span><span class="demo-cbtn">Replace</span><span class="demo-cbtn">Not useful</span></div>
+                      Draft inserted into record. You can continue asking the agent questions or move to the next step.
+                    </div>
+                  </div>
+                  <div class="demo-pane">
+                    <div class="demo-pane-hd">Investigation record · Editable</div>
+                    <div class="demo-pane-bd">
+                      <span class="demo-prov d">Agent draft, not yet reviewed</span>
+                      <div style="font-size:9px;font-weight:700;color:var(--text-1);margin-bottom:3px;margin-top:3px">What happened (5W2H)</div>
+                      <div class="demo-fbox d">Tablet weight OOS: 207.4 mg / 208.1 mg vs limit 205.0 mg, compression suite 3, TP-204, Barnard Castle. Operator T.Chen, Shift 2, 2026-02-14 14:32.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Edit → Provenance Changes -->
+          <div class="demo-step">
+            <div class="demo-tip">You make one edit — adding a detail from your physical inspection. <strong>The moment you type, the orange "Agent draft" label transitions to green "Reviewed by you."</strong> The authorship has changed. That is the distinction regulators care about.</div>
+            <div class="demo-screen">
+              <div class="demo-chrome"><div class="demo-cdot" style="background:#FF5F57"></div><div class="demo-cdot" style="background:#FFBD2E"></div><div class="demo-cdot" style="background:#28C840"></div><span class="demo-ctitle">Investigation AI · DEV-2026-0417 · Reviewed by you</span></div>
+              <div class="demo-body">
+                <span class="demo-prov d" id="ia-prov">Agent draft, not yet reviewed</span>
+                <div style="font-size:9px;font-weight:700;color:var(--text-1);margin:4px 0 3px">What happened (5W2H)</div>
+                <div class="demo-fbox d" id="ia-field">Tablet weight OOS: 207.4 mg / 208.1 mg vs limit 205.0 mg, compression suite 3, TP-204, Barnard Castle. Operator T.Chen, Shift 2, 2026-02-14 14:32. <strong>Physical inspection confirmed feed frame calibration drift on TP-204.</strong></div>
+                <div style="font-size:10px;color:var(--text-3);margin-top:9px;line-height:1.5">The edit is small — but authorship transferred. The investigator's name, not the AI's, is now on this field. When the auditor asks "who wrote this?", the answer is you.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5: Attestation -->
+          <div class="demo-step">
+            <div class="demo-tip"><strong>No AI on this page.</strong> The write-back dialog lists exactly what will and won't happen. The checkbox is showing you what it looks like when you're ready — one record, your digital signature, full audit trail compliant with 21 CFR Part 11.</div>
+            <div class="demo-screen">
+              <div class="demo-chrome"><div class="demo-cdot" style="background:#FF5F57"></div><div class="demo-cdot" style="background:#FFBD2E"></div><div class="demo-cdot" style="background:#28C840"></div><span class="demo-ctitle">Investigation AI · DEV-2026-0417 · Write-back</span></div>
+              <div class="demo-body">
+                <div class="demo-attest">
+                  <div class="demo-attest-title">Write investigation to quality record</div>
+                  <div class="demo-flbl" style="margin-bottom:4px;color:var(--green)">What this action WILL do</div>
+                  <ul class="demo-alist">
+                    <li><span class="demo-pill ok" style="font-size:8px;flex-shrink:0">✓</span> Save investigation to DEV-2026-0417</li>
+                    <li><span class="demo-pill ok" style="font-size:8px;flex-shrink:0">✓</span> Record your digital signature (21 CFR Part 11)</li>
+                    <li><span class="demo-pill ok" style="font-size:8px;flex-shrink:0">✓</span> Stamp timestamp: 2026-02-14 15:08 UTC</li>
+                  </ul>
+                  <div class="demo-flbl" style="margin-bottom:4px;color:var(--text-3)">What this action WON'T do</div>
+                  <ul class="demo-alist" style="margin-bottom:10px">
+                    <li><span style="font-size:9px;color:var(--text-3);flex-shrink:0">✗</span> Modify any other deviation record</li>
+                    <li><span style="font-size:9px;color:var(--text-3);flex-shrink:0">✗</span> Change batch B-2411-087 disposition status</li>
+                  </ul>
+                  <div class="demo-checkwrap">
+                    <div class="demo-chk" id="ia-cb"></div>
+                    <div class="demo-chklbl">I confirm this investigation reflects my professional scientific judgment and I am the author of record.</div>
+                  </div>
+                  <button class="demo-wbtn">Write back to quality system</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-nav">
+            <button class="demo-btn-prev" onclick="demoStep('ia',-1)" disabled>← Prev</button>
+            <button class="demo-btn-next" onclick="demoStep('ia',1)">Next →</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="flow-label">Core design decisions — the six principles that make it safe to use AI here</div>
+          <div class="decision-list">
+            <div class="decision-item">
+              <h4>Drafting and recording are separate acts</h4>
+              <p>AI drafts arrive with three buttons: Insert, Replace, Not useful. The agent cannot put anything into a field, save a step, or touch the quality record. Remove those three buttons and nothing moves.</p>
+            </div>
+            <div class="decision-item">
+              <h4>Provenance is visible on every field</h4>
+              <p>Text the agent wrote is marked <em>"Agent draft, not yet reviewed"</em> until the scientist edits it, when it becomes <em>"Reviewed by you."</em> The marker is about authorship, not correctness — the distinction an auditor cares about.</p>
+            </div>
+            <div class="decision-item">
+              <h4>The agent declines</h4>
+              <p>Ask it to classify the event, rate the risk, or save a step — it refuses and explains why. Where it is inferring rather than quoting, the draft says so. On the human factors step it will say the evidence is too thin rather than fill a field to be helpful.</p>
+            </div>
+            <div class="decision-item">
+              <h4>Write-back is a deliberate act</h4>
+              <p>The final page has no agent on it at all. It opens a dialog listing exactly what the action will and won't do, behind an explicit attestation. It touches one investigation record and nothing else.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flow-label">How AI is integrated — 10 agents, one human record</div>
+          <div class="flow-nodes">
+            <div class="flow-node">
+              <div class="flow-node-icon"><span class="material-symbols-outlined">warning</span></div>
+              <div class="flow-node-title">Deviation</div>
+              <div class="flow-node-sub">DEV-2026-0417: Tablet weight OOS, compression suite 3</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node ai">
+              <div class="flow-node-icon"><span class="material-symbols-outlined">smart_toy</span></div>
+              <div class="flow-node-title">10 AI Agents</div>
+              <div class="flow-node-sub">5W2H · Root cause · 5-Why · Fishbone · Risk · CAPA…</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node human">
+              <div class="flow-node-icon"><span class="material-symbols-outlined">science</span></div>
+              <div class="flow-node-title">Scientist Reviews</div>
+              <div class="flow-node-sub">Inserts, edits, or rejects each draft field by field</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node decision">
+              <div class="flow-node-icon"><span class="material-symbols-outlined">history_edu</span></div>
+              <div class="flow-node-title">Write-back</div>
+              <div class="flow-node-sub">Explicit attestation · One record · Full audit trail</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hitl-banner">
+          <div class="hitl-icon"><span class="material-symbols-outlined">sync</span></div>
+          <div class="hitl-text">
+            <h4>Human-in-the-loop design</h4>
+            <p>The AI never writes the final investigation report. It drafts hypotheses, surfaces similar past cases, runs the 5-Why chain, builds the fishbone — but every field is editable and every AI suggestion is labelled as a suggestion. The scientist's signature is the authoritative record. This keeps the product compliant with 21 CFR Part 11 and EU Annex 11.</p>
+          </div>
+        </div>
+
+        <!-- POC → MVP Design Evolution -->
+        <div class="poc-mvp-section">
+
+          <!-- POC Phase -->
+          <div class="poc-mvp-phase">
+            <div class="poc-mvp-phase-header">
+              <span class="phase-badge phase-poc">POC</span>
+              <h4 class="poc-mvp-h">Core workflow — 10 specialist agents, one workspace</h4>
+            </div>
+            <p class="poc-mvp-desc">The POC established the fundamental model: a scientist picks a quality event from Veeva, then moves through the investigation agent by agent. Each page follows the same pattern — AI drafts on the left, editable record on the right. Write-back to Veeva closes the loop.</p>
+            <div class="zoomable-wrap" style="position:relative">
+              <img class="poc-flow-img" src="assets/ia-poc-flow.webp" alt="POC user flow — Deviation Investigation AI" onclick="lbOpen(this.src,this.alt)">
+            </div>
+            <div class="poc-mvp-caption">POC user flow · Sign in → Home → pick quality event → 10-agent workspace → write-back to Veeva</div>
+          </div>
+
+          <!-- Transition -->
+          <div class="poc-mvp-transition">
+            <div class="poc-mvp-arrow"><span class="material-symbols-outlined">arrow_downward</span></div>
+            <div class="poc-mvp-transition-text">MVP added complex multi-step analysis agents — workflows that required designing around branching AI reasoning, historical data retrieval, and compliance-driven justification</div>
+          </div>
+
+          <!-- MVP Phase -->
+          <div class="poc-mvp-phase">
+            <div class="poc-mvp-phase-header">
+              <span class="phase-badge phase-mvp">MVP</span>
+              <h4 class="poc-mvp-h">Complex agent workflows added in MVP</h4>
+            </div>
+
+            <!-- 5 Why Analysis -->
+            <div class="workflow-spotlight">
+              <div class="workflow-spotlight-label">5 Why Analysis · Determine Root Cause</div>
+              <p class="poc-mvp-desc">One of the most complex screens to design. The AI suggests a causal chain, but scientists often see it differently — they may branch from any Why node. The challenge: show both the AI's reasoning and the scientist's edits without losing the audit trail. Solution: a live SVG diagram that updates in real time as the chain is built or branched, alongside the editable step panel.</p>
+              <div class="workflow-screens-3col">
+                <div class="workflow-screen-item">
+                  <div class="scr-wrap zoomable-wrap">
+                    <img src="assets/ia-5whys/ia-5why-step1.jpg" alt="5 Why Analysis — AI drafts the initial causal chain" onclick="lbOpen(this.src,this.alt)">
+                    <div class="scr-logo"></div>
+                    <div class="scr-logo-btm"></div>
+                  </div>
+                  <div class="workflow-screen-cap">AI drafts the full chain · scientist reviews each Why</div>
+                </div>
+                <div class="workflow-screen-item">
+                  <div class="scr-wrap zoomable-wrap">
+                    <img src="assets/ia-5whys/ia-5why-step2.jpg" alt="5 Why Analysis — Save & Branch creates a divergent path" onclick="lbOpen(this.src,this.alt)">
+                    <div class="scr-logo"></div>
+                    <div class="scr-logo-btm"></div>
+                  </div>
+                  <div class="workflow-screen-cap">Save &amp; Branch — scientist diverges from AI suggestion · diagram splits</div>
+                </div>
+                <div class="workflow-screen-item">
+                  <div class="scr-wrap zoomable-wrap">
+                    <img src="assets/ia-5whys/ia-5why-step3.jpg" alt="5 Why Analysis — Multi-cause branching tree" onclick="lbOpen(this.src,this.alt)">
+                    <div class="scr-logo"></div>
+                    <div class="scr-logo-btm"></div>
+                  </div>
+                  <div class="workflow-screen-cap">Multi-cause branching · corrective action plan generated from confirmed causes</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Investigate Potential Solutions -->
+            <div class="workflow-spotlight">
+              <div class="workflow-spotlight-label">Investigate Potential Solutions · 3-step AI workflow</div>
+              <p class="poc-mvp-desc">New in MVP: a structured 3-step workflow for solution generation and selection. The agent generates 10+ solutions categorised by type — Eliminate, Prevent, Educate — each expandable with an implementation plan and deep-dive chatbot. Step 2 searches historical CAPAs and LTAs in Veeva for similarity and conflict. Step 3 presents a final comparison — New, Modify, or Reuse existing CAPA — with justification required for every solution not taken forward.</p>
+              <div class="workflow-screens-scroll">
+                <div class="workflow-screen-item">
+                  <div class="scr-wrap zoomable-wrap">
+                    <img src="assets/ia-potential/ia-ps-collapsed.jpg" alt="Potential Solutions — Step 1: 10 AI-generated solutions" onclick="lbOpen(this.src,this.alt)">
+                    <div class="scr-logo"></div>
+                    <div class="scr-logo-btm"></div>
+                  </div>
+                  <div class="workflow-screen-cap">Step 1 · AI generates 10+ solutions with category, effort &amp; impact</div>
+                </div>
+                <div class="workflow-screen-item">
+                  <div class="scr-wrap zoomable-wrap">
+                    <img src="assets/ia-potential/ia-ps-accordion.jpg" alt="Potential Solutions — Expanded solution with deep dive agent" onclick="lbOpen(this.src,this.alt)">
+                    <div class="scr-logo"></div>
+                    <div class="scr-logo-btm"></div>
+                  </div>
+                  <div class="workflow-screen-cap">Expand any row — full implementation plan + deep dive chatbot</div>
+                </div>
+                <div class="workflow-screen-item">
+                  <div class="scr-wrap zoomable-wrap">
+                    <img src="assets/ia-potential/ia-ps-historical.jpg" alt="Potential Solutions — Step 2: Historical CAPA and LTA search" onclick="lbOpen(this.src,this.alt)">
+                    <div class="scr-logo"></div>
+                    <div class="scr-logo-btm"></div>
+                  </div>
+                  <div class="workflow-screen-cap">Step 2 · Search historical CAPAs · similarity &amp; conflict scoring</div>
+                </div>
+                <div class="workflow-screen-item">
+                  <div class="scr-wrap zoomable-wrap">
+                    <img src="assets/ia-potential/ia-ps-selection.jpg" alt="Potential Solutions — Step 3: Final solution selection" onclick="lbOpen(this.src,this.alt)">
+                    <div class="scr-logo"></div>
+                    <div class="scr-logo-btm"></div>
+                  </div>
+                  <div class="workflow-screen-cap">Step 3 · Final selection — New, Modify, or Reuse existing CAPA</div>
+                </div>
+                <div class="workflow-screen-item">
+                  <div class="scr-wrap zoomable-wrap">
+                    <img src="assets/ia-potential/ia-ps-popup.jpg" alt="Potential Solutions — Justification required for eliminated solutions" onclick="lbOpen(this.src,this.alt)">
+                    <div class="scr-logo"></div>
+                    <div class="scr-logo-btm"></div>
+                  </div>
+                  <div class="workflow-screen-cap">Eliminated solutions require written justification — compliance by design</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <div class="flow-label">Conceptual UI — Investigation AI workspace (abstract)</div>
+          <div class="wireframe">
+            <div class="wf-bar">
+              <div class="wf-dot" style="background:#FF5F57;"></div>
+              <div class="wf-dot" style="background:#FFBD2E;"></div>
+              <div class="wf-dot" style="background:#28C840;"></div>
+              <div class="wf-title">Investigation AI · DEV-2026-0417 · 5W2H Agent</div>
+            </div>
+            <div class="wf-body">
+              <div class="wf-panels">
+                <div class="wf-block" style="display:flex;flex-direction:column;overflow:hidden;">
+                  <div class="wf-panel-head">AI Agent · 5W2H</div>
+                  <div class="wf-chat-msg">
+                    <div class="wf-chat-av">AI</div>
+                    <div class="wf-chat-bubble">
+                      <div class="wf-chat-line" style="width:95%"></div>
+                      <div class="wf-chat-line" style="width:80%"></div>
+                      <div class="wf-chat-line" style="width:65%"></div>
+                      <div style="font-size:8px;color:var(--orange);margin-top:4px;font-weight:600;">Agent draft · not yet reviewed</div>
+                      <div class="wf-chat-actions">
+                        <span class="wf-chat-btn primary">Insert</span>
+                        <span class="wf-chat-btn">Replace</span>
+                        <span class="wf-chat-btn">Not useful</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="border-top:1px solid var(--border);padding:6px 10px;display:flex;gap:6px;">
+                    <div style="flex:1;height:26px;border:1px solid var(--border);border-radius:4px;background:var(--surface);"></div>
+                    <div class="wf-chat-btn primary" style="font-size:8px;">Send</div>
+                  </div>
+                </div>
+                <div class="wf-block" style="display:flex;flex-direction:column;overflow:hidden;">
+                  <div class="wf-panel-head">Investigation record · Editable</div>
+                  <div style="padding:8px 10px;display:flex;flex-direction:column;gap:8px;">
+                    <div>
+                      <div class="wf-provenance draft">Agent draft, not yet reviewed</div>
+                      <div style="font-size:8.5px;font-weight:600;color:var(--text-1);margin-bottom:3px;">What happened (5W2H)</div>
+                      <div style="border:1px solid var(--orange-line);border-radius:4px;padding:5px 7px;background:var(--orange-lt);">
+                        <div class="wf-ai-line" style="width:100%;margin-bottom:3px;"></div>
+                        <div class="wf-ai-line" style="width:75%;"></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="wf-provenance reviewed">Reviewed by you</div>
+                      <div style="font-size:8.5px;font-weight:600;color:var(--text-1);margin-bottom:3px;">Root cause</div>
+                      <div style="border:1px solid var(--green-lt);border-radius:4px;padding:5px 7px;background:var(--green-tint);">
+                        <div class="wf-ai-line" style="width:90%;margin-bottom:3px;background:rgba(10,92,56,.12)"></div>
+                        <div class="wf-ai-line" style="width:60%;background:rgba(10,92,56,.12)"></div>
+                      </div>
+                    </div>
+                    <div style="border-top:1px solid var(--border);padding-top:8px;display:flex;justify-content:flex-end;">
+                      <span class="wf-chat-btn" style="font-size:8px;">Mark step complete</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flow-label">User journey — Scientist using Investigation AI</div>
+          <div class="journey">
+            <div class="j-step"><div class="j-num">1</div><div class="j-content"><h4>Opens DEV-2026-0417</h4><p>Tablet weight reading of 207.4 mg and 208.1 mg against a limit of 205.0 mg. Compression suite 3, batch B-2411-087, rotary tablet press TP-204. 10 specialist agents ready in the sidebar.</p></div></div>
+            <div class="j-connector"><div class="j-line"></div></div>
+            <div class="j-step"><div class="j-num">2</div><div class="j-content"><h4>Talks to the 5W2H agent</h4><p>Types "draft all seven elements." Sees each one as a proposal — Insert or Replace. Inserts What/Where/When, amends Who, marks two as Not useful with a reason. Everything the agent put there is tagged "Agent draft, not yet reviewed."</p></div></div>
+            <div class="j-connector"><div class="j-line"></div></div>
+            <div class="j-step"><div class="j-num">3</div><div class="j-content"><h4>Works through the 5-Why chain and fishbone</h4><p>The root cause agent proposes a chain starting at feed frame calibration. The scientist accepts Why 1–3, amends Why 4, and replaces the root cause with their own finding from a physical inspection. Every field they touch becomes "Reviewed by you."</p></div></div>
+            <div class="j-connector"><div class="j-line"></div></div>
+            <div class="j-step"><div class="j-num">4</div><div class="j-content"><h4>Attests and writes back</h4><p>Final page — no agent present. A dialog lists exactly what will and won't be written. The scientist checks the attestation box and presses write-back. One record. Their name on it. Full audit trail.</p></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="sc-panel" id="ia-demo">
+      <div id="demo-ia-tab"></div>
+    </div>
+    <div class="sc-panel" id="ia-outcome">
+      <div class="sc-outcome-stat">30% ↑</div>
+      <div class="sc-outcome-label">CSAT improvement · Investigation timelines cut from 3–6 months to weeks</div>
+      <p>Scientists spent less time on administrative triaging and more time on scientific reasoning. AI-assisted root cause workflows reduced the volume of open investigations. The product is embedded in GSK's global quality deviation process and is a key step in their AI-in-quality roadmap. Built to WCAG 2.1/2.2 AA — fully keyboard-operable, screen-reader compatible, reflows to 320px.</p>
+    </div>
+  </div>
+
+  <!-- CARD 3: Smart Notifications -->
+  <div class="sc" id="card-sn">
+    <div class="sc-head">
+      <div class="sc-thumb" style="background:linear-gradient(145deg,#FFF3B0,#FFE68A);color:var(--amber);">Flow</div>
+      <div class="sc-meta">
+        <div class="sc-title">Smart Notifications</div>
+        <div class="sc-co">Senior Product Designer · Pluralsight FLOW · 2024–2025</div>
+        <div class="sc-metric">↑ CSAT +30% · Onboarding engagement +40%</div>
+      </div>
+    </div>
+    <div class="sc-tabs">
+      <button class="sc-tab active" data-card="sn" data-tab="problem">Problem</button>
+      <button class="sc-tab" data-card="sn" data-tab="approach">Approach</button>
+      <button class="sc-tab" data-card="sn" data-tab="outcome">Outcome</button>
+    </div>
+    <div class="sc-panel active" id="sn-problem">
+      <p>Engineering leaders inside Pluralsight FLOW were receiving generic, high-volume notifications that weren't actionable. Weekly digests buried the signal in noise — leaders couldn't quickly see what needed their attention, and the notifications failed to map to how engineering managers actually think about team performance. Support tickets were rising; engagement with the notification system was low.</p>
+    </div>
+    <div class="sc-panel" id="sn-approach">
+      <p>Designed weekly digests and monthly reports for engineering leaders that surfaced the right signal at the right cadence. Rearchitected the notification model around engineering management mental models — separating team health signals from delivery metrics, and aligning digest timing to the team's sprint rhythm. Included a redesigned onboarding experience for 300+ new users that guided them to their first value moment within the first session.</p>
+    </div>
+    <div class="sc-panel" id="sn-outcome">
+      <div class="sc-outcome-stat">30% ↑</div>
+      <div class="sc-outcome-label">CSAT improvement · Redesigned notifications for 1,500+ engineering leaders</div>
+      <p>A redesigned onboarding experience for 300+ users grew engagement by 40%. Engineering leaders reported that the new digest format was actionable from first read. The notification redesign reduced support ticket volume and increased weekly active usage of the FLOW platform.</p>
+    </div>
+  </div>
+
+  <!-- CARD 4: Rumy Chatbot -->
+  <div class="sc" id="card-rb">
+    <div class="sc-head">
+      <div class="sc-thumb" style="background:linear-gradient(145deg,#FFDCC8,#F5C4AE);color:var(--orange);">G24x7</div>
+      <div class="sc-meta">
+        <div class="sc-title">Rumy Chatbot</div>
+        <div class="sc-co">Product Designer · Games24x7 · Conversational AI · 2020–2021</div>
+        <div class="sc-metric">↑ App install conversion 2% → 10.6%</div>
+      </div>
+    </div>
+    <div class="sc-tabs">
+      <button class="sc-tab active" data-card="rb" data-tab="problem">Problem</button>
+      <button class="sc-tab" data-card="rb" data-tab="approach">Approach</button>
+      <button class="sc-tab" data-card="rb" data-tab="outcome">Outcome</button>
+    </div>
+    <div class="sc-panel active" id="rb-problem">
+      <p>Games24x7's card game platform (Rummy) had a customer support model that couldn't scale. 40+ distinct user flows — covering gameplay rules, withdrawals, referrals, and live chat with real money implications — were handled by human agents with inconsistent resolution quality and long wait times. App download conversion from the web was low, and a broken referral experience was costing acquisition revenue.</p>
+    </div>
+    <div class="sc-panel" id="rb-approach">
+      <p>Designed Rumy — a conversational AI handling 40+ flows covering gameplay rules, withdrawals, and live game support. Built the entire conversation design system from scratch: decision trees, error recovery flows, handoff logic to human agents for edge cases, and a register-before-download conversion redesign that removed friction at the acquisition step. The referral experience was rearchitected as a shareable moment, not a buried settings page.</p>
+    </div>
+    <div class="sc-panel" id="rb-outcome">
+      <div class="sc-outcome-stat">5×</div>
+      <div class="sc-outcome-label">Install conversion — from 2% to 10.6% via redesigned register-before-download flow</div>
+      <p>Rumy resolved 40+ support flows without human intervention, reducing agent load and improving response time to under 10 seconds. The referral redesign increased referral-driven installs meaningfully. The register-before-download flow quintupled conversion — one of the highest-impact conversion improvements in the product's history.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Move demo walkthrough widgets from concept panel into dedicated demo panels
+document.addEventListener('DOMContentLoaded', function() {
+  ['ir', 'ia'].forEach(function(id) {
+    var src = document.getElementById('demo-' + id);
+    var target = document.getElementById('demo-' + id + '-tab');
+    if (src && target) {
+      target.appendChild(src);
+      src.style.borderRadius = '0';
+      src.style.border = 'none';
+    }
+  });
+
+  // Move MVP interactive prototype into the IRO Demo tab
+  var mvpSection = document.getElementById('mvp-proto-section');
+  var mvpTarget = document.getElementById('demo-ir-mvp-tab');
+  if (mvpSection && mvpTarget) {
+    // Add a visual divider + label before the MVP section
+    var divider = document.createElement('div');
+    divider.style.cssText = 'border-top:1px solid var(--border);margin:16px 0 12px;';
+    var label = document.createElement('div');
+    label.style.cssText = 'font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:12px;';
+    label.textContent = 'MVP · Interactive Prototype';
+    mvpTarget.appendChild(divider);
+    mvpTarget.appendChild(label);
+    mvpTarget.appendChild(mvpSection);
+  }
+});
+
+function demoStep(id, dir) {
+  const wrap = document.getElementById('demo-' + id);
+  const steps = wrap.querySelectorAll('.demo-step');
+  let curr = Array.from(steps).findIndex(s => s.classList.contains('active'));
+  steps[curr].classList.remove('active');
+  curr = (curr + dir + steps.length) % steps.length;
+  steps[curr].classList.add('active');
+  wrap.querySelector('.demo-counter').textContent = 'Step ' + (curr + 1) + ' of ' + steps.length;
+  wrap.querySelector('.demo-bar').style.width = (((curr + 1) / steps.length) * 100) + '%';
+  wrap.querySelector('.demo-btn-prev').disabled = curr === 0;
+  wrap.querySelector('.demo-btn-next').textContent = curr === steps.length - 1 ? '↺ Start over' : 'Next →';
+  // IA step 3 (index 3) — provenance label transition
+  if (id === 'ia' && curr === 3) {
+    const prov = document.getElementById('ia-prov');
+    const field = document.getElementById('ia-field');
+    if (prov) { prov.className = 'demo-prov d'; prov.textContent = 'Agent draft, not yet reviewed'; }
+    if (field) field.className = 'demo-fbox d';
+    setTimeout(() => {
+      if (prov) { prov.className = 'demo-prov r'; prov.textContent = 'Reviewed by you'; }
+      if (field) field.className = 'demo-fbox r';
+    }, 750);
+  }
+  // IA step 4 (index 4) — auto-check attestation checkbox
+  if (id === 'ia' && curr === 4) {
+    const cb = document.getElementById('ia-cb');
+    if (cb) { cb.className = 'demo-chk'; cb.textContent = ''; }
+    setTimeout(() => {
+      if (cb) { cb.className = 'demo-chk on'; cb.textContent = '✓'; }
+    }, 1300);
+  }
+}
+
+// MVP interactive prototype
+const mvpSteps = [
+  {
+    img: 'assets/iro/iro-mvp-actions.jpg',
+    alt: 'My Actions queue',
+    role: '👤 Quality Manager',
+    tip: '227 open actions, 5 overdue. P1 items surface first — the AI has already scored and prioritised them by urgency and risk.',
+    next: 'Review a P1 item →'
+  },
+  {
+    img: 'assets/iro/iro-mvp-review.jpg',
+    alt: 'Review and Action — 4-step stepper',
+    role: '👤 Quality Manager',
+    tip: 'Initial Review & Action. AI confidence: 90%. The 4-step stepper walks you through evidence, the AI\'s recommendation, and your decision. No gap closes without your sign-off.',
+    next: 'Review the evidence →'
+  },
+  {
+    img: 'assets/iro/iro-mvp-accept-confirm.jpg',
+    alt: 'Confirm action acceptance',
+    role: '👤 Quality Manager',
+    tip: 'Evidence reviewed. You agree with the AI\'s recommendation. Step 4: Confirm. One click closes the loop — your decision is captured, the action is routed to implementation, and the AI learns.',
+    next: 'Confirm & accept →'
+  },
+  {
+    img: 'assets/iro/iro-mvp-accepted.jpg',
+    alt: 'Action accepted acknowledgement',
+    role: '👤 Quality Manager',
+    tip: 'Done. Action accepted and assigned to the site\'s implementation team. Your feedback enters the training dataset. 226 open actions remain.',
+    next: 'Switch to Oversight role →'
+  },
+  {
+    img: 'assets/iro/iro-mvp-oversight.jpg',
+    alt: 'My Oversight Actions — escalation queue',
+    role: '🏢 Site Leader (R1)',
+    tip: 'Your Oversight queue shows escalated actions that need a senior eye before they can close — high-risk decisions and rejected actions that were routed up automatically.',
+    next: 'Review the escalated case →'
+  },
+  {
+    img: 'assets/iro/iro-mvp-oversight-ov.jpg',
+    alt: 'Oversight action overview — full case history',
+    role: '🏢 Site Leader (R1)',
+    tip: 'Full case view: the original action, the evidence, the AI rationale, and the history. You can approve, reopen, or flag for specialist review. Every decision is logged for audit and compliance.',
+    next: null
+  }
+];
+let mvpCurrent = 0;
+function mvpStep(dir) {
+  mvpCurrent = Math.max(0, Math.min(mvpSteps.length - 1, mvpCurrent + dir));
+  const s = mvpSteps[mvpCurrent];
+  document.getElementById('mvp-screen-img').src = s.img;
+  document.getElementById('mvp-screen-img').alt = s.alt;
+  document.getElementById('mvp-step-label').textContent = 'Step ' + (mvpCurrent + 1) + ' of ' + mvpSteps.length;
+  document.getElementById('mvp-tip').innerHTML = '<span class="mvp-role-badge">' + s.role + '</span><br>' + s.tip;
+  document.getElementById('mvp-btn-prev').disabled = mvpCurrent === 0;
+  const nextBtn = document.getElementById('mvp-btn-next');
+  if (s.next) {
+    nextBtn.textContent = s.next;
+    nextBtn.disabled = false;
+    nextBtn.className = 'mvp-proto-btn mvp-proto-btn-primary';
+  } else {
+    nextBtn.textContent = '↺ Start over';
+    nextBtn.disabled = false;
+    nextBtn.className = 'mvp-proto-btn';
+    nextBtn.onclick = function() { mvpCurrent = -1; mvpStep(1); };
+  }
+  document.querySelectorAll('.mvp-proto-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === mvpCurrent);
+  });
+}
+document.addEventListener('DOMContentLoaded', function() {
+  const dotsWrap = document.getElementById('mvp-dots');
+  if (dotsWrap) {
+    for (let i = 0; i < mvpSteps.length; i++) {
+      const d = document.createElement('div');
+      d.className = 'mvp-proto-dot' + (i === 0 ? ' active' : '');
+      dotsWrap.appendChild(d);
+    }
+  }
+});
+
+document.querySelectorAll('.sc-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const card = tab.dataset.card;
+    const targetTab = tab.dataset.tab;
+    document.querySelectorAll(`[data-card="${card}"]`).forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const cardEl = document.getElementById(`card-${card}`);
+    cardEl.querySelectorAll('.sc-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(`${card}-${targetTab}`)?.classList.add('active');
+  });
+});
+
+/* ── LIGHTBOX ── */
+(function() {
+  var lbScale = 1;
+  var lbOverlay, lbImg, lbPct;
+
+  function buildLightbox() {
+    if (document.getElementById('img-lightbox')) return;
+    var el = document.createElement('div');
+    el.id = 'img-lightbox';
+    el.className = 'lb-overlay';
+    el.innerHTML = [
+      '<button class="lb-close" onclick="lbClose()" title="Close (Esc)">&#x2715;</button>',
+      '<div class="lb-img-wrap" id="lb-img-wrap">',
+        '<img id="lb-img" src="" alt="">',
+      '</div>',
+      '<div class="lb-controls">',
+        '<button class="lb-btn" onclick="lbZoom(-1)" title="Zoom out">&#x2212;</button>',
+        '<span id="lb-pct">100%</span>',
+        '<button class="lb-btn" onclick="lbZoom(1)" title="Zoom in">&#x2b;</button>',
+        '<button class="lb-reset" onclick="lbReset()" title="Reset zoom">Reset</button>',
+      '</div>',
+      '<span class="lb-hint">Click outside to close &nbsp;&middot;&nbsp; scroll to zoom</span>'
+    ].join('');
+    document.body.appendChild(el);
+    lbOverlay = el;
+    lbImg = el.querySelector('#lb-img');
+    lbPct = el.querySelector('#lb-pct');
+
+    el.addEventListener('click', function(e) {
+      if (e.target === el || e.target.id === 'lb-img-wrap') lbClose();
+    });
+  }
+
+  var RESEARCH_IMGS = ['iro-research-findings', 'iro-research-insights'];
+
+  function blurNamesAndOpen(src, alt) {
+    var tempImg = new Image();
+    tempImg.onload = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = tempImg.naturalWidth;
+      canvas.height = tempImg.naturalHeight;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(tempImg, 0, 0);
+      /* Name row occupies roughly top 8% — blur it */
+      /* Name row: role badge + participant name below the title bar, top ~35% */
+      var bh = Math.round(canvas.height * 0.35);
+      var tmp = document.createElement('canvas');
+      tmp.width = canvas.width; tmp.height = bh;
+      var tc = tmp.getContext('2d');
+      tc.filter = 'blur(22px)';
+      tc.drawImage(tempImg, 0, 0, canvas.width, bh, 0, 0, canvas.width, bh);
+      ctx.drawImage(tmp, 0, 0, canvas.width, bh);
+      lbImg.src = canvas.toDataURL('image/jpeg', 0.92);
+      lbImg.alt = alt || '';
+      lbImg.style.transform = 'scale(1)';
+      lbPct.textContent = '100%';
+      lbOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    tempImg.src = src;
+  }
+
+  window.lbOpen = function(src, alt) {
+    buildLightbox();
+    lbScale = 1;
+    var isResearch = RESEARCH_IMGS.some(function(name) { return src.indexOf(name) !== -1; });
+    if (isResearch) {
+      blurNamesAndOpen(src, alt);
+    } else {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lbImg.style.transform = 'scale(1)';
+      lbPct.textContent = '100%';
+      lbOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.lbClose = function() {
+    if (!lbOverlay) return;
+    lbOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  window.lbZoom = function(dir) {
+    lbScale = Math.max(0.25, Math.min(5, lbScale + dir * 0.25));
+    lbImg.style.transform = 'scale(' + lbScale + ')';
+    lbPct.textContent = Math.round(lbScale * 100) + '%';
+  };
+
+  window.lbReset = function() {
+    lbScale = 1;
+    lbImg.style.transform = 'scale(1)';
+    lbPct.textContent = '100%';
+  };
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') lbClose();
+    if (e.key === '+' || e.key === '=') lbZoom(1);
+    if (e.key === '-') lbZoom(-1);
+  });
+
+  document.addEventListener('wheel', function(e) {
+    if (!lbOverlay || !lbOverlay.classList.contains('open')) return;
+    e.preventDefault();
+    lbZoom(e.deltaY < 0 ? 1 : -1);
+  }, { passive: false });
+
+  /* Wire up all zoomable images after DOM loads */
+  document.addEventListener('DOMContentLoaded', function() {
+    var selectors = [
+      '.research-img-wrap img',
+      '.concept-expl-sitem .scr-wrap img',
+      '.poc-sitem .scr-wrap img',
+      '.eval-wrap img',
+      '.flow-img-wrap img'
+    ];
+    selectors.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(img) {
+        var wrap = img.closest('.scr-wrap, .research-img-wrap, .eval-wrap, .flow-img-wrap');
+        if (wrap && !wrap.classList.contains('zoomable-wrap')) {
+          wrap.classList.add('zoomable-wrap');
+        }
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function(e) {
+          e.stopPropagation();
+          lbOpen(img.src, img.alt);
+        });
+      });
+    });
+  });
+}());
+</script>
